@@ -1,0 +1,773 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+  
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Contenedor principal */
+main {
+  flex: 1 0 auto;
+}
+@font-face {
+    font-family: 'Pally-blod';
+    src: url('/fonts/Pally-Bold.woff2') format('woff2');
+    font-weight: 700; /* Valores válidos: normal (400), bold (700), etc. */
+    font-style: normal; /* Usa valores válidos: normal, italic */
+  }
+  
+  @font-face {
+    font-family: 'Pally-medium';
+    src: url('/fonts/Pally-Medium.woff2') format('woff2');
+    font-weight: regular;
+    font-style: regular; 
+  }
+  
+  @font-face {
+    font-family: 'Pally-regular';
+    src: url('/fonts/Pally-Regular.woff2') format('woff2');
+    font-weight: light;
+    font-style: light; 
+  }
+  
+.container {
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-top: 5%;
+    margin-bottom: 4%;
+    width: 85%;
+    position: relative; /* Asegura que los elementos hijos con position: absolute se posicionen relativamente a este contenedor */
+}
+
+.img-donar{
+    width: 100%;
+    height: 100%;
+}
+
+
+.container-text{
+    color: white;
+    width: 100%;
+    font-family: 'Pally-regular', sans-serif;
+    position: absolute; /* Permite posicionar el elemento en relación al contenedor */
+    font-size: 2.3vw;
+    top: 91%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el elemento horizontal y verticalmente */
+    text-align: center;
+}
+.arrow-icon {
+  position: absolute;
+  top: -40px;
+  transform: translateX(-150%);
+  font-size: 6vw; /* Ajusta el tamaño de la flecha según sea necesario */
+  cursor: pointer;
+  color: #272727  ; /* Ajusta el color de la flecha según sea necesario */
+}
+
+/*-----------------------INFORMACION.---------------------*/
+
+.container-informacion{
+    width: 70%;
+    margin: 0 auto;
+    font-family: 'Pally-regular', sans-serif;
+    text-align: center;
+    margin-top: 1%;
+    font-size: 2.3vw;
+
+}
+.cancelar-sub{
+  font-size: 1.5rem;
+}
+@media(max-width: 1200px){
+  .cancelar-sub{
+    font-size: 2.3vw;
+
+  }
+}
+.costes{
+    font-family: 'Pally-medium';
+    color: #0AA6E0;
+}
+.PROYECTO{
+    font-family: 'Pally-medium';
+    color:#FBBB17;
+}
+.KENIA{
+    font-family: 'Pally-medium';
+    color: #E73246;
+}
+.lista{
+  width: 100%;
+  margin: 5% auto 0 auto; /* Centra el div horizontalmente y añade margen superior */
+}
+
+@media(max-width: 750px){
+  .container-informacion{
+    font-size: 3.3vw;
+
+  }
+}
+
+/*-----------------------------*/
+
+.container-buttons {
+    display: none;
+    justify-content: center;
+    gap:2%; /* Espacio entre los botones */
+    margin-bottom: 5%;
+}
+
+.s4 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+
+    font-size: 22px;
+    font-family: 'Pally-medium', sans-serif;
+    border-radius: 1vw;
+    height: auto;
+
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+.s4:focus {
+  border: 3px solid #272727;
+
+    outline: none;
+    background-color: white;
+    color: #272727;
+  }
+/*--------------botones tipo de donacion --------------*/
+
+.container-buttons-donacion-tipo{
+  width: 80%;
+  height: 5.5vw;
+
+
+  margin: 0 auto;
+  gap: 11vw; /* Espacio entre los botones */
+  justify-content: center; /* Centra los botones horizontalmente */
+  display: flex;
+  margin-top: 6%;
+  margin-bottom: 8%;
+  font-family: 'Pally-regular', sans-serif;
+
+}	
+.show-one-time, .show-subscription{
+  transition: transform 0.2s;
+  cursor: pointer;
+  font-size: 1.3vw;
+
+  font-family: 'Pally-medium', sans-serif;
+  width: 13vw;
+  height: auto;
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  -webkit-appearance: none; /* Elimina el estilo por defecto en Safari/Chrome */
+  border-radius: 1vw;
+  border: 0.3vw solid #272727;
+  color:#272727;
+  background-color: white; 
+}
+
+.show-one-time.selected, .show-subscription.selected {
+  background-color: #272727;
+  color: white;
+}
+
+/* -------------MOSTRAR DONACIONES---------------*/
+.container-pagar{
+  margin: 0 auto;
+  width: 72rem;
+}
+.pagar-titulo{
+  font-family: 'Pally-medium', sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  margin-bottom: 4%;
+  
+}
+.donaciones{
+    font-family: 'Pally-regular', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    
+    gap: 2%;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+.grupo1{
+    display: flex;
+  width: 45%;
+  gap: 5%;
+  }	
+  .grupo2{
+  display: flex;
+  width: 45%;
+  gap: 5%;
+
+  }
+
+.donacion {
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+
+    font-size: 2.5vw; /* Ajusta el tamaño del texto de los botones */
+    font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+    border-radius: 1vw;
+    padding: 2.5%;
+
+    width: 320px; /* Ajusta el ancho de los botones */
+    height: auto;
+
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}
+
+
+.donacion-10{
+    background-color: #0AA6E0;
+}
+.donacion-20{
+    background-color: #E73246;
+}
+.donacion-30{
+    background-color: #FBBB17;
+}
+.donacion:hover {
+    transform: scale(1.05);
+}
+.precio {
+    color: #f5f5f5; /* Cambia el color del texto según tu preferencia */
+    font-size: 35px;
+    
+}
+
+@media (max-width: 1152px){
+  .container-pagar{
+    width: 90%;
+
+  }
+  .donaciones{
+    width: 90%;
+  }
+  .s4{ font-size: 1.4vw;}
+
+}
+/* --------------------donacion personalizado------------------*/
+
+.container-donar-personalizado{
+    font-size: 2vw;
+    display: none;
+    font-family: 'Pally-medium', sans-serif;
+    text-align: center;
+    align-items: center;
+    margin-top: 2%;
+}
+
+@media (max-width: 820px) {
+  .donaciones {
+    display: block;
+    gap: 10px; /* Espacio entre los elementos */
+
+    }
+    .precio{ font-size: 4vw;}
+
+    .donacion {
+      width: 30%; /* Ajusta el ancho del botón */
+      height: 5vw; /* Ajusta la altura del botón */
+    }
+    .s4 {
+      font-size: 2.5vw;
+      width: 27vw; /* Ajusta el tamaño del texto de los botones */
+    }
+    .grupo1{
+      justify-content: center;
+      width: auto;
+    }
+    .grupo2{
+      margin-top: 5%;
+      justify-content: center;
+      width: auto;
+
+    }
+    .container-pagar{
+      margin-bottom: 4%;
+    }
+    .show-one-time, .show-subscription{
+      width: 27.5%;
+      height: 140%;
+      font-size: 2.5vw;
+    }
+    .container-donar-personalizado{
+      font-size: 2.7vw;
+    }
+
+}
+/*------checkbox-----*/
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+.custom-checkbox {
+  position: relative;
+
+  padding-left: 6vw;
+  margin-right: 15px;
+  cursor: pointer;
+  
+  font-size: 2vw;
+  user-select: none;
+}
+.custom-checkbox .checkmark {
+  position: absolute;
+  margin-left: 15%;
+  top: 5%;
+  left: 3%;
+  height: 2vw;
+  width: 2vw;
+  background-color: #fff;
+  border-radius: 0.3vw; /* Hace que el checkmark sea cuadrado */
+  border: 0.15vw solid #272727; /* Borde del checkmark */
+
+}
+.custom-checkbox input:checked ~ .checkmark.unica {
+  background-color: #0AA6E0; /* Color verde para "unica" */
+}
+.custom-checkbox input:checked ~ .checkmark.suscripcion {
+  background-color: #FBBB17; /* Color naranja para "suscripcion" */
+}
+.custom-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 0.7vw;
+  height: 1.3vw;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.frecuenciaSuscripcion{
+  display: none;
+  margin-top: 2%;
+  
+}
+.donar-btn{
+  font-family: 'Pally-medium', sans-serif;
+  margin-top: 2%;
+  padding: 1%;
+  display: inline-block;
+  background-color: #FBBB17;
+  color: white;
+  font-size: 2vw;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 1vw;
+  border: 2px solid #272727;
+  cursor: pointer;
+}
+
+@media(max-width: 1247px){
+  .custom-checkbox .checkmark:after {
+    left: 7.5px;
+    top: 1px;
+  }
+}
+@media(max-width: 970px){
+  .custom-checkbox .checkmark:after {
+    left: 5.5px;
+    top: 1px;
+  }
+  @media(max-width: 711px){
+    .custom-checkbox .checkmark:after {
+      left: 2.5px;
+      top: 0.1px;
+    }
+    .custom-checkbox {
+    }
+  }
+}
+
+
+/*-----Selector frecuencia de pago------*/
+.frecuenciaSuscripcion {
+  display: none;
+  margin-top: 2%;
+}
+
+
+#frecuencia {
+  width: 9vw;
+  height:  3vw;
+  font-size: 2vw;
+  border: 0.2vw solid #ccc;
+  border-radius: 0.3vw;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  -webkit-appearance: none; /* Elimina el estilo por defecto en Safari/Chrome */
+  -moz-appearance: none; /* Elimina el estilo por defecto en Firefox */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4z"/></svg>');
+  font-family: 'Pally-medium', sans-serif;
+  text-align: center;
+}
+
+#frecuencia option {
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+}
+/*---------------FORMAS DE COLABORAR----------------*/
+
+.container-formas{
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.formas-titulo{
+  font-family: 'Pally-medium', sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  margin-bottom: 6%;
+
+}
+
+.container-formas-donar-1{
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.container-forma-donar-texto{
+  font-family: 'Pally-regular', sans-serif;
+  font-size: 1.8vw;
+  text-align: left;
+  width: 43%;
+  line-height: 1.5;
+  padding: 0; /* Elimina el relleno del contenedor */
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  height: 100%;
+}
+.forma-donar-texto {
+  margin: 0; /* Elimina los márgenes del párrafo */
+  padding: 10px; /* Añade relleno al párrafo si es necesario */
+  width: 85%; /* Asegura que el párrafo ocupe todo el ancho del contenedor */
+  box-sizing: border-box; /* Incluye el relleno en el tamaño total del elemento */
+}
+.container-imagen-formas{
+  width: 33%;
+  position: relative;
+}
+.img-formas{
+  margin-top: -4%;
+  margin-left: 10%;
+  width: 14vw;
+}
+.img-formas2{
+  position: absolute;
+  width: 20vw;
+  top: 40%;
+  z-index: -20;
+  left: 30%;
+}
+.container-button-formas{
+  width: 100%;
+  text-align: center; /* Centra el texto y los elementos inline */
+  margin-top: 5%;
+  font-family: 'Pally-regular', sans-serif;
+  font-size: 1.7rem;
+
+  height: auto;
+}
+.button-contacto{
+  padding: 1.5%;
+  height: 20%;
+  margin-top: -0.5%;
+  width: 40%;
+  border-radius: 1vw;
+  border: none  ;
+  font-size: 2.5vw;
+  background-color: #0AA6E0;
+  color: white;
+  font-family: 'Pally-medium', sans-serif;
+  cursor: pointer;
+}
+@media(max-width: 1405px){
+  .container-button-formas{
+    font-size: 1.9vw;
+  }
+}
+
+@media(max-width: 750px){
+  .container-forma-donar-texto{
+    font-size: 2.7vw;
+    width: 60%;
+  }
+  .container-forma-donar-texto{
+    font-size: 3.1vw;
+  }
+  .img-formas{
+    margin-left: -6%;
+    margin-top: 17%;
+    width: 24vw;
+  }
+  .img-formas2{
+    position: absolute;
+    width: 27vw;
+    top: 50%;
+    z-index: 20;
+    left: 15%;
+  }
+  .button-contacto{
+    font-size: 2.6vw;
+  }
+  
+}
+/*--------------------------------------*/
+footer{
+    margin-top: 8%; /* Empuja el footer al fondo */
+    background-color: #272727;
+    color: white;
+    text-align: center;
+    padding: 4%;
+    font-family: "Pally-medium", sans-serif;
+    min-height: auto; /* Asegura que el contenedor abarque toda la pantalla */
+    
+    position: sticky;
+    flex-shrink: 0; /* Evita que el footer se encoja */
+
+  }
+  
+  .footer-parte1{
+    display: flex;
+    gap: 3%; /* Espacio entre los botones */
+  }
+  .footer-logo-container{
+    margin-left: 4%;
+  }
+  .footer-logo{
+    width:350.58px;
+    height: auto; /* Ajusta la altura del contenedor del logo */
+  }
+  .footer-buttons{
+    font-size: 0.9vw; /* Ajusta el tamaño del texto de los botones */
+    display:flex;
+    width: 49.3%;
+    color: black;
+    background-color: white;
+    gap: 5%; /* Espacio entre los botones */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    border-radius: 20px;
+    height: 4vw;
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  .nosotros-button, .mision-footer-button, .padrinos-button{
+    cursor: pointer; 
+  }
+  .footer-donar{
+    cursor: pointer; 
+    height: 4vw;
+    font-size: 3vw; /* Ajusta el tamaño del texto de los botones */
+    background-color: #FBBB17; 
+    padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
+    font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+    border-radius: 16px;
+    color: white;
+    
+    display:flex;
+    align-items: center; /* Centra verticalmente los elementos */
+  
+    border: none;
+  
+  }
+  .footer-parte2{
+    width: 92%;
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    margin-top: 5%;
+    margin-left: 4%;
+  }	
+  
+  .container-contact {
+    width: auto;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center; /* Centra verticalmente el ícono y el texto */
+    gap: 20px; /* Espacio entre el ícono y el texto */
+    font-size: 1.5vw; /* Tamaño del texto */
+    margin-bottom: 1%;
+  }
+  .contact-item i {
+    font-size: 1.5vw; /* Tamaño del ícono */
+    color: white;
+  }
+  
+  .social-icons {
+    display: flex;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    gap: 15px;
+    margin-left: auto; /* Ajusta el valor según el espacio que desees */
+  
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%; /* Hace el fondo circular */
+    background-color: #fff; /* Fondo blanco */
+    color: #333; /* Color del icono */
+    font-size: 2vw; /* Tamaño del icono */
+    text-decoration: none;
+    transition: all 0.3s ease;
+  
+  }
+  .icon:hover {
+    background-color: #333; /* Fondo al pasar el mouse (azul) */
+    color: #fff; /* Icono blanco al pasar el mouse */
+  }
+
+
+@media (max-width:885px){
+  .container {
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+  }
+}
+
+/*-----flecha----------*/
+@media (max-width: 1027px) {
+  .arrow-icon {
+    top: -10%;
+    transform: translateX(-130%);
+  }
+}
+
+/*-------contenido informacion---*/
+
+@media (max-width: 1440px) {
+  .container-informacion {
+    width: 85%;
+
+  }
+}
+
+/*----footer--*/
+@media (max-width: 1404px) {
+  .footer-parte1 {
+    display:block;
+    
+  }
+  .footer-logo-container{
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-top: 20px;
+    width: 24vw;
+  }
+  .footer-logo{
+    width: 24vw;
+    height: auto;
+  }
+  .footer-buttons {
+    border-radius: 10px;
+    height: 7vw;
+    margin-top: 3%;
+    margin-bottom: 4%;
+
+    width: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .footer-donar{
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+@media (max-width: 1017px) {
+  .fomras-botones {
+    display: block;
+  }
+}	
+@media (max-width: 888px) {
+  .contact-item {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    justify-content: center;
+  }
+  .footer-parte2 {
+    display: block;
+  }
+  .footer-buttons {
+    border-radius: 10px;
+    height: 7vw;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    font-size: 1vw;
+
+    width: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .footer-donar{
+    border-radius: 1vw;
+    height: 7vw;
+  }
+  .contact-item {
+    font-size: 3vw; /* Tamaño del texto */
+  }
+  .contact-item i {
+    font-size: 3vw; /* Tamaño del ícono */
+  }
+  .icon {
+    width: 7vw;
+    height: 7vw;
+    font-size: 4vw; /* Tamaño del icono */
+  }
+
+  .container{
+    margin-top: 15%; 
+  }
+  .butonsSocio{
+    margin: 5%;
+  }
+  .footer-logo-container{
+    width: 30vw;
+    margin-bottom: 4%;
+  }
+  .footer-logo{
+    width: 100%;
+    height: auto;
+  }
+}
+

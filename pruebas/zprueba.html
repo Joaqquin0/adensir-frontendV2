@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="JS/image-texts.js?v=1.0"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<style>
+    
+.cointanier-valores{
+  width: 68%;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  text-align: center;
+  font-size: 3em;
+
+}
+.valores-titulo{
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-size: 5.5rem;
+
+}
+.carta-mision{
+  background-color: #FBBB17;
+  font-size: 1rem;
+  color: white;
+  position: relative;
+}
+.mision-button{
+  position: absolute;
+    width: 15%;
+    height: 100%;
+    border: none;
+    cursor: pointer; 
+    background-color: transparent; 
+}
+.mision-button2{
+  position: absolute;
+    width: 15%;
+    height: 100%;
+    left: 85%;
+    border: none;
+    cursor: pointer; 
+    background-color: transparent; 
+
+}
+
+.img-carta-mision{
+  width: 100%;
+  height: auto;
+}
+.carta-mision-info, .carta-mision-texto{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ajusta el centro con transform */
+  text-align: center;
+  width: 80%;
+}
+.titulo-mision{ font-size: 2em;}
+.carta-mision-texto{
+  top: 80%;
+}
+.subtitulo-mision{ font-size: 1em; margin-top: 10%; }
+.parrafo-mision{ font-size: 0.7em;}
+</style>
+<body>
+    <hr class="linea">
+
+    <div  class="cointanier-valores">
+      <h1 class="valores-titulo">Nuestra <span style="color: #0AA6E0;">misión,</span> <span style="color: #FBBB17;">visión</span> Y <span style="color: #E73246;">valores</span></h1>
+      
+      <div class="carta-mision">
+          <button class="mision-button" onclick="prevMision()"></button>
+          <button class="mision-button2" onclick="nextMision()"></button>
+          <h1 class="carta-mision-titulo" id="carta-titulo"> </h1>
+              <div class="carta-mision-texto">
+                  <p id="colaboracion">
+                      
+                  </p>
+              </div>
+          <img class="img-carta-mision" id="carta" src="img/Grupo304.png" alt="">
+      </div>
+
+  </div>
+
+    <script src="JS/javascrip.js"></script>
+
+</body>
+</html>
