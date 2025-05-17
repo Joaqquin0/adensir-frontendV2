@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .div {
+            background-color: blueviolet;
+            justify-content: center;
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            height: 300px; /* Añade altura al contenedor */
+        }
+
+        .titulo {
+            position: absolute;
+            top: 50%; /* Posiciona al 50% del alto */
+            left: 50%; /* Posiciona al 50% del ancho */
+            transform: translate(-50%, -50%); /* Ajusta el centro con transform */
+            color: white;
+            text-align: center;
+        }
+
+        .titulo-quienes {
+            font-weight: bold;
+        }
+
+        .titulo-somos {
+            font-weight: normal;
+        }
+
+
+        
+.header-container {
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  /* Fija el header */
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1.8%;
+  width: 100%;
+  height: 42px; /* Ajusta la altura del header */
+  background-color: white;
+  z-index: 1000;
+  gap: 10%; /* Espacio entre los botones */
+
+}
+
+.logo {
+  width:240.22px;
+  height: 45px; /* Ajusta la altura del contenedor del logo */
+  background-color: violet;
+}	
+.buttons-container {
+  padding-top: 0.2%;
+  background-color: turquoise;
+}
+
+.butons, .butons1, .butons2, .butons3, .butonsSocio, .button-video{
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  height: 38px; /* Ajusta la altura de los botones */
+  font-size: 1.5rem; /* Ajusta el tamaño del texto de los botones */
+  border-radius: 16px;
+  color: white;
+  border: none;
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+  margin-right: 50px; /* Añade espacio entre los botones */
+
+}	
+
+.butons1 {
+  background-color: #FBBB17 ; /* Cambia el color de fondo del botón */
+  width: 140px; /* Ajusta el ancho de los botones */
+
+}	
+.butons2 {
+  background-color: #0AA6E0; /* Cambia el color de fondo del botón */
+  width: 200px; /* Ajusta el ancho de los botones */
+
+}
+.butons3 {
+  background-color: #E73246; /* Cambia el color de fondo del botón */
+  width: 100px; /* Ajusta el ancho de los botones */
+}
+
+.butonsSocio {
+  z-index: 20; /* Asegura que el botón esté por encima de las imágenes */
+  position: absolute; /* Asegura que el botón esté en la posición deseada */
+  margin: 3%;
+}
+.butonsSocio, .button-video{
+  width: 200px; /* Ajusta el ancho de los botones */
+  background-color: #FBBB17 ; /* Cambia el color de fondo del botón */
+
+}
+
+.contact-item-header {
+  display: flex;
+  align-items: center; /* Centra verticalmente el ícono y el texto */
+  gap: 20px; /* Espacio entre el ícono y el texto */
+  font-size: 20px; /* Tamaño del texto */
+}
+
+@media (max-width: 320px) {	
+    .header-container {
+    width: 100%;
+    display: block;
+    padding: 0%;
+    }
+    .logo {
+        margin-top: 2%;
+        margin-left: 3%;
+    }
+    .buttons-container {
+        margin-top: 1%;
+        flex-direction: column; /* Dispone los elementos en una columna */
+        text-align: center;
+        width: 250px;
+        margin-left: 2%;
+        padding-left: 3%;
+    }
+    .butons1, .butons2{
+        margin-bottom: 4%;
+    }
+}
+
+
+</style>
+</head>
+<body>
+    
+    <div class="header-container">
+        
+        <img class="logo" src="img/Grupo 133.png" alt="logo">
+
+        <div class="buttons-container">
+    
+            <button class="butons1">Nosotros</button>
+            <button class="butons2" onclick="scrollToSection()">Misión y Vision</button>
+            <button class="butons3">Donar</button>
+    
+        </div>  
+
+        <div class="contact-item-header">
+            <i class="fas fa-phone-alt" style="color: #333;"></i>
+            <span style="  font-family: 'Pally-medium', sans-serif;">(+37) 673 90 92 37</span>
+        </div>
+        
+    </div>
+    <div class="container">
+        <button class="butonsSocio" onclick="scrollToSection()">HAZTE SOCIO</button>
+        
+        <div class="images" >
+            <img class="img" src="img/niños-jugando-futbol-de-zn.jpg" alt="">
+
+            <div class="texto-foto">
+                <h1 class="info-img" > sdasdasdasdasdasd </h1>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

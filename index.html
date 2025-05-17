@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADENSIR</title>
+    <link rel="icon" href="img/isotipo.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/style.css?v=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="JS/image-texts.js?v=1.0"></script>
+    <script src="JS/animation.js?v=1.0"></script>
+    <script src="JS/noticias.js?v=1.0"></script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="header-container">
+        <div class="todos-elementos-header">
+            <div class="menuicon-logo">
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div div class="cointanier-logo">
+                <a href="https://adensir.com/">
+                    <img class="logo" src="img/Grupo 133.png" alt="logo" >
+                </a>
+            </div>
+            </div>
+
+            <div class="buttons-container1">
+            
+            <button class="butons1" onclick="scrollToSection()">¿Quiénes somos?</button>
+            <button class="butons2" onclick="scrollToSectionMision()">Misión y Vision</button>
+            <button class="butons3" onclick="scrollToSectionDonacion()">Donar</button>
+            <button class="butons4" onclick="scrollToSections('id-porque')">Fortalezas</button>
+            <button class="butons5" onclick="scrollToSections('id-contacto')">Contacto</button>        
+        
+        
+            </div>  
+
+            <div class="sidebar" id="sidebar">
+            <div class="buttons-container">
+                <button class="butons11" onclick="scrollToSection()">¿Quiénes somos?</button>
+                <button class="butons22" onclick="scrollToSectionMision()">Misión y Vision</button>
+                <button class="butons33" onclick="scrollToSectionDonacion()">Donar</button>
+                <button class="butons44" onclick="scrollToSections('id-porque')">Fortalezas</button>        
+                <button class="butons55" onclick="scrollToSections('id-contacto')">Contacto</button>        
+
+            </div>
+
+            </div>
+        </div>
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('active');
+            }
+        </script>
+    </div>
+
+    <div class="container">
+        <button class="butonsSocio" onclick="scrollToSectionDonacion()">HAZTE SOCIO</button>
+        
+        <div class="images" >
+            <img class="img" src="img/niños-jugando-futbol-de-zn.png" alt="">
+
+            <div class="texto-foto">
+                <h1 class="info-img" > </h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="nosotros" class="flecha-abajo"> 
+
+        <img src="img/Trazado 254.png" alt="">
+    </div>
+
+    <div class="noticias">
+        <p>Lo ultimo en nuestra <strong>solidaria mision</strong></p>
+    
+        <div class="all-noticias">
+            <!-- Las noticias se renderizan aquí dinámicamente -->
+        </div>
+    
+        <!-- Botón para cargar más noticias -->
+        <div class="pagination-indicators"></div>
+    </div>
+
+    <div  class="nosotros">
+        
+        <div class="texto-nosotros">
+            
+                <h1 class="titulo">
+                    <span class="titulo-quienes">¿QUIÉNES</span><br> <span class="titulo-somos">SOMOS?</span>
+                </h1>
+    
+
+            <p class="parrafo">
+                Desde el <a style="text-decoration: none; color: #272727;" href="https://www.cuzonanorte.com"><strong>Club Unión Zona Norte</strong></a>
+                damos la oportunidad de jugar al fútbol y recibir una educación a niños y niñas que por dificultades socio-económicas no pueden permitírselo.
+                <br><br>
+                Pensamos que el poder que tiene el deporte colectivo es muy 
+                útil para educar a los más jóvenes y mantenerles con un buen estilo de vida.
+                <br><br>
+                <strong>“Hacemos que el fútbol sea un derecho y no un privilegio”</strong>
+            </p>
+                
+                <br><button class="button-video" style="margin-top: 5%;" onclick="scrollToSections('video')">VER VIDEO RESUMEN</button>
+
+        </div>
+        
+
+
+        <div class = "container-img-nosotros">
+            <img class="img-nosotros" src="img/Grupo 212.png" alt="Image 1">
+
+        </div>
+
+
+    </div>
+
+    <div class="container-hacemos">
+
+        <div class="titulo-texto">
+            <h1 class="hacemos-titulo">¿Qué hacemos?</h1>
+            <h1 class="hacemos-subtitulo">"Mejoramos vidas infantiles a través del deporte y la educación"</h1>
+    
+        </div>
+        
+        <a href="https://adensir.com/hacemos" style="text-decoration: none;">
+        <button class="hacemos-boton">INFÓRMATE</button>
+        </a>
+        <img class="hacemos-img" src="img/Grupo280.png" alt="">
+    </div>
+
+    <section id= "cointanier-valores"></section>
+    <div  class="cointanier-valores">
+        <h1 class="valores-titulo">Nuestra <span style="color: #0AA6E0;">misión,</span> <span style="color: #FBBB17;">visión</span> y <span style="color: #E73246;">valores</span></h1>
+        
+        <div class="carta-mision">
+            <button class="mision-button" onclick="prevMision()"></button>
+            <button class="mision-button2" onclick="nextMision()"></button>
+            <h1 class="carta-mision-titulo" id="carta-titulo"> </h1>
+                <div class="carta-mision-texto">
+                    <p id="colaboracion">
+                        
+                    </p>
+                </div>
+            <img class="img-carta-mision" id="carta" src="img/Grupo304.png" alt="">
+        </div>
+
+    </div>
+
+
+    <div class="container-colaboracion" >
+
+        <div class="contanier-img-colaboracion">
+            <img class="img-colaboracion" src="img/1(13).png" alt="">
+        </div>
+
+        <div class="contanier-texto-colaboracion">
+            <h1 class="titulo-colaboracion">
+                <span class="titulo-quieres">¿QUIERES</span> <br>
+                <span span class="titulo-colaborar">COLABORAR?<span>
+
+            </h1>
+            <div class="container-texto-colaboracion">
+                <p class="texto-colaboracion">
+                    Gracias a las donaciones económicas tanto de 
+                    particulares/familias como de empresas podemos 
+                    hacernos cargo de los costes generados por el 
+                    programa deportivo que financiamos en Kibera (Nairobi).
+                </p>
+            </div>
+            <a href="https://adensir.com/donacion" style="text-decoration: none;">
+            <button class="button-colaboracion">
+                DONAR
+            </button>
+            </a>
+        </div>
+
+    </div>
+
+    <section id="conteiner-padrinos"></section>
+    <div class="conteiner-padrinos">
+
+        <h1 class="titulo-padrinos">NUESTROS <span style="color: #FBBB17;">PADRINOS</span></h1>
+
+        <div class="conteiner-cartas-padrinos">
+
+            <div class="conteiner-vicente">
+                <div class="info-vicente">
+                    <p class="vicente-titulo-principal">Vicente <br>del Bosque<br><span class="vicente-titulo-secundario">Ex-seleccionador español</span></p>
+                    <p class="vicente-titulo-cita">"ADENSIR ofrece a niños y niñas la oportunidad de soñar en grande a través del deporte"</p>
+                </div>
+            
+                <img class="img-vicente" src="img/Vicente.png" alt="">
+            </div>
+
+            <div class="conteiner-melero">
+                <div class="info-melero">
+                    <p class="melero-titulo-principal">Gonzalo<br>Melero<br><span class="vicente-titulo-secundario">Futbolista profesional</span></p>
+                    <p class="melero-titulo-cita">"El fútbol no es solo un juego, es una herramienta poderosa para romper fronteras y cambiar vidas"</p>
+                </div>
+
+                <img class="img-melero" src="img/Melero.png" alt="">
+            </div>
+        </div>
+    </div>
+    
+    <section id="id-porque"></section>
+    <div class="porque-adensir">
+        <div class="titulo-porque">
+            <h1 class="porque-titulo">FORTALEZAS DE <span > <img class="adensir-letra" src="img/Grupo_6.png" alt=""> </span></h1>
+        </div>
+        <div class="texto-porque">
+            <div class="fila1">
+                <div class="c01">
+                    <h1 class="titulo-porque1">01</h1>
+                    <p class="texto-porque1">
+                        <spam style="color:#E73246  ;"> <strong>Sin intermediarios:</strong></spam> <br>
+                        El 100% de las donaciones se destina directamente a los 
+                        niños del proyecto deportivo.
+                    </p>
+                </div>
+                <div class="c02">
+                    <h1 class="titulo-porque2">02</h1>
+                    <p class="texto-porque2">
+                        <spam style="color:#0AA6E0;"> <strong>Impacto con pequeñas donaciones:</strong></spam> <br>
+                        Contribuciones mínimas pueden transformar la vida de niños en extrema pobreza en Kenia.
+                    </p>
+                </div>
+            </div>
+            <div class="fila2">
+                <div class="c03">
+                    <h1 class="titulo-porque3">03</h1>
+                    <p class="texto-porque3">
+                        <spam style="color:#FBBB17;"> <strong>Seguimiento transparente:</strong></spam> <br>
+                        Se informará a los colaboradores mediante fotos y videos sobre los avances logrados gracias a sus aportaciones.
+
+                    </p>
+                </div>
+                <div class="c02">
+                    <h1 class="titulo-porque1">04</h1>
+                    <p class="texto-porque1">
+                        <spam style="color:#E73246  ;"> <strong>Formación integral:</strong></spam> <br>
+                        A través del deporte y la educación, buscamos formar personas autosuficientes y promover un cambio duradero en sus vidas.
+                    </p>                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-texto-llamativo">
+        <h1 class="titulo-llamativo">"Actúa desde el corazón y acertarás"</h1>
+    </div>
+    
+    <div class="container-video" id="video">
+        <iframe class="video-play" width="85%" height="70%" src="https://www.youtube.com/embed/EPd6QV-UB90?si=ESpFTBqjYwwt_tbV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <img class="img-video" src="img/fondo-video.png" alt="">
+    </div>
+
+    <footer>
+        <div class="footer-total">
+
+            <div class="footer-parte1">
+                <div class="footer-logo-container">
+                    <a href="https://adensir.com/">
+    
+                    <img class="footer-logo" src="img/imagotipo en blanco sin blanco.png" alt="logo-blanco">
+                    </a>
+                </div>
+                <div class="footer-buttons">
+                    <h1 class="nosotros-button" onclick="scrollToSection()">¿QUIÉNES SOMOS?</h1>
+                    <h1 class="mision-footer-button" onclick="scrollToSectionMision()">MISIÓN Y VISIÓN</h1>
+                    <H1 class="padrinos-button" onclick="scrollToSectionPadrinos()">PADRINOS</H1>
+                </div>
+                <a href="https://adensir.com/donacion" style="text-decoration: none;">
+                <button class="footer-donar" id="donarButton" >DONAR</button>
+                </a>
+            </div>
+            <div class="footer-parte2"> 
+                <div class="container-contact" id="id-contacto">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+34 665 41 15 21</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contacto@adensir.com</span>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="https://wa.me/34665411521" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://youtube.com" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ongzonanorte_/?hl=es" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1562 @@
+@font-face {
+  font-family: 'Pally-blod';
+  src: url('/fonts/Pally-Bold.woff2') format('woff2');
+  font-weight: 700; /* Valores válidos: normal (400), bold (700), etc. */
+  font-style: normal; /* Usa valores válidos: normal, italic */
+}
+
+@font-face {
+  font-family: 'Pally-medium';
+  src: url('/fonts/Pally-Medium.woff2') format('woff2');
+  font-weight: regular;
+  font-style: regular; 
+}
+
+@font-face {
+  font-family: 'Pally-regular';
+  src: url('/fonts/Pally-Regular.woff2') format('woff2');
+  font-weight: light;
+  font-style: light; 
+}
+/* Pantalla de carga */
+#loading-screen {
+  position: fixed;
+  width: 100%;
+  height: 140%;
+  background: white;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -220px;
+}
+/* Spinner */
+.spinner {
+  width: 120px;
+  height: 120px;
+  background: url('/img/isotipo.png') no-repeat;
+  margin-bottom: 11%;
+  background-size: contain;
+  animation: pulse 2s linear infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+.font2 {
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  color: #fff;
+  background-color: #E73246;
+  padding: 5px;
+  border-radius: 1vw;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.font1 {
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  background-color: #0AA6E0;
+  border-radius: 20px;
+  padding: 10px;
+  border-radius: 1vw;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+
+}
+.todos-elementos-header{
+  display: flex;
+    margin: 0 auto; /* Centra el div horizontalmente */
+  width:105rem;
+  margin-top:1.7rem;
+  gap: 17.5vw; /* Espacio entre los botones */
+
+  
+}
+@media(max-width: 1980px){
+  .todos-elementos-header{
+    width: 85%;
+  }
+}
+.header-container {
+
+  /* Fija el header */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105px; /* Ajusta la altura del header */
+  background-color: white;
+  z-index: 50; /* Asegúrate de que el z-index sea más bajo que el del loading-screen */
+
+}
+.cointanier-logo{
+  width: 100%;
+
+}
+.logo {
+  width:248.58px;
+  height: 47.96px; /* Ajusta la altura del contenedor del logo */
+}	
+
+.butons29{
+  width: 170px; /* Ajusta el ancho de los botones */
+  background-color: #E73246;
+  width: 90%; /* Ajusta el ancho de los botones */
+}
+
+.buttons-container1 {
+  width: 60%;
+  display: flex;
+  gap: 3.5%; /* Espacio entre los botones */
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.4rem; /* Ajusta el tamaño del texto de los botones */
+
+  margin-left: auto;
+}
+
+.butons, .butons1, .butons2, .butons3, .butonsSocio, .butons29,.button-video, .butons4{
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  height: 40px; /* Ajusta la altura de los botones */
+  font-size: 1.4rem; /* Ajusta el tamaño del texto de los botones */
+  border-radius: 2.7vw;
+  color: white;
+  border: none;
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+}	
+.butons11, .butons22, .butons33, .butons44 {
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  height: 40px; /* Ajusta la altura de los botones */
+  font-size: 1.4rem; /* Ajusta el tamaño del texto de los botones */
+  border-radius: 2.7vw;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10%;
+}
+
+.butons1 {
+  background-color: #0AA6E0 ; /* Cambia el color de fondo del botón */
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.butons11{
+  background-color: #0AA6E0 ; /* Cambia el color de fondo del botón */
+  width: 100%; /* Ajusta el ancho de los botones */
+}
+
+.butons2 {
+  background-color: #E73246; /* Cambia el color de fondo del botón */
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.butons22 {
+  background-color: #E73246; /* Cambia el color de fondo del botón */
+  width: 100%; /* Ajusta el ancho de los botones */
+}
+
+.butons3 {
+  background-color: #FBBB17; /* Cambia el color de fondo del botón */
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.butons33 {
+  background-color: #FBBB17; /* Cambia el color de fondo del botón */
+  width: 100%; /* Ajusta el ancho de los botones */
+}
+.butons4 {
+  background-color: #272727;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.butons44 {
+  background-color: #272727;
+  width: 100%; /* Ajusta el ancho de los botones */
+
+}
+.butons5{
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  height: 40px; /* Ajusta la altura de los botones */
+  font-size: 1.4rem; /* Ajusta el tamaño del texto de los botones */
+  border-radius: 2.7vw;
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+
+  color:#272727 ;
+  background-color: white;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.butons55{
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  height: 40px; /* Ajusta la altura de los botones */
+  font-size: 1.4rem; /* Ajusta el tamaño del texto de los botones */
+  border-radius: 2.7vw;
+  color:#272727 ;
+  background-color: white;  cursor: pointer;
+  margin-top: 10%;
+
+  width: 100%;
+
+}
+
+.butonsSocio {
+  z-index: 20; /* Asegura que el botón esté por encima de las imágenes */
+  position: absolute; /* Asegura que el botón esté en la posición deseada */
+  top: 10%; /* Ajusta la posición del texto */
+  left: 7.5%; /* Ajusta la posición del texto */
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 2vw; /* Ajusta el tamaño del texto de los botones */
+  height: 3vw; /*Ajusta la altura de los botones */
+  width: 15vw; /* Ajusta el ancho de los botones */
+  background-color: #FBBB17 ; /* Cambia el color de fondo del botón */
+
+}
+.button-video{
+  background-color: #E73246 ; /* Cambia el color de fondo del botón */
+  display: inline-block;
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.5rem; /* Ajusta el tamaño del texto de los botones */
+  padding-inline: 3rem; /* Añade espacio en blanco alrededor del texto  x y */
+}
+
+.contact-item-header {
+  display: flex;
+  align-items: center; /* Centra verticalmente el ícono y el texto */
+  gap: 10px; /* Espacio entre el ícono y el texto */
+  font-size: 20px; /* Tamaño del texto */
+  margin-left: -2.3vw;
+}
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  width: 50px;
+  padding-top: 3%;
+}
+
+.sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  padding: 10px;
+  z-index: 1001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/*----------------------IMAGEN GRANDE----------------------*/
+.container {
+  margin: 0 auto; /* Centra el div horizontalmente */
+  display: flex;
+  margin-top: 6.2%;
+  position: relative;
+  background-color: ghostwhite;
+
+}
+
+.images{
+  position: relative;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: auto; /* Ajusta el alto deseado */
+  overflow: hidden; /* Esconde las partes de la imagen que se salen del contenedor */
+  height: 850px; /* Ajusta la altura del contenedor según sea necesario */
+}
+
+.img {
+  width: 100%;
+  height: 100%; /* Ajusta la altura de la imagen */
+  object-fit: cover; /* Corta la imagen para llenar el contenedor sin deformarse */
+
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+
+}
+.img.hidden {
+  opacity: 0;
+}
+
+.texto-foto {
+  position: absolute; /* Asegura que el texto esté en la posición deseada */
+  color: white; /* Opcional: para que el texto sea visible sobre las imágenes */
+
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85.2%;
+
+  font-size: 1.4rem; /* Ajusta el tamaño del texto */
+  display: flex;
+  line-height: 1.8; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+}
+
+
+.flecha-abajo{
+  text-align: center;
+  width: 75%;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+/*---------------------------Noticias---------------------------------------------*/
+
+.noticias{
+  background-color: #0AA6E0;
+  text-align: center;
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 20px;
+
+}
+
+.all-noticias{
+  margin: 0 auto; /* Centra el div horizontalmente */
+  background-color: #FBBB17;
+  width: 112.5rem;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 3%;
+
+  padding: 50px;
+  
+}
+
+/* Estilo para la barra azul */
+.barra-azul {
+  width: 60%; /* Ocupa todo el ancho del contenedor */
+  height: 10px; /* Altura de la barra */
+  border-radius: 10px; 
+  
+}
+
+.each-noticias{
+  background-color: #fff;
+  width: 25%;
+  border-radius: 15px;
+  text-align: left;
+  line-height: 0.4;
+}
+
+/* Estilo para el contenedor de los indicadores */
+.pagination-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+/* Estilo para cada indicador */
+.pagination-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Indicador activo */
+.pagination-indicator.active {
+  background-color: black;
+}
+
+@media(max-width: 1894px){
+  .all-noticias{
+      width: auto;
+
+  }
+}
+
+/*--------------------------Nosotros----------------------------------------------*/
+.nosotros {
+  display: flex;
+  width: 77rem;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  gap: 4%;
+}
+
+.texto-nosotros {
+  text-align: center;
+  width: 50%;
+}
+
+.titulo {
+  
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  padding-left: 5%; /* Ajusta el relleno del texto */
+  line-height: 0.83; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+  margin-bottom: 5%; /* Ajusta el margen inferior para reducir el espacio */
+}
+
+.titulo-quienes {
+  font-size: 80px;
+  color: white; /* Cambia el color del texto para "¿QUIÉNES" */
+  display: inline-block; /* Permite aplicar margen y padding */
+  margin-right: 10%; /* Ajusta el margen izquierdo para mover "¿QUIÉNES" a la derecha */
+  background-color: #0AA6E0;
+  padding: 3%;
+  border-radius: 15px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+
+}
+
+.titulo-somos {
+  line-height: 0.4;
+  font-size: 90px; /* Ajusta el tamaño del texto para "SOMOS?" */
+  color: black; /* Cambia el color del texto para "SOMOS?" */
+  display: inline-block; /* Permite aplicar margen y padding */
+  margin-left: 10%; /* Ajusta el margen izquierdo para mover "¿QUIÉNES" a la derecha */
+
+}
+
+.parrafo{
+  font-size: 24px;
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  background-color: #fff;
+}
+
+.container-img-nosotros{
+  width: 40%;
+  margin-left: auto;
+  align-items: center;
+  text-align: center;
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.img-nosotros {
+  width: 100%; /*Para que la iamgen se acomodo auto al tamaño del div */
+  height: auto;
+  margin-top: 10%;
+}
+
+
+.linea{
+  margin: 0 auto; /* Centra el div horizontalmente */
+  border: 3px solid, white; /* Añade un borde a la línea */
+  opacity: 0.3; /* Ajusta la opacidad de la línea */
+}
+
+@media(max-width: 1300px){
+  .nosotros{
+    width: 90%;
+  }
+}
+
+/*-------------HACEMOS----------------*/
+
+.container-hacemos{
+  width: 100%;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  margin-top: 7%; /* Ajusta el margen superior para separar los contenedores */
+  margin-bottom: 2.5%; /* Ajusta el margen superior para separar los contenedores */
+  position: relative;
+  color: white;
+  height: auto;
+
+}
+.hacemos-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.titulo-texto{
+  z-index: 20; 
+  position: absolute;
+  top: 55%;
+  font-family: "Pally-medium", sans-serif;
+  margin-left: 7%;
+}
+.hacemos-titulo{
+  display: inline-block;
+  background-color: #0AA6E0;
+  border-radius: 1vw;
+  padding: 3px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  font-size: 4rem;
+
+}
+
+.hacemos-subtitulo{
+  margin-top: -4%;
+  padding: 0.4vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+
+  font-family: "Pally-regular", sans-serif;
+  background-color: #FBBB17;
+  border-radius: 0.6vw;
+  font-size: 32px; /*1vw = 20px */
+
+}
+.hacemos-boton{
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  background-color: #E73246; 
+  top: 10%;
+  left: 87%;
+  transform: translate(-50%, -50%); 
+
+  padding: 0.5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  border-radius: 1vw;
+  color: white;
+  border: none;
+}
+@media (max-width: 1650px) {
+
+  .titulo-texto {
+    top: 40%;
+  }
+  .hacemos-titulo{
+    font-size: 4.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .hacemos-subtitulo{
+    margin-top:-1%;
+    font-size: 2.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .hacemos-boton{
+    font-size: 2.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+}
+@media (max-width: 1000px) {
+  .container-hacemos {
+    height: 33vh;
+
+  }
+  .titulo-texto {
+    top: 40%;
+  }
+}
+@media(max-width: 620px){
+  .titulo-texto{
+    top: 65%;
+  }
+}
+@media(max-width: 486px){
+
+}
+@media (max-width: 430px) {
+  .hacemos-titulo {
+    font-size: 5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .hacemos-subtitulo {
+    font-size: 2.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .hacemos-boton {
+    top: 10%;
+    font-size: 3.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+
+
+}
+
+/*-------------VALORES-------------------*/
+
+.cointanier-valores{
+  width: 79rem;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  text-align: center;
+  margin-bottom: 8%;
+}
+.valores-titulo{
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-size: 5.92rem;
+
+}
+.carta-mision{
+  color: white;
+  position: relative;
+  
+}
+.mision-button{
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  border: none;
+  cursor: pointer; 
+  background-color: transparent;
+  left: 6%;
+
+}
+.mision-button2{
+  position: absolute;
+    width: 15%;
+    height: 100%;
+    left: 80%;
+    border: none;
+    cursor: pointer; 
+    background-color: transparent; 
+}
+.img-carta-mision{
+  width: 88%;
+  height: auto;
+}
+.carta-mision-titulo{
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ajusta el centro con transform */
+  font-size: 3.2rem;
+}
+.carta-mision-texto{
+  line-height: 1.5; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+
+  position: absolute;
+  top: 75%;
+  width: 76%;
+  text-align: center;
+  height: auto;
+  transform: translate(-50%, -50%); /* Ajusta el centro con transform */
+  left: 50%;
+
+}
+.subtitulo-mision{ 
+  font-size: 1.9rem; 
+}
+.parrafo-mision{ 
+  font-size: 1.4rem;
+}
+
+@media (max-width: 1266px) {
+  .cointanier-valores {
+    width: auto;
+  }
+}
+@media (max-width: 1120px) {
+  .valores-titulo {
+    font-size: 7vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .carta-mision-titulo{
+    font-size: 5vw;
+  }
+  .subtitulo-mision{ 
+    font-size: 2.5vw; 
+  }
+  .parrafo-mision{ 
+    font-size: 2vw;
+  }
+}
+@media(max-width: 800px){
+  .carta-mision-info{
+    top: 10%;
+  }
+  .carta-mision-texto{
+    line-height: 0.9; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+  }
+  
+
+}
+
+
+/*--------------COLABORACION---------------------*/
+
+.container-colaboracion{
+  display: flex;
+  margin: 0 auto; /* Centra el div horizontalmente */
+  width: 70rem;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 6%;
+}
+.contanier-texto-colaboracion{
+  width: 50%;
+  text-align: center;
+  color: white;
+
+
+}
+.titulo-colaboracion{
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  color: #272727;
+  line-height: 1.8; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+  position: relative;
+  margin-top: 12%;
+
+}
+.titulo-quieres{
+  z-index: 30; /* Asegura que el texto esté por encima de las imágenes */
+  position: absolute; /* Asegura que el texto esté en la posición deseada */
+  left: 10%;
+  font-size: 65px;
+
+}
+.titulo-colaborar{
+  font-size: 75px;
+  background-color: #0AA6E0;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 7px;
+  z-index: 20;
+}
+.contanier-img-colaboracion{
+  text-align: center;
+}	
+.img-colaboracion{
+  width: 100%;
+  height: auto;
+}
+.container-texto-colaboracion{
+  margin: 0 auto; /* Centra el div horizontalmente */
+  width: 80%;
+  text-align: center;
+  margin-top: -2%; /* Ajusta el margen superior para separar los contenedores */
+
+}
+.texto-colaboracion{
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.3rem; /* Ajusta el tamaño del texto */
+  line-height: 1.5; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+  color: #272727;
+}
+.button-colaboracion{
+  margin-top: 2%;
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.5rem; /* Ajusta el tamaño del texto de los botones */
+  background-color: #E73246; /* Cambia el color de fondo del botón */
+  color: white; /* Cambia el color del texto del botón */
+  border-radius: 1rem; /* Añade bordes redondeados al botón */
+  padding: 0.3rem 3rem; /* Añade espacio en blanco alrededor del texto  x y */
+  border: none; /* Elimina el borde del botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre los botones */
+}
+
+@media(max-width: 1175px){
+  .container-colaboracion{
+    display: block;
+    justify-items: center;
+    width: auto;
+  }
+  .contanier-img-colaboracion {
+    order: 2; /* Cambia el orden de la imagen */
+}
+
+.contanier-texto-colaboracion {
+    order: 1; /* Cambia el orden del texto */
+}
+  .contanier-texto-colaboracion{
+    width: 100%;
+    margin-top: -15%;
+  }
+  .titulo-colaborar{
+    font-size: 9vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+
+  }
+  .titulo-quieres{
+    left: 25%;
+    font-size: 8vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .img-colaboracion{
+    width: 70%;
+    height: auto;
+  }
+}
+@media(max-width: 450px){
+  .titulo-quieres{
+    top: 20%;
+  }
+}
+
+/*-----------PADRINOS----------------*/
+.conteiner-padrinos{
+  width: 75rem;
+  margin: 0 auto; /* Centra el div horizontalmente */
+}
+.titulo-padrinos{
+  text-align: center;
+  margin-top: 10%;
+  font-size: 5.625rem;
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  padding: 2%;
+}
+
+.conteiner-cartas-padrinos{
+  display: flex;
+  width: 100%;
+  gap: 6%;
+}	
+
+.img-vicente, .img-melero{
+  width: 100%;
+  height: auto;
+}
+.conteiner-vicente{
+  margin-bottom: 10%;
+  position: relative;
+}
+
+.info-vicente{
+  padding: 10%;
+  color: aliceblue;
+  position: absolute;
+  top: -8%;
+
+}
+.vicente-titulo-principal {
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 3rem; /* Ajusta el tamaño del texto */
+  line-height: 1;
+
+}
+.vicente-titulo-secundario {
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.3rem; /* Ajusta el tamaño del texto */
+}
+.vicente-titulo-cita {
+  margin-top: 10%;
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.6rem; /* Ajusta el tamaño del texto */
+  width: 43%;
+  text-align: left;
+}
+
+.conteiner-melero{
+  position: relative;
+}
+.info-melero{
+  color: aliceblue;
+  position: absolute;
+  top: -6.7%;
+  padding: 8%;
+}
+.melero-titulo-principal {
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 3rem; /* Ajusta el tamaño del texto */
+  line-height:1;
+  text-align: right;
+}
+.melero-titulo-secundario {
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.3rem; /* Ajusta el tamaño del texto */
+
+}
+.melero-titulo-cita {
+  margin-top: 10%;
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  font-size: 1.6rem; /* Ajusta el tamaño del texto */
+  margin-left: 60%;
+  width: 40%;
+  text-align: right;
+  
+}
+@media(max-width: 1300px){
+
+  .conteiner-padrinos{
+    width: auto;
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-left: 3%;
+    margin-right: 3%;
+    justify-content: center;
+    align-items: center; /* Centra verticalmente */
+
+  }
+}
+@media(max-width: 1210px){
+
+  .vicente-titulo-cita, .melero-titulo-cita {
+    font-size: 2vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .vicente-titulo-secundario, .melero-titulo-secundario {
+    font-size: 2vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    line-height: 1.4;
+  }
+  .vicente-titulo-principal, .melero-titulo-principal {
+    font-size:4vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+}
+@media(max-width: 800px){
+  .conteiner-cartas-padrinos{
+    margin: 0, auto; /* Centra el div horizontalmente */
+    width: 80%;
+    display: block;
+    margin: 0 auto; /* Centra el div horizontalmente */
+
+  }
+
+  .vicente-titulo-cita, .melero-titulo-cita {
+    font-size: 3.3vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+  .vicente-titulo-secundario, .melero-titulo-secundario {
+    font-size: 3.3vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    line-height: 1.4;
+  }
+  .vicente-titulo-principal, .melero-titulo-principal {
+    font-size:7vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+}
+
+@media(max-width: 575px){
+  .titulo-padrinos{
+    font-size: 3rem;
+  }
+
+
+  
+}
+
+/*------------PROQUE------------*/
+.porque-adensir{
+  background-image: url('/img/Grupo335.svg');
+  justify-content: center; /* Centra los elementos horizontalmente */
+  background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+  background-position: center; /* Centra la imagen de fondo */
+}
+.adensir-letra{
+  width: 27rem;
+  height: auto;
+}
+.titulo-porque{
+  margin-top: 5%;
+  font-size: 3.6rem;
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  text-align: center;
+  padding: 2%;
+}
+
+.texto-porque{
+  justify-content: center;
+  font-size: 5.5rem;
+  font-family: 'Pally-regular', sans-serif; /* Aplica la fuente Pally al texto */
+  display: flex;
+  gap: 3%; /* Espacio entre los elementos */
+  padding: 3%;
+
+}
+.porque-titulo{
+  color: #fff;
+
+}
+
+.c01, .c02, .c03{
+  border-radius: 40px;
+  width: 25rem;
+  padding: 4%;
+  text-align: left;
+  color: #272727;
+  background-color: #fff;
+  margin-bottom: 9%;
+}
+
+.titulo-porque1, .titulo-porque2, .titulo-porque3{
+  font-size: 2rem;
+  display: inline-block;
+  padding: 3%;
+  margin-right: 75%;
+  border-radius: 0.5vw;
+  color:white;
+  background-color: #E73246;
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+}
+.titulo-porque2{
+background-color: #0AA6E0;}
+.titulo-porque3{
+background-color: #FBBB17;}
+.texto-porque1,.texto-porque2,.texto-porque3{
+  font-size: 1.9rem;
+  padding: 2%;
+}
+.texto-porque3{
+  margin-top: -4.5%;
+}
+.fila1, .fila2 {
+  display: flex;
+  justify-content: center;
+  gap: 7%; /* Espacio entre los elementos */
+}
+
+
+@media(max-width: 1650px){
+.porque-titulo{
+  font-size: 7.4vw;
+}
+.adensir-letra{
+  width: 28vw;
+}
+.texto-porque {
+  display: block;
+  padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Espacio entre las filas */
+}
+.texto-porque3{
+  margin-top: 4.5%;
+}
+.c01, .c02, .c03{
+  width: 35%; /*la mejoe opcion es usar auto, pero los cuadros cambian de tamaño*/
+  border-radius: 4vw;
+  padding: 2%;
+
+}
+.titulo-porque1, .titulo-porque2, .titulo-porque3{
+  font-size: 2vw;
+}
+.texto-porque1,.texto-porque2,.texto-porque3{
+  font-size: 2.5vw;
+  padding: 1%;
+}
+}
+
+@media(max-width: 818px){
+
+  .c01, .c02, .c03{
+    width: 90%; /*la mejoe opcion es usar auto, pero los cuadros cambian de tamaño*/
+    border-radius: 4vw;
+    padding: 2%;
+
+  }
+
+  .fila2{
+    margin-top: -5%;
+  }
+  .titulo-porque1, .titulo-porque2, .titulo-porque3{
+    width: 10%;
+    font-size: 2vw;
+    padding: 1%;
+    text-align: center;
+  }
+  .texto-porque1,.texto-porque2,.texto-porque3{
+    font-size: 3vw;
+    padding: 2%;
+  }
+
+
+
+}
+
+/*-------------video-------------------*/
+.container-video{
+  position: relative;
+  height: auto;
+ }	
+ .video-play{
+   position: absolute;
+   border-radius: 20px;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%); /* Ajusta el centro con transform */
+ }
+ .img-video{
+   width: 100%;
+   height: auto;
+ }	
+
+/*--------------------------------------*/
+footer{
+  background-color: #272727;
+  color: white;
+  text-align: center;
+  padding: 4%;
+  font-family: "Pally-medium", sans-serif;
+  margin-top: -1%;
+}
+.footer-total{
+  width: 110rem;
+  margin: 0 auto; /* Centra el div horizontalmente */
+}
+
+.footer-parte1{
+  display: flex;
+  gap: 3%; /* Espacio entre los botones */
+}
+.footer-logo-container{
+  margin-left: 4%;
+}
+.footer-logo{
+  width:350.58px;
+  height: auto; /* Ajusta la altura del contenedor del logo */
+}
+.footer-buttons{
+  font-size: 16.5px; /* Ajusta el tamaño del texto de los botones */
+  display:flex;
+  width: 49.3%;
+  color: black;
+  background-color: white;
+  gap: 5%; /* Espacio entre los botones */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  border-radius: 20px;
+  height: 4vw;
+  align-items: center; /* Centra verticalmente los elementos */
+}
+.nosotros-button, .mision-footer-button, .padrinos-button{
+  cursor: pointer; 
+}
+.footer-donar{
+  cursor: pointer; 
+  height: 4vw;
+  font-size: 60px; /* Ajusta el tamaño del texto de los botones */
+  background-color: #FBBB17; 
+  padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  border-radius: 16px;
+  color: white;
+  
+  display:flex;
+  align-items: center; /* Centra verticalmente los elementos */
+
+  border: none;
+
+}
+.footer-parte2{
+  width: 92%;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  margin-top: 5%;
+  margin-left: 4%;
+}	
+
+.container-contact {
+  width: auto;
+}
+.contact-item {
+  display: flex;
+  align-items: center; /* Centra verticalmente el ícono y el texto */
+  gap: 20px; /* Espacio entre el ícono y el texto */
+  font-size: 1.5vw; /* Tamaño del ícono */
+  margin-bottom: 1%;
+}
+.contact-item i {
+  font-size: 1.5vw; /* Tamaño del ícono */
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  width: auto;
+  height: 100%;
+  justify-content: center;
+  gap: 15px;
+  margin-left: auto; /* Ajusta el valor según el espacio que desees */
+
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%; /* Hace el fondo circular */
+  background-color: #fff; /* Fondo blanco */
+  color: #333; /* Color del icono */
+  font-size: 2vw; /* Tamaño del icono */
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+}
+.icon:hover {
+  background-color: #333; /* Fondo al pasar el mouse (azul) */
+  color: #fff; /* Icono blanco al pasar el mouse */
+}
+@media(max-width: 1900px){
+  .footer-total{
+    width: 100%;
+  }
+  .footer-buttons {
+    font-size: 0.8vw;
+  }
+  .footer-donar {
+    font-size: 3vw;
+  }
+}
+
+/* Media query para pantallas más pequeñas */
+
+
+@media (max-width: 1400px) {
+
+  .nosotros {
+    flex-direction: column; /* Cambia la dirección de los elementos a vertical */
+  }
+  .texto-nosotros{
+    width: 100%;
+  }
+  .container-img-nosotros{
+    margin: 0 auto; /* Centra el div horizontalmente */
+    width: 100%;
+
+  }
+}
+
+/*--------------texto-llamativo-----------------------------*/
+.container-texto-llamativo{
+  margin: 0 auto; /* Centra el div horizontalmente */
+  width: 118.96rem;
+  font-size: 45px;
+  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media(max-width: 1900px){
+  .container-texto-llamativo{
+    width: 100%;
+    font-size: 2vw;
+  }
+}
+
+
+
+/*-------header--*/
+@media(max-width: 1680px){
+
+.butons1, .butons2, .butons3, .butons4, .butons5{
+  font-size: 1.2vw; /* Ajusta el tamaño del texto de los botones */
+
+  }
+}
+@media(max-width: 1130px){
+  .todos-elementos-header {
+    display: block; /* Los div hijos se apilan verticalmente por defecto */
+    background-color: white;
+    width: 100%;
+  }
+  .header-container {
+    height: 20%; /* Ajusta la altura del contenedor */
+  }
+  .container {
+    margin-top: 13%; /* Ajusta el margen superior */
+  }
+  
+  .cointanier-logo {
+    margin-left: 0;
+    margin-top: 1.2%;
+    margin-bottom: 2%;
+    width: 100%;
+
+    justify-content: center;
+    margin: 0, auto; /* Centra el div horizontalmente */
+    text-align: center;
+    align-items: center;
+    align-content: center;
+  }
+  .butons1, .butons2, .butons3,.butons4, .butons5{
+    font-size: 1.2rem; /* Ajusta el tamaño del texto de los botones */
+  }
+  .buttons-container1{
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-bottom: 1.2%;
+  }
+  .contact-item-header {
+    display: none;
+  }
+}
+@media(max-width: 1094px){
+  .buttons-container1{
+    margin-bottom: 12px;
+  }
+}
+@media(max-width: 834px){
+  .buttons-container1{
+    width: 95%;
+  }
+}
+@media(max-width: 800px){
+  .buttons-container1{
+    width: 97%;
+  }
+}
+@media(max-width: 765px){
+  .butons1, .butons2{
+    font-size: 2.2vw; /* Ajusta el tamaño del texto de los botones */
+  }
+}
+@media(max-width: 620px){
+.todos-elementos-header{
+  width: 100%;
+  margin-top: 1%;
+  text-align: center;
+}
+
+.buttons-container1 {
+  display: none;
+}	
+
+.buttons-container {
+  width: 100%;
+  margin-top: 10%;
+  justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.butons11, .butons22, .butons33 {
+  font-size: 1.3rem; /* Ajusta el tamaño del texto de los botones */
+  margin-bottom: 4%;
+  
+}
+
+.logo {
+  background-color: #fff;
+  margin-top: 1%;
+}
+.menu-icon {
+  display: block;
+}
+.cointanier-logo{
+  width:80%;
+}
+.menuicon-logo{
+  display: flex;
+}
+.header-container{
+  height: 70px;
+}
+.sidebar, .contact-item-header1 {
+  display: flex; /* Muestra el contacto en la barra lateral */
+}
+
+  
+/*------Quienes somos-----------*/
+
+@media(max-width: 620px){
+
+  .titulo-quienes, .titulo-somos {
+    font-size: 13vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+
+  .titulo-padrino-vicente, .titulo-padrino-melero {
+    border-radius: 3px;
+  }
+}
+@media(max-width: 521px){
+  .button-video {
+    font-size: 5vw;
+    padding-inline: 10px;
+  }
+  .parrafo {
+  }
+}
+  
+/*------------FORMAS----------------------*/
+@media(max-width: 1145px){
+
+  .bota{
+    width: 250px;
+    height: 300px;
+  }
+  .pelota{
+    width: 250px;
+    height: 300px;
+  }
+  
+}
+@media(max-width: 725px){
+  .bota{
+    width: 150px;
+    height: 200px;
+  }
+  .pelota{
+    width: 150px;
+    height: 200px;
+  }
+  .texto-informacion{
+    font-size: 2vw;
+  }
+}
+@media(max-width: 557px){
+  .bota{
+    width: 85px;
+    height: 125px;
+  }
+  .pelota{
+    width: 85px;
+    height: 125px;
+  }
+
+}
+
+}
+
+/*----------------PORQUE ADENSIR-----------------*/
+@media(max-width: 850px){
+
+  .texto-porque{
+    font-size: 3vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+  }
+}
+
+
+
+/*--------------Donacion--------------*/
+@media(max-width: 620px){
+
+.formas{
+  font-size: 5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+}
+}
+
+
+/*----IMAGENES PRINCIPAÑA-----*/
+@media(max-width: 1517px){
+  .texto-foto {
+    top: 84%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+  }
+}
+@media(max-width: 1335px){
+  .texto-foto {
+    font-size: 1.5vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    justify-content: center;
+    text-align: center;
+    line-height: 2.5;
+
+  }
+
+}
+@media(max-width: 1130px){
+  .container {
+    margin-top: 13%; /* Ajusta el margen superior */
+  }
+}
+@media(max-height: 850px){
+  .butonsSocio{
+    font-size: 2.7vw;
+    height: 5vw; /*Ajusta la altura de los botones */
+    width: 20vw;
+  }
+}
+@media(max-height: 667px){
+  .container {
+    height: 100%; /* Ajusta la altura del contenedor */
+  }
+  .images {
+    height: AUTO; /* Ajusta la altura de la imagen */
+  }
+
+}
+@media(max-width: 620px){
+  .butonsSocio {
+    display: none;
+  }
+  .texto-foto {
+    font-size: 2.6vw; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    line-height: 2.8; /* Ajusta el interlineado (puedes cambiar el valor según tus necesidades) */
+  }
+  
+}
+/*----footer--*/
+@media (max-width: 1404px) {
+  .footer-parte1 {
+    display:block;
+    
+  }
+  .footer-logo-container{
+    margin: 0 auto; /* Centra el div horizontalmente */
+    margin-top: 20px;
+    width: 24vw;
+  }
+  .footer-logo{
+    width: 24vw;
+    height: auto;
+  }
+  .footer-buttons {
+    border-radius: 10px;
+    height: 7vw;
+    margin-top: 3%;
+    margin-bottom: 4%;
+
+    width: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .footer-donar{
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+@media (max-width: 1017px) {
+  .fomras-botones {
+    display: block;
+  }
+}	
+@media (max-width: 888px) {
+  .contact-item {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    justify-content: center;
+  }
+  .footer-parte2 {
+    display: block;
+  }
+  .footer-buttons {
+    border-radius: 10px;
+    height: 7vw;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    font-size: 1vw;
+
+    width: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .footer-donar{
+    border-radius: 1vw;
+    height: 7vw;
+  }
+  .contact-item {
+    font-size: 3vw; /* Tamaño del texto */
+  }
+  .contact-item i {
+    font-size: 3vw; /* Tamaño del ícono */
+  }
+  .icon {
+    width: 7vw;
+    height: 7vw;
+    font-size: 4vw; /* Tamaño del icono */
+  }
+
+  .container{
+    margin-top: 15%; 
+  }
+  .butonsSocio{
+    margin: 5%;
+  }
+  .footer-logo-container{
+    width: 30vw;
+    margin-bottom: 4%;
+  }
+  .footer-logo{
+    width: 100%;
+    height: auto;
+  }
+}
+

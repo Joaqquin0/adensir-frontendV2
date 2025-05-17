@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia - ADENSIR</title>
+    <link rel="icon" href="img/isotipo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/style-hacemos.css">
+    <script src="JS/noticias.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style-noticias.css">
+
+</head>
+<body>
+    <div class="header-container">
+        <div class="todos-elementos-header">
+            <div class="menuicon-logo">
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div div class="cointanier-logo">
+                <a href="https://adensir.com/">
+                    <img class="logo" src="img/Grupo 133.png" alt="logo" >
+                </a>
+            </div>
+            </div>
+
+            <div class="buttons-container1">
+            
+            <button class="butons1" onclick="scrollToSection()">¿Quiénes somos?</button>
+            <button class="butons2" onclick="scrollToSectionMision()">Misión y Vision</button>
+            <button class="butons3" onclick="scrollToSectionDonacion()">Donar</button>
+            <button class="butons4" onclick="scrollToSections('id-porque')">Fortalezas</button>
+            <button class="butons5" onclick="scrollToSections('id-contacto')">Contacto</button>        
+        
+        
+            </div>  
+
+            <div class="sidebar" id="sidebar">
+            <div class="buttons-container">
+                <button class="butons11" onclick="scrollToSection()">¿Quiénes somos?</button>
+                <button class="butons22" onclick="scrollToSectionMision()">Misión y Vision</button>
+                <button class="butons33" onclick="scrollToSectionDonacion()">Donar</button>
+                <button class="butons44" onclick="scrollToSections('id-porque')">Fortalezas</button>        
+                <button class="butons55" onclick="scrollToSections('id-contacto')">Contacto</button>        
+
+            </div>
+
+            </div>
+        </div>
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('active');
+            }
+        </script>
+    </div>
+
+    <div class="container-img-noticia">
+        <div class="image-noticia" >
+            <img class="img-not" id="imagen1-noticia" src="" alt="">
+        </div>
+        
+        <div class="texto-foto-noticia">
+            <h1 class="info-img-noticias" >PROGRAMA KIBERA<br> C.U ZONA NORTA </h1>
+        </div>
+
+    </div>
+
+    <!-- Contenedor dinámico para la noticia -->
+    <div class="contenido-noticia">
+
+        <!-- Contenedor para el título de la noticia -->
+        <div  class="descripcion-noticia">
+            <div class="fecha-autor">
+                <p id="autor-noticia"></p>
+                <p class="fecha-noticia" id="fecha-noticia"></p>
+            </div>
+
+            <p id="titulo-noticia"></p>
+            <p id="subtitulo-noticia"></p>
+            <p id="parrafo-noticia"> </p>
+            
+            <img class="imagen2-noticia" id="imagen2-noticia" src="" alt="">
+            <p id="parrafo2-noticia"> </p>
+            
+            <img id="imagen1-noticia" src="" alt="">
+        </div>
+
+    </div>
+
+    <div class="contenido-noticia">
+
+            <!-- Contenedor para el título de la noticia -->
+            <div  class="descripcion-noticia">
+                <h1 id="descripcion-noticia"></h1>
+                <p class="fecha-noticia" id="fecha-noticia"></p>
+                <p id="titulo-noticia"></p>
+                <p id="subtitulo-noticia"></p>
+                <p id="parrafo-noticia"> </p>
+    
+            </div>
+        
+        <img class="imagen-noticia" src="img/donacion-ropa.png" alt="">
+
+    </div>
+
+    <footer>
+        <div class="footer-total">
+
+            <div class="footer-parte1">
+                <div class="footer-logo-container">
+                    <a href="https://adensir.com/">
+    
+                    <img class="footer-logo" src="img/imagotipo en blanco sin blanco.png" alt="logo-blanco">
+                    </a>
+                </div>
+                <div class="footer-buttons">
+                    <h1 class="nosotros-button" onclick="navigateToSection('nosotros')">¿QUIÉNES SOMOS?</h1>
+                    <h1 class="mision-footer-button" onclick="navigateToSection('cointanier-valores')">MISIÓN Y VISIÓN</h1>
+                    <H1 class="padrinos-button" onclick="navigateToSection('conteiner-padrinos')">PADRINOS</H1>
+                </div>
+                <a href="https://adensir.com/donacion" style="text-decoration: none;">
+                <button class="footer-donar" id="donarButton" >DONAR</button>
+                </a>
+            </div>
+            <div class="footer-parte2"> 
+                <div class="container-contact" id="id-contacto">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+34 665 41 15 21</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contacto@adensir.com</span>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="https://wa.me/34665411521" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://youtube.com" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ongzonanorte_/?hl=es" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </footer>
+
+    <!-- Scripts al final del body para asegurar que el DOM esté cargado -->
+    <script>
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener el ID de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const idNoticia = urlParams.get('id');
+            
+            console.log("ID de noticia:", idNoticia);
+            console.log("Datos de noticias:", noticiasData);
+            console.log("Contenido de noticias:", contenidoNoticiaData);
+
+            // Buscar la noticia y su contenido
+            const noticia = noticiasData.find(n => n.id == idNoticia);
+            const contenido = contenidoNoticiaData.find(c => c.id_noticia == idNoticia);
+
+            console.log("Noticia encontrada:", noticia);
+            console.log("Contenido encontrado:", contenido);
+
+            // Renderizar los datos
+            if (noticia && contenido) {
+                const descripcionElement = document.getElementById("descripcion-noticia");
+                const fechaElement = document.getElementById("fecha-noticia");
+                const tituloElement = document.getElementById("titulo-noticia");
+                const susbtituloElement = document.getElementById("subtitulo-noticia");
+
+                const parrafoElement = document.getElementById("parrafo-noticia");
+                const autorElement = document.getElementById("autor-noticia");
+                const parrafo2Element= document.getElementById("parrafo2-noticia");
+
+                const imagenElement = document.getElementById("imagen1-noticia");
+                const imagenElement2 = document.getElementById("imagen2-noticia");
+                
+                if (descripcionElement) descripcionElement.textContent = noticia.descripcion;
+                if (fechaElement) fechaElement.textContent = noticia.fecha;
+                if (tituloElement) tituloElement.textContent = contenido.titulo;
+                if (susbtituloElement) susbtituloElement.textContent = contenido.subtitulo;
+                if (parrafoElement) parrafoElement.innerHTML = contenido.parrafo;
+                if (autorElement) autorElement.textContent = contenido.autor;
+                if (parrafo2Element) parrafo2Element.innerHTML = contenido.parrafo2;
+                if (imagenElement) imagenElement.src = contenido.imagen;
+                if (imagenElement2) imagenElement2.src = contenido.imagen2;
+            } else {
+                const contenidoElement = document.getElementById("contenido-noticia");
+                if (contenidoElement) {
+                    contenidoElement.textContent = "Noticia no encontrada.";
+                    contenidoElement.style.color = "red";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
