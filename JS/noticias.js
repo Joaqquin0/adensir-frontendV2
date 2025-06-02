@@ -6,8 +6,8 @@ const noticiasData = [
     { fecha: "25 de Abril 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Mayo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-            { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
 ];
 
@@ -96,12 +96,13 @@ class Noticia{
 let currentPage = 0;
 const noticiasPerPage = 3;
 
-// Variables para el touch/swipe
+// Variables para el touch/swipe - MEJORADAS PARA iOS
 let startX = 0;
 let startY = 0;
 let isDragging = false;
 let currentTranslateX = 0;
 let animationId;
+let isScrolling = false;
 
 function renderNoticias() {
     const contenedorNoticias = document.querySelector(".all-noticias");
@@ -196,43 +197,46 @@ function prevPage() {
     }
 }
 
-// Funciones mejoradas para manejo de touch/swipe
+// FUNCIONES CORREGIDAS PARA iOS/iPhone 6s
 function handleTouchStart(e) {
-    // Solo procesar si hay un toque
+    // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isDragging = false; // Comenzar como false hasta confirmar el gesto
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isDragging = false;
+    isScrolling = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
+    
+    // Cancelar cualquier animación en curso
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+    }
 }
 
 function handleTouchMove(e) {
-    // Solo procesar si hay un toque
+    // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
+    const touch = e.touches[0];
+    const currentX = touch.clientX;
+    const currentY = touch.clientY;
     
     const diffX = currentX - startX;
     const diffY = currentY - startY;
     
-    // Determinar la dirección del gesto
-    const isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
-    const isVerticalScroll = Math.abs(diffY) > Math.abs(diffX);
-    
-    // Si es claramente un scroll vertical, permitir el comportamiento por defecto
-    if (isVerticalScroll && Math.abs(diffY) > 10) {
-        isDragging = false;
-        return; // No prevenir el evento, permitir scroll
+    // Si ya determinamos que es scroll, salir inmediatamente
+    if (isScrolling) {
+        return;
     }
     
-    // Si es un swipe horizontal y hemos movido lo suficiente, activar el dragging
-    if (isHorizontalSwipe && Math.abs(diffX) > 10) {
-        isDragging = true;
-        e.preventDefault(); // Solo prevenir cuando estamos haciendo swipe horizontal
+    // Si ya estamos arrastrando horizontalmente, prevenir scroll
+    if (isDragging) {
+        e.preventDefault();
+        e.stopPropagation();
         
         currentTranslateX = diffX;
         
@@ -241,23 +245,49 @@ function handleTouchMove(e) {
         const dragPercentage = (diffX / window.innerWidth) * 100;
         
         contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+        return;
+    }
+    
+    // Determinar dirección del gesto con un threshold más bajo para iOS
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
+    
+    // Threshold más sensible para iOS
+    if (absX > 8 || absY > 8) {
+        if (absX > absY) {
+            // Gesto horizontal - activar dragging
+            isDragging = true;
+            e.preventDefault();
+            e.stopPropagation();
+            
+            currentTranslateX = diffX;
+            
+            const contenedorNoticias = document.querySelector(".all-noticias");
+            const baseTranslateX = -currentPage * 100;
+            const dragPercentage = (diffX / window.innerWidth) * 100;
+            
+            contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+        } else {
+            // Gesto vertical - es scroll
+            isScrolling = true;
+        }
     }
 }
 
 function handleTouchEnd(e) {
+    // Resetear el flag de scrolling
+    isScrolling = false;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'transform 0.3s ease';
+    
     if (!isDragging) {
-        // Si no estábamos arrastrando, restaurar la transición y salir
-        const contenedorNoticias = document.querySelector(".all-noticias");
-        contenedorNoticias.style.transition = 'transform 0.3s ease';
         return;
     }
     
     isDragging = false;
     
-    const contenedorNoticias = document.querySelector(".all-noticias");
-    contenedorNoticias.style.transition = 'transform 0.3s ease';
-    
-    const threshold = 50; // Mínimo de píxeles para cambiar de página
+    const threshold = 30; // Threshold más bajo para mejor responsividad en iOS
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
     if (Math.abs(currentTranslateX) > threshold) {
@@ -341,10 +371,21 @@ function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
-        // Touch events para móviles - usar passive: false solo cuando sea necesario
-        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { passive: true });
-        contenedorNoticias.addEventListener('touchmove', handleTouchMove, { passive: false });
-        contenedorNoticias.addEventListener('touchend', handleTouchEnd, { passive: true });
+        // Remover event listeners existentes para evitar duplicados
+        contenedorNoticias.removeEventListener('touchstart', handleTouchStart);
+        contenedorNoticias.removeEventListener('touchmove', handleTouchMove);
+        contenedorNoticias.removeEventListener('touchend', handleTouchEnd);
+        
+        // Touch events para móviles - configuración específica para iOS
+        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { 
+            passive: true 
+        });
+        contenedorNoticias.addEventListener('touchmove', handleTouchMove, { 
+            passive: false 
+        });
+        contenedorNoticias.addEventListener('touchend', handleTouchEnd, { 
+            passive: true 
+        });
         
         // Mouse events para desktop - solo si no es touch
         if (!('ontouchstart' in window)) {
@@ -356,15 +397,32 @@ function initializeSwipeEvents() {
             contenedorNoticias.style.cursor = 'grab';
         }
         
+        // Configuración específica para iOS
+        contenedorNoticias.style.webkitUserSelect = 'none';
         contenedorNoticias.style.userSelect = 'none';
+        contenedorNoticias.style.webkitTouchCallout = 'none';
+        contenedorNoticias.style.webkitTapHighlightColor = 'transparent';
     }
+}
+
+// Función para reinicializar eventos cuando cambie el tamaño de pantalla
+function handleResize() {
+    setTimeout(() => {
+        updateNoticiasDisplay();
+    }, 100);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNoticias();
     
-    // Esperar un poco para que se renderice el DOM completamente
+    // Esperar un poco más para que se renderice el DOM completamente en iOS
     setTimeout(() => {
         initializeSwipeEvents();
-    }, 100);
+    }, 200);
+    
+    // Escuchar cambios de orientación y tamaño
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', () => {
+        setTimeout(handleResize, 300);
+    });
 });
