@@ -1,0 +1,169 @@
+/* Estilos para el contenedor de noticias deslizables */
+.noticias {
+    position: relative;
+    overflow: hidden; /* Importante para ocultar el contenido que se sale */
+    width: 119rem;
+    margin: 0 auto; /* Centra el contenedor */
+    background-color: antiquewhite;
+}
+
+.all-noticias {
+    background-color: aqua;
+    display: flex;
+    width: 100%;
+    transition: transform 0.3s ease;
+    will-change: transform; /* Optimización para animaciones */
+
+}
+
+.noticias-page {
+    flex: 0 0 100%; /* Cada página ocupa el 100% del ancho */
+    display: flex;
+    flex-direction: row; /* Cambio a horizontal */
+    gap: 5%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    align-items: stretch; /* Las noticias tendrán la misma altura */
+    background-color: bisque;
+
+    justify-content: center; /* Centra las noticias en la página */
+
+}
+
+/* Estilos para cada noticia individual */
+.each-noticias {
+    width: 23%; /* Ancho fijo para cada noticia */
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none; /* Evita selección de texto durante el arrastre */
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Altura mínima para consistencia */
+}
+
+.each-noticias:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.imagen-previa {
+    width: 100%;
+    height: 150px; /* Altura fija más pequeña para layout horizontal */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* No se reduce */
+}
+
+.barra-azul {
+    height: 4px;
+    width: 60px;
+    margin: 10px 0;
+    border-radius: 2px;
+    flex-shrink: 0; /* No se reduce */
+}
+
+/* El contenido de texto ocupa el espacio restante */
+.each-noticias p:last-child {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Estilos para los indicadores de paginación */
+.pagination-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.pagination-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pagination-indicator:hover {
+    background-color: #bbb;
+    transform: scale(1.1);
+}
+
+.pagination-indicator.active {
+    background-color: #007bff;
+    transform: scale(1.2);
+}
+
+.pagination-indicator.active::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+@media (max-width: 1860px) {
+    .noticias{
+        width: 100%; /* Ajusta el ancho para pantallas más pequeñas */
+    }
+}
+
+/* Responsivo para dispositivos móviles */
+@media (max-width: 768px) {
+    .noticias-page {
+        flex-direction: column; /* En móvil vuelve a ser vertical */
+        padding: 0 15px;
+        gap: 15px;
+            justify-content: center; /* Centra las noticias en la página */
+
+    }
+    
+    .each-noticias {
+        padding: 15px;
+        min-height: auto; /* Altura automática en móvil */
+        width: 60%; /* Cada noticia ocupa el 100% del ancho */
+    }
+    
+    .imagen-previa {
+        height: 150px;
+    }
+    
+    .pagination-indicators {
+        gap: 8px;
+        margin-top: 20px;
+        padding: 15px;
+    }
+    
+    .pagination-indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .noticias-page {
+        padding: 0 10px;
+        gap: 12px;
+    }
+    
+    .each-noticias {
+        padding: 12px;
+    }
+    
+    .imagen-previa {
+        height: 120px;
+    }
+}

@@ -6,6 +6,11 @@ const noticiasData = [
     { fecha: "25 de Abril 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Mayo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+            { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+
+
 ];
 
 const contenidoNoticiaData= [
@@ -58,13 +63,14 @@ const contenidoNoticiaData= [
 ]
 
 class Noticia{
-    constructor(fecha, descripcion, id,imagen_previa,colorBarra ) {
+    constructor(fecha, descripcion, id, imagen_previa, colorBarra) {
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.id = id;
         this.imagen_previa = imagen_previa;
         this.colorBarra = colorBarra;
     }
+    
     render(){
         const noticiaElement = document.createElement('div');
         noticiaElement.classList.add('each-noticias');
@@ -74,7 +80,7 @@ class Noticia{
         noticiaElement.innerHTML = `
             <img src="${imagenSrc}" alt="Imagen de la noticia" class="imagen-previa">
             <p>${this.fecha}<p>
-        <div class="barra-azul" style="background-color: ${this.colorBarra};"></div> <!-- Barra con color dinámico -->
+            <div class="barra-azul" style="background-color: ${this.colorBarra};"></div>
             <p>${this.descripcion}</p>
         `;
 
@@ -84,59 +90,262 @@ class Noticia{
     }
 
     mostrarDetalle() {
-        // Redirigir a noticia.html con el ID como parámetro
         window.open(`noticia.html?id=${this.id}`, "_blank");
     }
 }
 
-// Variables para controlar la paginación
-let currentPage = 0; // Página actual (índice basado en 0)
-const noticiasPerPage = 3; // Cantidad de noticias por página
+// Variables para controlar la navegación
+let currentPage = 0;
+const noticiasPerPage = 3;
+
+// Variables para el touch/swipe
+let startX = 0;
+let startY = 0;
+let isDragging = false;
+let currentTranslateX = 0;
+let animationId;
 
 function renderNoticias() {
     const contenedorNoticias = document.querySelector(".all-noticias");
-    contenedorNoticias.innerHTML = ""; // Limpiar el contenedor antes de agregar nuevas noticias
+    contenedorNoticias.innerHTML = "";
 
-    // Calcular las noticias a mostrar
-    const startIndex = currentPage * noticiasPerPage;
-    const endIndex = startIndex + noticiasPerPage;
-    const noticiasToRender = noticiasData.slice(startIndex, endIndex);
+    // Crear todas las páginas de noticias
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    
+    for (let page = 0; page < totalPages; page++) {
+        const pageElement = document.createElement('div');
+        pageElement.classList.add('noticias-page');
+        
+        const startIndex = page * noticiasPerPage;
+        const endIndex = startIndex + noticiasPerPage;
+        const noticiasToRender = noticiasData.slice(startIndex, endIndex);
 
-    // Renderizar las noticias seleccionadas
-    noticiasToRender.forEach(noticiaData => {
-        const noticia = new Noticia(noticiaData.fecha, noticiaData.descripcion, noticiaData.id, noticiaData.imagen_previa,noticiaData.colorBarra );
-        contenedorNoticias.appendChild(noticia.render());
-    });
+        noticiasToRender.forEach(noticiaData => {
+            const noticia = new Noticia(
+                noticiaData.fecha, 
+                noticiaData.descripcion, 
+                noticiaData.id, 
+                noticiaData.imagen_previa,
+                noticiaData.colorBarra
+            );
+            pageElement.appendChild(noticia.render());
+        });
 
-    // Renderizar los indicadores de paginación
+        contenedorNoticias.appendChild(pageElement);
+    }
+
+    // Configurar el contenedor para mostrar solo la página actual
+    updateNoticiasDisplay();
     renderPaginationIndicators();
+}
+
+function updateNoticiasDisplay() {
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    
+    // Aplicar transform para mostrar la página actual
+    const translateX = -currentPage * 100;
+    contenedorNoticias.style.transform = `translateX(${translateX}%)`;
 }
 
 function renderPaginationIndicators() {
     const paginationContainer = document.querySelector(".pagination-indicators");
-    paginationContainer.innerHTML = ""; // Limpiar los indicadores antes de renderizar nuevos
+    paginationContainer.innerHTML = "";
 
-    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage); // Total de páginas
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
 
     for (let i = 0; i < totalPages; i++) {
         const indicator = document.createElement("div");
         indicator.classList.add("pagination-indicator");
         if (i === currentPage) {
-            indicator.classList.add("active"); // Resaltar el indicador de la página actual
+            indicator.classList.add("active");
         }
 
-        // Agregar evento para cambiar de página al hacer clic en el indicador
         indicator.addEventListener("click", () => {
             currentPage = i;
-            renderNoticias();
+            updateNoticiasDisplay();
+            renderPaginationIndicators();
         });
 
         paginationContainer.appendChild(indicator);
     }
 }
 
+function goToPage(pageIndex) {
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    
+    if (pageIndex >= 0 && pageIndex < totalPages) {
+        currentPage = pageIndex;
+        updateNoticiasDisplay();
+        renderPaginationIndicators();
+    }
+}
+
+function nextPage() {
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        updateNoticiasDisplay();
+        renderPaginationIndicators();
+    }
+}
+
+function prevPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        updateNoticiasDisplay();
+        renderPaginationIndicators();
+    }
+}
+
+// Funciones para manejo de touch/swipe
+function handleTouchStart(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'none';
+}
+
+function handleTouchMove(e) {
+    if (!isDragging) return;
+    
+    e.preventDefault();
+    
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    
+    const diffX = currentX - startX;
+    const diffY = currentY - startY;
+    
+    // Solo procesar si el movimiento es más horizontal que vertical
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        currentTranslateX = diffX;
+        
+        const contenedorNoticias = document.querySelector(".all-noticias");
+        const baseTranslateX = -currentPage * 100;
+        const dragPercentage = (diffX / window.innerWidth) * 100;
+        
+        contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+    }
+}
+
+function handleTouchEnd(e) {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'transform 0.3s ease';
+    
+    const threshold = 50; // Mínimo de píxeles para cambiar de página
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    
+    if (Math.abs(currentTranslateX) > threshold) {
+        if (currentTranslateX > 0 && currentPage > 0) {
+            // Deslizar hacia la derecha (página anterior) - solo si no estamos en la primera página
+            prevPage();
+        } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
+            // Deslizar hacia la izquierda (página siguiente) - solo si no estamos en la última página
+            nextPage();
+        } else {
+            // Volver a la posición original si estamos en los límites
+            updateNoticiasDisplay();
+        }
+    } else {
+        // Volver a la posición original
+        updateNoticiasDisplay();
+    }
+    
+    currentTranslateX = 0;
+}
+
+// Funciones para manejo de mouse (desktop)
+function handleMouseDown(e) {
+    startX = e.clientX;
+    startY = e.clientY;
+    isDragging = true;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'none';
+    contenedorNoticias.style.cursor = 'grabbing';
+    
+    e.preventDefault();
+}
+
+function handleMouseMove(e) {
+    if (!isDragging) return;
+    
+    const currentX = e.clientX;
+    const diffX = currentX - startX;
+    
+    currentTranslateX = diffX;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    const baseTranslateX = -currentPage * 100;
+    const dragPercentage = (diffX / window.innerWidth) * 100;
+    
+    contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+}
+
+function handleMouseUp(e) {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'transform 0.3s ease';
+    contenedorNoticias.style.cursor = 'grab';
+    
+    const threshold = 50;
+    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+    
+    if (Math.abs(currentTranslateX) > threshold) {
+        if (currentTranslateX > 0 && currentPage > 0) {
+            // Deslizar hacia la derecha (página anterior) - solo si no estamos en la primera página
+            prevPage();
+        } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
+            // Deslizar hacia la izquierda (página siguiente) - solo si no estamos en la última página
+            nextPage();
+        } else {
+            // Volver a la posición original si estamos en los límites
+            updateNoticiasDisplay();
+        }
+    } else {
+        // Volver a la posición original
+        updateNoticiasDisplay();
+    }
+    
+    currentTranslateX = 0;
+}
+
+function initializeSwipeEvents() {
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    
+    if (contenedorNoticias) {
+        // Touch events para móviles
+        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { passive: false });
+        contenedorNoticias.addEventListener('touchmove', handleTouchMove, { passive: false });
+        contenedorNoticias.addEventListener('touchend', handleTouchEnd);
+        
+        // Mouse events para desktop
+        contenedorNoticias.addEventListener('mousedown', handleMouseDown);
+        contenedorNoticias.addEventListener('mousemove', handleMouseMove);
+        contenedorNoticias.addEventListener('mouseup', handleMouseUp);
+        contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+        
+        // Estilo del cursor
+        contenedorNoticias.style.cursor = 'grab';
+        contenedorNoticias.style.userSelect = 'none';
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     renderNoticias();
+    
+    // Esperar un poco para que se renderice el DOM completamente
+    setTimeout(() => {
+        initializeSwipeEvents();
+    }, 100);
 });
-
-
