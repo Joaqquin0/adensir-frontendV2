@@ -9,8 +9,6 @@ const noticiasData = [
         { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
             { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-
-
 ];
 
 const contenidoNoticiaData= [
@@ -198,20 +196,22 @@ function prevPage() {
     }
 }
 
-// Funciones para manejo de touch/swipe
+// Funciones mejoradas para manejo de touch/swipe
 function handleTouchStart(e) {
+    // Solo procesar si hay un toque
+    if (e.touches.length !== 1) return;
+    
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
-    isDragging = true;
+    isDragging = false; // Comenzar como false hasta confirmar el gesto
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
 }
 
 function handleTouchMove(e) {
-    if (!isDragging) return;
-    
-    e.preventDefault();
+    // Solo procesar si hay un toque
+    if (e.touches.length !== 1) return;
     
     const currentX = e.touches[0].clientX;
     const currentY = e.touches[0].clientY;
@@ -219,8 +219,21 @@ function handleTouchMove(e) {
     const diffX = currentX - startX;
     const diffY = currentY - startY;
     
-    // Solo procesar si el movimiento es más horizontal que vertical
-    if (Math.abs(diffX) > Math.abs(diffY)) {
+    // Determinar la dirección del gesto
+    const isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
+    const isVerticalScroll = Math.abs(diffY) > Math.abs(diffX);
+    
+    // Si es claramente un scroll vertical, permitir el comportamiento por defecto
+    if (isVerticalScroll && Math.abs(diffY) > 10) {
+        isDragging = false;
+        return; // No prevenir el evento, permitir scroll
+    }
+    
+    // Si es un swipe horizontal y hemos movido lo suficiente, activar el dragging
+    if (isHorizontalSwipe && Math.abs(diffX) > 10) {
+        isDragging = true;
+        e.preventDefault(); // Solo prevenir cuando estamos haciendo swipe horizontal
+        
         currentTranslateX = diffX;
         
         const contenedorNoticias = document.querySelector(".all-noticias");
@@ -232,7 +245,12 @@ function handleTouchMove(e) {
 }
 
 function handleTouchEnd(e) {
-    if (!isDragging) return;
+    if (!isDragging) {
+        // Si no estábamos arrastrando, restaurar la transición y salir
+        const contenedorNoticias = document.querySelector(".all-noticias");
+        contenedorNoticias.style.transition = 'transform 0.3s ease';
+        return;
+    }
     
     isDragging = false;
     
@@ -244,10 +262,10 @@ function handleTouchEnd(e) {
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
-            // Deslizar hacia la derecha (página anterior) - solo si no estamos en la primera página
+            // Deslizar hacia la derecha (página anterior)
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
-            // Deslizar hacia la izquierda (página siguiente) - solo si no estamos en la última página
+            // Deslizar hacia la izquierda (página siguiente)
             nextPage();
         } else {
             // Volver a la posición original si estamos en los límites
@@ -261,8 +279,11 @@ function handleTouchEnd(e) {
     currentTranslateX = 0;
 }
 
-// Funciones para manejo de mouse (desktop)
+// Funciones para manejo de mouse (desktop) - simplificadas
 function handleMouseDown(e) {
+    // Solo activar en desktop
+    if ('ontouchstart' in window) return;
+    
     startX = e.clientX;
     startY = e.clientY;
     isDragging = true;
@@ -275,7 +296,7 @@ function handleMouseDown(e) {
 }
 
 function handleMouseMove(e) {
-    if (!isDragging) return;
+    if (!isDragging || 'ontouchstart' in window) return;
     
     const currentX = e.clientX;
     const diffX = currentX - startX;
@@ -290,7 +311,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseUp(e) {
-    if (!isDragging) return;
+    if (!isDragging || 'ontouchstart' in window) return;
     
     isDragging = false;
     
@@ -303,17 +324,13 @@ function handleMouseUp(e) {
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
-            // Deslizar hacia la derecha (página anterior) - solo si no estamos en la primera página
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
-            // Deslizar hacia la izquierda (página siguiente) - solo si no estamos en la última página
             nextPage();
         } else {
-            // Volver a la posición original si estamos en los límites
             updateNoticiasDisplay();
         }
     } else {
-        // Volver a la posición original
         updateNoticiasDisplay();
     }
     
@@ -324,19 +341,21 @@ function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
-        // Touch events para móviles
-        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { passive: false });
+        // Touch events para móviles - usar passive: false solo cuando sea necesario
+        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { passive: true });
         contenedorNoticias.addEventListener('touchmove', handleTouchMove, { passive: false });
-        contenedorNoticias.addEventListener('touchend', handleTouchEnd);
+        contenedorNoticias.addEventListener('touchend', handleTouchEnd, { passive: true });
         
-        // Mouse events para desktop
-        contenedorNoticias.addEventListener('mousedown', handleMouseDown);
-        contenedorNoticias.addEventListener('mousemove', handleMouseMove);
-        contenedorNoticias.addEventListener('mouseup', handleMouseUp);
-        contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+        // Mouse events para desktop - solo si no es touch
+        if (!('ontouchstart' in window)) {
+            contenedorNoticias.addEventListener('mousedown', handleMouseDown);
+            contenedorNoticias.addEventListener('mousemove', handleMouseMove);
+            contenedorNoticias.addEventListener('mouseup', handleMouseUp);
+            contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+            
+            contenedorNoticias.style.cursor = 'grab';
+        }
         
-        // Estilo del cursor
-        contenedorNoticias.style.cursor = 'grab';
         contenedorNoticias.style.userSelect = 'none';
     }
 }
