@@ -9,7 +9,11 @@ const noticiasData = [
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-
+        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
 ];
 
 const contenidoNoticiaData= [
@@ -103,10 +107,9 @@ class Noticia{
 
 // Variables para controlar la navegación
 let currentPage = 0;
-let noticiasPerPage = 3;
-let isMobileView = false;
+const noticiasPerPage = 3;
 
-// Variables para el touch/swipe - MEJORADAS PARA iOS
+// Variables para el touch/swipe - MEJORADAS
 let startX = 0;
 let startY = 0;
 let isDragging = false;
@@ -115,45 +118,22 @@ let animationId;
 let isScrolling = false;
 let hasMoved = false;
 
-// Función para detectar si estamos en vista móvil
-function checkMobileView() {
-    return window.innerWidth <= 1100;
+// NUEVA VARIABLE: Para detectar si estamos en modo paginación o scroll libre
+let isPaginationMode = true;
+
+function checkPaginationMode() {
+    isPaginationMode = window.innerWidth > 1384;
+    return isPaginationMode;
 }
 
 function renderNoticias() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.innerHTML = "";
-    
-    // Detectar si estamos en vista móvil
-    isMobileView = checkMobileView();
-    
-    if (isMobileView) {
-        // Vista móvil: mostrar todas las noticias en una fila horizontal
-        contenedorNoticias.classList.add('mobile-view');
-        contenedorNoticias.classList.remove('desktop-view');
-        
-        noticiasData.forEach(noticiaData => {
-            const noticia = new Noticia(
-                noticiaData.fecha, 
-                noticiaData.descripcion, 
-                noticiaData.id, 
-                noticiaData.imagen_previa,
-                noticiaData.colorBarra
-            );
-            contenedorNoticias.appendChild(noticia.render());
-        });
-        
-        // Ocultar indicadores de paginación
-        const paginationContainer = document.querySelector(".pagination-indicators");
-        if (paginationContainer) {
-            paginationContainer.style.display = 'none';
-        }
-        
-    } else {
-        // Vista desktop: usar el sistema de paginación
-        contenedorNoticias.classList.add('desktop-view');
-        contenedorNoticias.classList.remove('mobile-view');
-        
+
+    checkPaginationMode();
+
+    if (isPaginationMode) {
+        // Modo paginación: crear páginas separadas
         const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
         
         for (let page = 0; page < totalPages; page++) {
@@ -177,36 +157,56 @@ function renderNoticias() {
 
             contenedorNoticias.appendChild(pageElement);
         }
-
-        // Configurar el contenedor para mostrar solo la página actual
-        updateNoticiasDisplay();
-        renderPaginationIndicators();
+    } else {
+        // Modo scroll libre: todas las noticias en una sola página
+        const pageElement = document.createElement('div');
+        pageElement.classList.add('noticias-page');
         
-        // Mostrar indicadores de paginación
-        const paginationContainer = document.querySelector(".pagination-indicators");
-        if (paginationContainer) {
-            paginationContainer.style.display = 'flex';
-        }
+        noticiasData.forEach(noticiaData => {
+            const noticia = new Noticia(
+                noticiaData.fecha, 
+                noticiaData.descripcion, 
+                noticiaData.id, 
+                noticiaData.imagen_previa,
+                noticiaData.colorBarra
+            );
+            pageElement.appendChild(noticia.render());
+        });
+
+        contenedorNoticias.appendChild(pageElement);
     }
+
+    updateNoticiasDisplay();
+    renderPaginationIndicators();
 }
 
 function updateNoticiasDisplay() {
-    if (isMobileView) return; // No hacer nada en vista móvil
-    
     const contenedorNoticias = document.querySelector(".all-noticias");
-    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
-    // Aplicar transform para mostrar la página actual
-    const translateX = -currentPage * 100;
-    contenedorNoticias.style.transform = `translateX(${translateX}%)`;
+    if (isPaginationMode) {
+        const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+        const translateX = -currentPage * 100;
+        contenedorNoticias.style.transform = `translateX(${translateX}%)`;
+    } else {
+        // En modo scroll libre, no aplicar transformaciones
+        contenedorNoticias.style.transform = 'none';
+    }
 }
 
 function renderPaginationIndicators() {
-    if (isMobileView) return; // No mostrar indicadores en vista móvil
-    
     const paginationContainer = document.querySelector(".pagination-indicators");
+    
+    if (!paginationContainer) return;
+    
     paginationContainer.innerHTML = "";
 
+    if (!isPaginationMode) {
+        // Ocultar indicadores en modo scroll libre
+        paginationContainer.style.display = 'none';
+        return;
+    }
+
+    paginationContainer.style.display = 'flex';
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
 
     for (let i = 0; i < totalPages; i++) {
@@ -227,7 +227,7 @@ function renderPaginationIndicators() {
 }
 
 function goToPage(pageIndex) {
-    if (isMobileView) return; // No usar paginación en vista móvil
+    if (!isPaginationMode) return;
     
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
@@ -239,7 +239,7 @@ function goToPage(pageIndex) {
 }
 
 function nextPage() {
-    if (isMobileView) return; // No usar paginación en vista móvil
+    if (!isPaginationMode) return;
     
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     if (currentPage < totalPages - 1) {
@@ -250,7 +250,7 @@ function nextPage() {
 }
 
 function prevPage() {
-    if (isMobileView) return; // No usar paginación en vista móvil
+    if (!isPaginationMode) return;
     
     if (currentPage > 0) {
         currentPage--;
@@ -259,11 +259,12 @@ function prevPage() {
     }
 }
 
-
-// FUNCIONES DE TOUCH/SWIPE - SOLO PARA DESKTOP
+// FUNCIONES DE TOUCH CORREGIDAS - Solo para modo paginación
 function handleTouchStart(e) {
-    if (isMobileView) return; // No activar swipe en vista móvil
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
     
+    // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
     const touch = e.touches[0];
@@ -282,8 +283,10 @@ function handleTouchStart(e) {
 }
 
 function handleTouchMove(e) {
-    if (isMobileView) return; // No activar swipe en vista móvil
-
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
+    
+    // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
     const touch = e.touches[0];
@@ -336,8 +339,9 @@ function handleTouchMove(e) {
 }
 
 function handleTouchEnd(e) {
-    if (isMobileView) return; // No activar swipe en vista móvil
-
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
+    
     isScrolling = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
@@ -361,10 +365,8 @@ function handleTouchEnd(e) {
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
-
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
-
             nextPage();
         } else {
             updateNoticiasDisplay();
@@ -377,11 +379,10 @@ function handleTouchEnd(e) {
     hasMoved = false;
 }
 
-// Funciones para manejo de mouse (desktop) - simplificadas
+// Funciones para manejo de mouse (desktop) - Solo para modo paginación
 function handleMouseDown(e) {
-    if (isMobileView) return; // No activar en vista móvil
-
-    if ('ontouchstart' in window) return;
+    // Solo activar en desktop y modo paginación
+    if ('ontouchstart' in window || !isPaginationMode) return;
     
     startX = e.clientX;
     startY = e.clientY;
@@ -396,8 +397,7 @@ function handleMouseDown(e) {
 }
 
 function handleMouseMove(e) {
-    if (isMobileView) return; // No activar en vista móvil
-    if (!isDragging || 'ontouchstart' in window) return;
+    if (!isDragging || 'ontouchstart' in window || !isPaginationMode) return;
     
     const currentX = e.clientX;
     const diffX = currentX - startX;
@@ -416,8 +416,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseUp(e) {
-    if (isMobileView) return; // No activar en vista móvil
-    if (!isDragging || 'ontouchstart' in window) return;
+    if (!isDragging || 'ontouchstart' in window || !isPaginationMode) return;
     
     isDragging = false;
     
@@ -455,25 +454,19 @@ function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
-
         // Remover event listeners existentes
         contenedorNoticias.removeEventListener('touchstart', handleTouchStart);
         contenedorNoticias.removeEventListener('touchmove', handleTouchMove);
         contenedorNoticias.removeEventListener('touchend', handleTouchEnd);
+        contenedorNoticias.removeEventListener('mousedown', handleMouseDown);
+        contenedorNoticias.removeEventListener('mousemove', handleMouseMove);
+        contenedorNoticias.removeEventListener('mouseup', handleMouseUp);
+        contenedorNoticias.removeEventListener('mouseleave', handleMouseUp);
         
-        // En vista móvil, permitir scroll horizontal nativo
-        if (isMobileView) {
-            // Limpiar estilos de swipe y permitir scroll horizontal
-            contenedorNoticias.style.cursor = 'default';
-            contenedorNoticias.style.webkitUserSelect = 'auto';
-            contenedorNoticias.style.userSelect = 'auto';
-            contenedorNoticias.style.webkitTouchCallout = 'default';
-            contenedorNoticias.style.webkitTapHighlightColor = 'rgba(0,0,0,0.4)';
-            
-            // No agregar eventos de swipe personalizado, usar scroll nativo
-            
-        } else {
-            // Solo agregar eventos de swipe si estamos en vista desktop
+        checkPaginationMode();
+        
+        if (isPaginationMode) {
+            // Solo agregar eventos si estamos en modo paginación
             contenedorNoticias.addEventListener('touchstart', handleTouchStart, { 
                 passive: true 
             });
@@ -494,23 +487,29 @@ function initializeSwipeEvents() {
                 contenedorNoticias.style.cursor = 'grab';
             }
             
-            // Configuración específica para iOS (solo en desktop)
+            // Configuración para evitar selección
             contenedorNoticias.style.webkitUserSelect = 'none';
             contenedorNoticias.style.userSelect = 'none';
             contenedorNoticias.style.webkitTouchCallout = 'none';
             contenedorNoticias.style.webkitTapHighlightColor = 'transparent';
+        } else {
+            // En modo scroll libre, permitir comportamiento nativo
+            contenedorNoticias.style.cursor = 'default';
+            contenedorNoticias.style.webkitUserSelect = 'auto';
+            contenedorNoticias.style.userSelect = 'auto';
+            contenedorNoticias.style.webkitTouchCallout = 'default';
+            contenedorNoticias.style.webkitTapHighlightColor = 'initial';
         }
     }
 }
 
-// Función para manejar cambios de tamaño de pantalla
 function handleResize() {
-    const wasMobileView = isMobileView;
-    isMobileView = checkMobileView();
+    const wasInPaginationMode = isPaginationMode;
+    checkPaginationMode();
     
-    // Si cambió el tipo de vista, re-renderizar
-    if (wasMobileView !== isMobileView) {
-        currentPage = 0; // Resetear página
+    // Si cambió el modo, re-renderizar
+    if (wasInPaginationMode !== isPaginationMode) {
+        currentPage = 0; // Resetear página al cambiar modo
         renderNoticias();
         initializeSwipeEvents();
     } else {
@@ -527,7 +526,6 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeSwipeEvents();
     }, 200);
     
-    // Escuchar cambios de orientación y tamaño
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', () => {
         setTimeout(handleResize, 300);
