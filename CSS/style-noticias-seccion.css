@@ -1,86 +1,105 @@
-/* Estilos para el contenedor de noticias deslizables */
-.noticias {
-    position: relative;
-    overflow: hidden; /* Importante para ocultar el contenido que se sale */
-    width: 119rem;
-    margin: 0 auto; /* Centra el contenedor */
-    background-color: antiquewhite;
+/* Estilos adicionales para la sección de noticias - agregar al CSS existente */
+
+.barra-azul {
+    width: 60%;
+    height: 8px;
+    border-radius: 20px;
+    /* El color se define dinámicamente desde JavaScript */
 }
 
+/* Contenedor principal de noticias */
+.container-noticias{
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 5px;  
+    box-sizing: border-box;
+    font-family: "Pally-regular", sans-serif;
+    font-size: 20px;
+
+    margin-bottom: 60px;
+}
+.titulo-noticia{
+    font-size: 40px;
+    text-align: center;
+}
+
+.noticias {
+    width: 97.5%;
+    padding: 40px 20px;
+    overflow: hidden; /* Importante para evitar scroll horizontal */
+    position: relative;
+    /*background-color: antiquewhite*/;
+}
+
+/* Contenedor de todas las noticias */
 .all-noticias {
-    background-color: aqua;
+    /*background-color: aqua;*/
     display: flex;
     width: 100%;
     transition: transform 0.3s ease;
     will-change: transform; /* Optimización para animaciones */
-
+    /* Nuevas propiedades para iOS */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
 }
 
+/* Página de noticias */
 .noticias-page {
-    flex: 0 0 100%; /* Cada página ocupa el 100% del ancho */
+    min-width: 100%;
     display: flex;
-    flex-direction: row; /* Cambio a horizontal */
-    gap: 5%;
-    padding: 0 20px;
+    justify-content: center;
+    align-items: stretch;
+    flex-shrink: 0;
+    padding: 0 10px;
     box-sizing: border-box;
-    align-items: stretch; /* Las noticias tendrán la misma altura */
-    background-color: bisque;
-
-    justify-content: center; /* Centra las noticias en la página */
-
+    gap: 20px;
 }
 
-/* Estilos para cada noticia individual */
+/* Cada noticia individual */
 .each-noticias {
-    width: 23%; /* Ancho fijo para cada noticia */
+    flex: 1;
+    max-width: 400px;
+    margin: 0 10px;
     background: white;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    user-select: none; /* Evita selección de texto durante el arrastre */
-    display: flex;
-    flex-direction: column;
-    min-height: 400px; /* Altura mínima para consistencia */
+    line-height: 1.2;
+    transition: transform 0.2s ease;
+    /* Mejoras para iOS */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .each-noticias:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
 }
 
+/* Imagen previa de la noticia */
 .imagen-previa {
     width: 100%;
-    height: 150px; /* Altura fija más pequeña para layout horizontal */
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    flex-shrink: 0; /* No se reduce */
+    /* Prevenir selección en iOS */
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
 }
 
-.barra-azul {
-    height: 4px;
-    width: 60px;
-    margin: 10px 0;
-    border-radius: 2px;
-    flex-shrink: 0; /* No se reduce */
-}
-
-/* El contenido de texto ocupa el espacio restante */
-.each-noticias p:last-child {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-start;
-}
-
-/* Estilos para los indicadores de paginación */
+/* Indicadores de paginación */
 .pagination-indicators {
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-top: 30px;
-    padding: 20px;
+    gap: 10px;
 }
 
 .pagination-indicator {
@@ -89,81 +108,176 @@
     border-radius: 50%;
     background-color: #ddd;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+    /* Mejorar área de toque en móviles */
     position: relative;
 }
 
-.pagination-indicator:hover {
-    background-color: #bbb;
-    transform: scale(1.1);
+.pagination-indicator::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    /* Área de toque invisible más grande */
 }
+
 
 .pagination-indicator.active {
     background-color: #007bff;
-    transform: scale(1.2);
 }
 
-.pagination-indicator.active::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    opacity: 0.3;
-}
-
+/* RESPONSIVE STYLES */
 @media (max-width: 1860px) {
-    .noticias{
-        width: 100%; /* Ajusta el ancho para pantallas más pequeñas */
+    .all-noticias {
+        width: 100%;
     }
 }
 
-/* Responsivo para dispositivos móviles */
-@media (max-width: 768px) {
-    .noticias-page {
-        flex-direction: column; /* En móvil vuelve a ser vertical */
-        padding: 0 15px;
-        gap: 15px;
-            justify-content: center; /* Centra las noticias en la página */
 
+
+/* Estilos para cada noticia en vista móvil */
+@media (max-width: 1100px) {
+    .container-noticias{
+    width: 90%;
+
+
+    margin-bottom: 60px;
+}
+    .all-noticias.mobile-view .each-noticias {
+        flex: 0 0 280px; /* Ancho fijo, no crece ni se encoge */
+        min-width: 240px; /* Ancho mínimo */
+        max-width: 240px; /* Ancho máximo */
+        height: auto;
+        margin-bottom: 0;
     }
     
-    .each-noticias {
-        padding: 15px;
-        min-height: auto; /* Altura automática en móvil */
-        width: 60%; /* Cada noticia ocupa el 100% del ancho */
-    }
-    
-    .imagen-previa {
-        height: 150px;
-    }
-    
+    /* Ocultar indicadores de paginación en móvil */
     .pagination-indicators {
-        gap: 8px;
+        display: none !important;
+    }
+    
+    /* Asegurar que el contenedor principal permita scroll horizontal */
+    .container-noticias {
+        overflow-x: visible;
+    }
+    
+    .noticias {
+        overflow-x: visible;
+    }
+    
+    /* Scrollbar horizontal personalizada */
+    .all-noticias.mobile-view::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 3px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+    
+    /* Indicador visual de que hay más contenido */
+    .all-noticias.mobile-view::after {
+        content: '';
+        flex: 0 0 20px;
+        min-width: 20px;
+    }
+}
+
+/* Estilos para desktop manteniendo funcionalidad de swipe */
+@media (min-width: 1101px) {
+    .all-noticias.desktop-view {
+        cursor: grab;
+    }
+    
+    .all-noticias.desktop-view:active {
+        cursor: grabbing;
+    }
+    
+    /* Mostrar indicadores de paginación en desktop */
+    .pagination-indicators {
+        display: flex !important;
+        justify-content: center;
+        gap: 10px;
         margin-top: 20px;
-        padding: 15px;
     }
     
     .pagination-indicator {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .pagination-indicator.active {
+        background-color: #007bff;
+    }
+    
+    .pagination-indicator:hover {
+        background-color: #0056b3;
     }
 }
 
-@media (max-width: 480px) {
-    .noticias-page {
-        padding: 0 10px;
-        gap: 12px;
+/* Estilos adicionales para mejorar la experiencia de scroll horizontal en móvil */
+@media (max-width: 1100px) {
+    /* Asegurar que las imágenes se adapten bien en las cards */
+    .all-noticias.mobile-view .each-noticias .imagen-previa {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
     }
     
-    .each-noticias {
+    /* Mejorar el espaciado del texto en las cards */
+    .all-noticias.mobile-view .each-noticias p {
+        margin: 8px 0;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    /* Estilo para la barra de color */
+    .all-noticias.mobile-view .each-noticias .barra-azul {
+        height: 3px;
+        margin: 8px 0;
+        border-radius: 1.5px;
+    }
+    
+    /* Padding adicional para el scroll horizontal */
+    .all-noticias.mobile-view {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Sombra sutil para las cards */
+    .all-noticias.mobile-view .each-noticias {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
         padding: 12px;
+        background: white;
+        transition: transform 0.2s ease;
     }
     
-    .imagen-previa {
-        height: 120px;
+    /* Efecto hover para las cards en móvil */
+    .all-noticias.mobile-view .each-noticias:active {
+        transform: scale(0.98);
     }
+}
+
+@media (max-width: 400px) {
+    .container-noticias {
+        width: 87%;
+    }
+
 }
