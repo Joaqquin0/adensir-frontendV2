@@ -9,6 +9,11 @@ const noticiasData = [
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
 ];
 
 const contenidoNoticiaData= [
@@ -100,37 +105,64 @@ class Noticia{
     }
 }
 
-
 // Variables para controlar la navegación
 let currentPage = 0;
 const noticiasPerPage = 3;
 
-// Variables para el touch/swipe - MEJORADAS PARA iOS
+// Variables para el touch/swipe - MEJORADAS
 let startX = 0;
 let startY = 0;
 let isDragging = false;
 let currentTranslateX = 0;
 let animationId;
 let isScrolling = false;
-// NUEVA VARIABLE: Para rastrear si hubo movimiento durante el drag
 let hasMoved = false;
+
+// NUEVA VARIABLE: Para detectar si estamos en modo paginación o scroll libre
+let isPaginationMode = true;
+
+function checkPaginationMode() {
+    isPaginationMode = window.innerWidth > 1384;
+    return isPaginationMode;
+}
 
 function renderNoticias() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.innerHTML = "";
 
-    // Crear todas las páginas de noticias
-    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
-    
-    for (let page = 0; page < totalPages; page++) {
+    checkPaginationMode();
+
+    if (isPaginationMode) {
+        // Modo paginación: crear páginas separadas
+        const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+        
+        for (let page = 0; page < totalPages; page++) {
+            const pageElement = document.createElement('div');
+            pageElement.classList.add('noticias-page');
+            
+            const startIndex = page * noticiasPerPage;
+            const endIndex = startIndex + noticiasPerPage;
+            const noticiasToRender = noticiasData.slice(startIndex, endIndex);
+
+            noticiasToRender.forEach(noticiaData => {
+                const noticia = new Noticia(
+                    noticiaData.fecha, 
+                    noticiaData.descripcion, 
+                    noticiaData.id, 
+                    noticiaData.imagen_previa,
+                    noticiaData.colorBarra
+                );
+                pageElement.appendChild(noticia.render());
+            });
+
+            contenedorNoticias.appendChild(pageElement);
+        }
+    } else {
+        // Modo scroll libre: todas las noticias en una sola página
         const pageElement = document.createElement('div');
         pageElement.classList.add('noticias-page');
         
-        const startIndex = page * noticiasPerPage;
-        const endIndex = startIndex + noticiasPerPage;
-        const noticiasToRender = noticiasData.slice(startIndex, endIndex);
-
-        noticiasToRender.forEach(noticiaData => {
+        noticiasData.forEach(noticiaData => {
             const noticia = new Noticia(
                 noticiaData.fecha, 
                 noticiaData.descripcion, 
@@ -144,24 +176,37 @@ function renderNoticias() {
         contenedorNoticias.appendChild(pageElement);
     }
 
-    // Configurar el contenedor para mostrar solo la página actual
     updateNoticiasDisplay();
     renderPaginationIndicators();
 }
 
 function updateNoticiasDisplay() {
     const contenedorNoticias = document.querySelector(".all-noticias");
-    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
-    // Aplicar transform para mostrar la página actual
-    const translateX = -currentPage * 100;
-    contenedorNoticias.style.transform = `translateX(${translateX}%)`;
+    if (isPaginationMode) {
+        const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+        const translateX = -currentPage * 100;
+        contenedorNoticias.style.transform = `translateX(${translateX}%)`;
+    } else {
+        // En modo scroll libre, no aplicar transformaciones
+        contenedorNoticias.style.transform = 'none';
+    }
 }
 
 function renderPaginationIndicators() {
     const paginationContainer = document.querySelector(".pagination-indicators");
+    
+    if (!paginationContainer) return;
+    
     paginationContainer.innerHTML = "";
 
+    if (!isPaginationMode) {
+        // Ocultar indicadores en modo scroll libre
+        paginationContainer.style.display = 'none';
+        return;
+    }
+
+    paginationContainer.style.display = 'flex';
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
 
     for (let i = 0; i < totalPages; i++) {
@@ -182,6 +227,8 @@ function renderPaginationIndicators() {
 }
 
 function goToPage(pageIndex) {
+    if (!isPaginationMode) return;
+    
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
     if (pageIndex >= 0 && pageIndex < totalPages) {
@@ -192,6 +239,8 @@ function goToPage(pageIndex) {
 }
 
 function nextPage() {
+    if (!isPaginationMode) return;
+    
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     if (currentPage < totalPages - 1) {
         currentPage++;
@@ -201,6 +250,8 @@ function nextPage() {
 }
 
 function prevPage() {
+    if (!isPaginationMode) return;
+    
     if (currentPage > 0) {
         currentPage--;
         updateNoticiasDisplay();
@@ -208,8 +259,11 @@ function prevPage() {
     }
 }
 
-// FUNCIONES CORREGIDAS PARA iOS/iPhone 6s
+// FUNCIONES DE TOUCH CORREGIDAS - Solo para modo paginación
 function handleTouchStart(e) {
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
+    
     // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
@@ -218,18 +272,20 @@ function handleTouchStart(e) {
     startY = touch.clientY;
     isDragging = false;
     isScrolling = false;
-    hasMoved = false; // NUEVO: Resetear el flag de movimiento
+    hasMoved = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
     
-    // Cancelar cualquier animación en curso
     if (animationId) {
         cancelAnimationFrame(animationId);
     }
 }
 
 function handleTouchMove(e) {
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
+    
     // Solo procesar si hay un solo toque
     if (e.touches.length !== 1) return;
     
@@ -240,17 +296,15 @@ function handleTouchMove(e) {
     const diffX = currentX - startX;
     const diffY = currentY - startY;
     
-    // Si ya determinamos que es scroll, salir inmediatamente
     if (isScrolling) {
         return;
     }
     
-    // Si ya estamos arrastrando horizontalmente, prevenir scroll
     if (isDragging) {
         e.preventDefault();
         e.stopPropagation();
         
-        hasMoved = true; // NUEVO: Marcar que hubo movimiento
+        hasMoved = true;
         currentTranslateX = diffX;
         
         const contenedorNoticias = document.querySelector(".all-noticias");
@@ -261,16 +315,13 @@ function handleTouchMove(e) {
         return;
     }
     
-    // Determinar dirección del gesto con un threshold más bajo para iOS
     const absX = Math.abs(diffX);
     const absY = Math.abs(diffY);
     
-    // Threshold más sensible para iOS
     if (absX > 8 || absY > 8) {
         if (absX > absY) {
-            // Gesto horizontal - activar dragging
             isDragging = true;
-            hasMoved = true; // NUEVO: Marcar que hubo movimiento
+            hasMoved = true;
             e.preventDefault();
             e.stopPropagation();
             
@@ -282,14 +333,15 @@ function handleTouchMove(e) {
             
             contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
         } else {
-            // Gesto vertical - es scroll
             isScrolling = true;
         }
     }
 }
 
 function handleTouchEnd(e) {
-    // Resetear el flag de scrolling
+    // Solo procesar si estamos en modo paginación
+    if (!isPaginationMode) return;
+    
     isScrolling = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
@@ -301,46 +353,41 @@ function handleTouchEnd(e) {
     
     isDragging = false;
     
-    // NUEVO: Establecer flag global para prevenir clicks inmediatos
     if (hasMoved) {
         window.justFinishedDragging = true;
         setTimeout(() => {
             window.justFinishedDragging = false;
-        }, 50); // Pequeño delay para evitar clicks inmediatos
+        }, 50);
     }
     
-    const threshold = 30; // Threshold más bajo para mejor responsividad en iOS
+    const threshold = 30;
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
-            // Deslizar hacia la derecha (página anterior)
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
-            // Deslizar hacia la izquierda (página siguiente)
             nextPage();
         } else {
-            // Volver a la posición original si estamos en los límites
             updateNoticiasDisplay();
         }
     } else {
-        // Volver a la posición original
         updateNoticiasDisplay();
     }
     
     currentTranslateX = 0;
-    hasMoved = false; // NUEVO: Resetear el flag de movimiento
+    hasMoved = false;
 }
 
-// Funciones para manejo de mouse (desktop) - CORREGIDAS
+// Funciones para manejo de mouse (desktop) - Solo para modo paginación
 function handleMouseDown(e) {
-    // Solo activar en desktop
-    if ('ontouchstart' in window) return;
+    // Solo activar en desktop y modo paginación
+    if ('ontouchstart' in window || !isPaginationMode) return;
     
     startX = e.clientX;
     startY = e.clientY;
     isDragging = true;
-    hasMoved = false; // NUEVO: Resetear el flag de movimiento
+    hasMoved = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
@@ -350,12 +397,11 @@ function handleMouseDown(e) {
 }
 
 function handleMouseMove(e) {
-    if (!isDragging || 'ontouchstart' in window) return;
+    if (!isDragging || 'ontouchstart' in window || !isPaginationMode) return;
     
     const currentX = e.clientX;
     const diffX = currentX - startX;
     
-    // NUEVO: Si hay movimiento significativo, marcarlo
     if (Math.abs(diffX) > 5) {
         hasMoved = true;
     }
@@ -370,7 +416,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseUp(e) {
-    if (!isDragging || 'ontouchstart' in window) return;
+    if (!isDragging || 'ontouchstart' in window || !isPaginationMode) return;
     
     isDragging = false;
     
@@ -378,12 +424,11 @@ function handleMouseUp(e) {
     contenedorNoticias.style.transition = 'transform 0.3s ease';
     contenedorNoticias.style.cursor = 'grab';
     
-    // NUEVO: Establecer flag global para prevenir clicks inmediatos si hubo movimiento
     if (hasMoved) {
         window.justFinishedDragging = true;
         setTimeout(() => {
             window.justFinishedDragging = false;
-        }, 100); // Delay un poco más largo para desktop
+        }, 100);
     }
     
     const threshold = 50;
@@ -402,63 +447,85 @@ function handleMouseUp(e) {
     }
     
     currentTranslateX = 0;
-    hasMoved = false; // NUEVO: Resetear el flag de movimiento
+    hasMoved = false;
 }
 
 function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
-        // Remover event listeners existentes para evitar duplicados
+        // Remover event listeners existentes
         contenedorNoticias.removeEventListener('touchstart', handleTouchStart);
         contenedorNoticias.removeEventListener('touchmove', handleTouchMove);
         contenedorNoticias.removeEventListener('touchend', handleTouchEnd);
+        contenedorNoticias.removeEventListener('mousedown', handleMouseDown);
+        contenedorNoticias.removeEventListener('mousemove', handleMouseMove);
+        contenedorNoticias.removeEventListener('mouseup', handleMouseUp);
+        contenedorNoticias.removeEventListener('mouseleave', handleMouseUp);
         
-        // Touch events para móviles - configuración específica para iOS
-        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { 
-            passive: true 
-        });
-        contenedorNoticias.addEventListener('touchmove', handleTouchMove, { 
-            passive: false 
-        });
-        contenedorNoticias.addEventListener('touchend', handleTouchEnd, { 
-            passive: true 
-        });
+        checkPaginationMode();
         
-        // Mouse events para desktop - solo si no es touch
-        if (!('ontouchstart' in window)) {
-            contenedorNoticias.addEventListener('mousedown', handleMouseDown);
-            contenedorNoticias.addEventListener('mousemove', handleMouseMove);
-            contenedorNoticias.addEventListener('mouseup', handleMouseUp);
-            contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+        if (isPaginationMode) {
+            // Solo agregar eventos si estamos en modo paginación
+            contenedorNoticias.addEventListener('touchstart', handleTouchStart, { 
+                passive: true 
+            });
+            contenedorNoticias.addEventListener('touchmove', handleTouchMove, { 
+                passive: false 
+            });
+            contenedorNoticias.addEventListener('touchend', handleTouchEnd, { 
+                passive: true 
+            });
             
-            contenedorNoticias.style.cursor = 'grab';
+            // Mouse events para desktop
+            if (!('ontouchstart' in window)) {
+                contenedorNoticias.addEventListener('mousedown', handleMouseDown);
+                contenedorNoticias.addEventListener('mousemove', handleMouseMove);
+                contenedorNoticias.addEventListener('mouseup', handleMouseUp);
+                contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+                
+                contenedorNoticias.style.cursor = 'grab';
+            }
+            
+            // Configuración para evitar selección
+            contenedorNoticias.style.webkitUserSelect = 'none';
+            contenedorNoticias.style.userSelect = 'none';
+            contenedorNoticias.style.webkitTouchCallout = 'none';
+            contenedorNoticias.style.webkitTapHighlightColor = 'transparent';
+        } else {
+            // En modo scroll libre, permitir comportamiento nativo
+            contenedorNoticias.style.cursor = 'default';
+            contenedorNoticias.style.webkitUserSelect = 'auto';
+            contenedorNoticias.style.userSelect = 'auto';
+            contenedorNoticias.style.webkitTouchCallout = 'default';
+            contenedorNoticias.style.webkitTapHighlightColor = 'initial';
         }
-        
-        // Configuración específica para iOS
-        contenedorNoticias.style.webkitUserSelect = 'none';
-        contenedorNoticias.style.userSelect = 'none';
-        contenedorNoticias.style.webkitTouchCallout = 'none';
-        contenedorNoticias.style.webkitTapHighlightColor = 'transparent';
     }
 }
 
-// Función para reinicializar eventos cuando cambie el tamaño de pantalla
 function handleResize() {
-    setTimeout(() => {
-        updateNoticiasDisplay();
-    }, 100);
+    const wasInPaginationMode = isPaginationMode;
+    checkPaginationMode();
+    
+    // Si cambió el modo, re-renderizar
+    if (wasInPaginationMode !== isPaginationMode) {
+        currentPage = 0; // Resetear página al cambiar modo
+        renderNoticias();
+        initializeSwipeEvents();
+    } else {
+        setTimeout(() => {
+            updateNoticiasDisplay();
+        }, 100);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNoticias();
     
-    // Esperar un poco más para que se renderice el DOM completamente en iOS
     setTimeout(() => {
         initializeSwipeEvents();
     }, 200);
     
-    // Escuchar cambios de orientación y tamaño
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', () => {
         setTimeout(handleResize, 300);
