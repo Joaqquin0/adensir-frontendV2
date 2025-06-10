@@ -30,6 +30,7 @@
     overflow: hidden; /* Importante para evitar scroll horizontal */
     position: relative;
     /*background-color: antiquewhite*/;
+
 }
 
 /* Contenedor de todas las noticias */
@@ -46,7 +47,7 @@
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
     perspective: 1000px;
-}
+
 
 /* Página de noticias */
 .noticias-page {
@@ -58,6 +59,7 @@
     padding: 0 10px;
     box-sizing: border-box;
     gap: 20px;
+
 }
 
 /* Cada noticia individual */
@@ -77,6 +79,7 @@
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+
 }
 
 .each-noticias:hover {
@@ -88,10 +91,12 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+
     /* Prevenir selección en iOS */
     -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
+
 }
 
 /* Indicadores de paginación */
@@ -109,6 +114,7 @@
     background-color: #ddd;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
     /* Mejorar área de toque en móviles */
     position: relative;
 }
@@ -121,6 +127,7 @@
     right: -10px;
     bottom: -10px;
     /* Área de toque invisible más grande */
+
 }
 
 
@@ -198,6 +205,7 @@
 @media (min-width: 1101px) {
     .all-noticias.desktop-view {
         cursor: grab;
+
     }
     
     .all-noticias.desktop-view:active {
@@ -210,6 +218,7 @@
         justify-content: center;
         gap: 10px;
         margin-top: 20px;
+
     }
     
     .pagination-indicator {
@@ -272,6 +281,7 @@
     /* Efecto hover para las cards en móvil */
     .all-noticias.mobile-view .each-noticias:active {
         transform: scale(0.98);
+
     }
 }
 

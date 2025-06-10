@@ -9,6 +9,7 @@ const noticiasData = [
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+
 ];
 
 const contenidoNoticiaData= [
@@ -258,6 +259,7 @@ function prevPage() {
     }
 }
 
+
 // FUNCIONES DE TOUCH/SWIPE - SOLO PARA DESKTOP
 function handleTouchStart(e) {
     if (isMobileView) return; // No activar swipe en vista móvil
@@ -281,7 +283,7 @@ function handleTouchStart(e) {
 
 function handleTouchMove(e) {
     if (isMobileView) return; // No activar swipe en vista móvil
-    
+
     if (e.touches.length !== 1) return;
     
     const touch = e.touches[0];
@@ -335,7 +337,7 @@ function handleTouchMove(e) {
 
 function handleTouchEnd(e) {
     if (isMobileView) return; // No activar swipe en vista móvil
-    
+
     isScrolling = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
@@ -359,8 +361,10 @@ function handleTouchEnd(e) {
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
+
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
+
             nextPage();
         } else {
             updateNoticiasDisplay();
@@ -373,9 +377,10 @@ function handleTouchEnd(e) {
     hasMoved = false;
 }
 
-// Funciones para manejo de mouse (desktop)
+// Funciones para manejo de mouse (desktop) - simplificadas
 function handleMouseDown(e) {
     if (isMobileView) return; // No activar en vista móvil
+
     if ('ontouchstart' in window) return;
     
     startX = e.clientX;
@@ -450,6 +455,7 @@ function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
+
         // Remover event listeners existentes
         contenedorNoticias.removeEventListener('touchstart', handleTouchStart);
         contenedorNoticias.removeEventListener('touchmove', handleTouchMove);
