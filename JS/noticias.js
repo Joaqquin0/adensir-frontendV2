@@ -1,56 +1,56 @@
 const noticiasData = [
     { fecha: "Diciembre 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/pelota.png",colorBarra: "#007bff" },
     { fecha: "25 de Enero 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 2, imagen_previa:"img/pelota.png",colorBarra: "#E73246" },
-    { fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, },
+    { fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" },
     { fecha: "25 de Marzo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Abril 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Mayo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-            { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
     { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
+
 ];
 
 const contenidoNoticiaData= [
-    { id_noticia: 1, autor:"Preparado por: Kenedy Matete", 
-        parrafo: "El Programa Kibera Zona Norte está dedicado a apoyar actividades deportivas para niños en los asentamientos informales de Kibera, además de proporcionar asistencia financiera a niños vulnerables mediante becas y la adquisición de otros artículos educativos necesarios. El programa se alinea con los objetivos de la Liga Interbase, enfocándose en empoderar a los niños a través de la educación y el deporte. <br><br>Este informe destaca los logros del Programa Kibera Zona Norte durante marzo de 2025, incluyendo la entrega de becas, el apoyo a la educación superior y el exitoso lanzamiento de la Liga de Desarrollo Kibera Zona Norte." 
+    { id_noticia: 1, autor:"Preparado por: Kenedy Matete",
+        parrafo: "<strong>CREACIÓN OFICIAL DE ADENSIR</strong> <br><br>"+
+        "Después de haber estado donando equipaciones, balones y todo tipo de material a academias necesitadas" +
+        "pero de manera aleatoria en la ciudad de Nairobi, C.U. Zona Norte se lanza desde finales de 2024 a <strong>crear de</strong> "+
+        "<strong>manera oficial la ONG ADENSIR</strong> (Asociación del DEporte para Niños y niñas SIn Recursos, enfocada en el "+
+        "proyecto educativo-deportivo Inter Base League del gueto llamado Kibera (dentro de la capital de Kenia, "+
+        "Nairobi)."+
         
-        + "<br><br><strong>Apoyo en Becas y Educación</strong><br><br>"+ 
-        "En marzo el Programa Kibera Zona Norte proporcionó apoyo para el pago de matrículas escolares a ocho personas provenientes de entornos vulnerables." +
-        "<br><br><strong>Becas para Educación Primaria:</strong><br><br>" +
-        "Siete (7) niños de primaria recibieron becas completas que cubren sus matrículas escolares. Estos niños provienen de familias desfavorecidas en Kibera. Esto se realizó el 3 de marzo de 2025."+ 
-        "<br><br><strong>Patrocinio para Educación Universitaria</strong><br><br>"+ 
-        "Un (1) adulto recibió asistencia financiera para su educación universitaria. El beneficiario está actualmente cursando una carrera de electricidad, lo cual mejorará sus perspectivas de empleo. Esto también se realizó el 3 de marzo de 2025.<br><br> Como parte de nuestro compromiso con el bienestar de los beneficiarios, representantes del programa, Erick Juma y Pedro (representante de Zona Norte), realizaron visitas domiciliarias para evaluar las condiciones de vida de los niños. Esta evaluación ayudó a identificar otras áreas donde se requiere apoyo adicional."
+        "<br><br>El objetivo de este proyecto es asegurarnos de que todos los <strong>menores residentes en Kibera</strong>, que puedan "+
+        "estar en riesgo de exclusión social y de caer en malos hábitos de un gueto como este (drogas, delincuencia, "+
+        "embarazos prematuros, etc) <strong>puedan crecer en un entorno seguro</strong> aprendiendo a no solo sobrevivir, sino "+
+        "hacerlo de una manera <strong>con sentido y con una motivación de aportar valor en la comunidad</strong>. ¿Cómo "+
+        "conseguimos esto?  Brindándoles una <strong>educación complementaria a través del deporte</strong>, en este caso fútbol. "+
+        "Conseguimos atraerles a través del fútbol para ayudarles a crecer como mejores personas."+
+
+        "<br><br>A través de un programa deportivo de fútbol donde los niños entrenan entre semana y juegan en sábado y " +
+        "domingo, conseguimos que para ellos sea más fácil estar unidos al grupo, donde los buenos valores como la "+
+        "<strong>disciplina, el respeto y el compañerismo</strong> se hacen más fuertes en su dia a dia."
         
         ,
-        parrafo2:"<br><br><strong>Lanzamiento de la Liga de Desarrollo Kibera Zona Norte</strong><br><br>" + 
-        "Un hito importante para el programa en marzo fue el lanzamiento de la Liga de Desarrollo Kibera Zona Norte, que tiene como objetivo ofrecer entrenamiento de fútbol estructurado y oportunidades competitivas para los jóvenes jugadores de Kibera. La liga se compone de cuatro categorías por edad, cada una con 20 equipos:<br><br>" +
-        "- Menores de 9 años – 20 equipos<br><br>" +
-        "- Menores de 11 años – 20 equipos<br><br>" +
-        "- Menores de 13 años – 20 equipos<br><br>"+ 
-        "- Menores de 15 años – 20 equipos<br><br>" +
-        "El evento de lanzamiento contó con una impresionante participación de 768 niños de todos los grupos de edad. Esta iniciativa busca cultivar el talento joven, inculcar disciplina y ofrecer a los niños un espacio seguro para crecer y desarrollarse a través del deporte."
-    
-        + "<br><br><strong>Compromiso y Evaluación Comunitaria</strong><br><br>" +
-        "Comprender la realidad en el terreno de nuestros beneficiarios es un aspecto clave del programa. Durante el mes de marzo, Erick Juma y Pedro visitaron los hogares de los becarios para evaluar sus condiciones de vida e identificar apoyos adicionales que pudieran necesitar. Esta iniciativa garantiza que nuestras intervenciones sean focalizadas y efectivas."
+        parrafo2:"Cinco niños recién integrados en el programa deportivo ADENSIR, después de recibir un tentempié de bienvenida mostrando su estado de ánimo y agradecimiento por ello." +
+        "<br><br><strong>POTENCIACIÓN DEL PROGRAMA DEPORTIVO </strong><br><br>" +
         
-        +"<br><br><strong>Retos Enfrentados</strong><br><br>" +
-        "A pesar del éxito del programa, se presentaron varios desafíos:<br>" +
-        "- Aumento en la Demanda de Apoyo: La cantidad de niños vulnerables que necesitan becas continúa creciendo más allá de la capacidad actual del programa.<br>"+ 
-        "- Recursos Limitados: El programa opera con un presupuesto ajustado, lo cual limita el nivel de apoyo que se puede brindar a los niños y la expansión de la liga.<br>" +
-        "- Sostenibilidad de las Becas: Asegurar el apoyo financiero continuo para los beneficiarios sigue siendo un desafío."
+        "ADENSIR apuesta de inicio por <strong>crear una estructura eficiente</strong> para que este proyecto deportivo-educativo "+
+        "acoja al mayor número de participantes menores de edad, centrándonos en los siguientes objetivos: <br><br>" +
 
-        +"<br><br><strong>Planes Futuros y Recomendaciones</strong><br><br>" +
-        "Para mantener y ampliar el impacto del Programa Kibera Zona Norte, proponemos lo siguiente:<br>"+ 
-        "1. Ampliación del Fondo de Becas: Buscar nuevos donantes y socios que permitan apoyar a más niños necesitados.<br>"+ 
-        "2. Apoyo en Equipamiento y Logística para la Liga: Conseguir fondos para material deportivo, instalaciones de entrenamiento y programas de formación de entrenadores que mejoren la efectividad de la liga.<br>" +
-        "3. Iniciativas de Compromiso Comunitario: Fortalecer la colaboración con líderes locales y organizaciones para movilizar más recursos y apoyo para el programa.<br>" +
-        "4. Monitoreo y Evaluación Periódicos: Establecer evaluaciones estructuradas para seguir el progreso de los beneficiarios de las becas y el desarrollo de la liga."
-    
-        +"<br><br><strong>Agradecimientos y Conclusión</strong><br><br>" +
-        "El Programa Kibera Zona Norte extiende su más sincero agradecimiento a todos los donantes, socios y voluntarios que continúan apoyando nuestra misión.<br>"+ 
-        "Sus contribuciones han hecho una diferencia significativa en la vida de los niños vulnerables de Kibra, brindándoles oportunidades para su educación y desarrollo personal." +
-        "Seguimos comprometidos con la creación de un futuro más brillante para estos niños a través del deporte y la educación. Con su continuo apoyo, podemos ampliar nuestro alcance y transformar más vidas.",
+        "-Reestructuramos y <strong>organizamos al equipo de voluntarios</strong> trabajando a pie de campo, formado por más de 10 personas. <br><br>" +
+        "-Comenzamos a <strong>financiar todos los gastos</strong> que venían teniendo para convertir el proyecto en algo sostenible. <br><br>" +
+        "-<strong>Potenciamos la promoción del nuevo proyecto</strong> entre la comunidad keniana del gueto de Kibera donde "+
+        "viven aproximadamente 100.000 menores de edad en situaciones de pobreza extrema, muchos de ellos sin "+
+        "ni siquiera acceso a educación reglada.<br><br>"+
+
+        "Gracias al trabajo realizado en los primeros meses focalizados en este proyecto tenemos un número masivo "+
+        "de alumnos que solicitan entrar en nuestro programa deportivo, el cual pasa de estar acogiendo 350 "+
+        "participantes a acoger hasta <strong>1.500 niños y niñas</strong>, todo un reto para nosotros.",
+
+
+
         imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
         imagen2: "img/entrenador-con-alumnos.jpg"
     },
@@ -82,7 +82,16 @@ class Noticia{
             <p>${this.descripcion}</p>
         `;
 
-        noticiaElement.addEventListener("click", () => this.mostrarDetalle());
+        // CAMBIO: Modificar el event listener para prevenir clicks después de arrastrar
+        noticiaElement.addEventListener("click", (e) => {
+            // Prevenir el click si acabamos de terminar un drag
+            if (window.justFinishedDragging) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+            this.mostrarDetalle();
+        });
 
         return noticiaElement;
     }
@@ -94,31 +103,36 @@ class Noticia{
 
 // Variables para controlar la navegación
 let currentPage = 0;
-const noticiasPerPage = 3;
+let noticiasPerPage = 3;
+let isMobileView = false;
 
-// Variables para el touch/swipe
+// Variables para el touch/swipe - MEJORADAS PARA iOS
 let startX = 0;
 let startY = 0;
 let isDragging = false;
 let currentTranslateX = 0;
 let animationId;
+let isScrolling = false;
+let hasMoved = false;
+
+// Función para detectar si estamos en vista móvil
+function checkMobileView() {
+    return window.innerWidth <= 1100;
+}
 
 function renderNoticias() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.innerHTML = "";
-
-    // Crear todas las páginas de noticias
-    const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
-    for (let page = 0; page < totalPages; page++) {
-        const pageElement = document.createElement('div');
-        pageElement.classList.add('noticias-page');
+    // Detectar si estamos en vista móvil
+    isMobileView = checkMobileView();
+    
+    if (isMobileView) {
+        // Vista móvil: mostrar todas las noticias en una fila horizontal
+        contenedorNoticias.classList.add('mobile-view');
+        contenedorNoticias.classList.remove('desktop-view');
         
-        const startIndex = page * noticiasPerPage;
-        const endIndex = startIndex + noticiasPerPage;
-        const noticiasToRender = noticiasData.slice(startIndex, endIndex);
-
-        noticiasToRender.forEach(noticiaData => {
+        noticiasData.forEach(noticiaData => {
             const noticia = new Noticia(
                 noticiaData.fecha, 
                 noticiaData.descripcion, 
@@ -126,18 +140,59 @@ function renderNoticias() {
                 noticiaData.imagen_previa,
                 noticiaData.colorBarra
             );
-            pageElement.appendChild(noticia.render());
+            contenedorNoticias.appendChild(noticia.render());
         });
+        
+        // Ocultar indicadores de paginación
+        const paginationContainer = document.querySelector(".pagination-indicators");
+        if (paginationContainer) {
+            paginationContainer.style.display = 'none';
+        }
+        
+    } else {
+        // Vista desktop: usar el sistema de paginación
+        contenedorNoticias.classList.add('desktop-view');
+        contenedorNoticias.classList.remove('mobile-view');
+        
+        const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
+        
+        for (let page = 0; page < totalPages; page++) {
+            const pageElement = document.createElement('div');
+            pageElement.classList.add('noticias-page');
+            
+            const startIndex = page * noticiasPerPage;
+            const endIndex = startIndex + noticiasPerPage;
+            const noticiasToRender = noticiasData.slice(startIndex, endIndex);
 
-        contenedorNoticias.appendChild(pageElement);
+            noticiasToRender.forEach(noticiaData => {
+                const noticia = new Noticia(
+                    noticiaData.fecha, 
+                    noticiaData.descripcion, 
+                    noticiaData.id, 
+                    noticiaData.imagen_previa,
+                    noticiaData.colorBarra
+                );
+                pageElement.appendChild(noticia.render());
+            });
+
+            contenedorNoticias.appendChild(pageElement);
+        }
+
+        // Configurar el contenedor para mostrar solo la página actual
+        updateNoticiasDisplay();
+        renderPaginationIndicators();
+        
+        // Mostrar indicadores de paginación
+        const paginationContainer = document.querySelector(".pagination-indicators");
+        if (paginationContainer) {
+            paginationContainer.style.display = 'flex';
+        }
     }
-
-    // Configurar el contenedor para mostrar solo la página actual
-    updateNoticiasDisplay();
-    renderPaginationIndicators();
 }
 
 function updateNoticiasDisplay() {
+    if (isMobileView) return; // No hacer nada en vista móvil
+    
     const contenedorNoticias = document.querySelector(".all-noticias");
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
@@ -147,6 +202,8 @@ function updateNoticiasDisplay() {
 }
 
 function renderPaginationIndicators() {
+    if (isMobileView) return; // No mostrar indicadores en vista móvil
+    
     const paginationContainer = document.querySelector(".pagination-indicators");
     paginationContainer.innerHTML = "";
 
@@ -170,6 +227,8 @@ function renderPaginationIndicators() {
 }
 
 function goToPage(pageIndex) {
+    if (isMobileView) return; // No usar paginación en vista móvil
+    
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
     if (pageIndex >= 0 && pageIndex < totalPages) {
@@ -180,6 +239,8 @@ function goToPage(pageIndex) {
 }
 
 function nextPage() {
+    if (isMobileView) return; // No usar paginación en vista móvil
+    
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     if (currentPage < totalPages - 1) {
         currentPage++;
@@ -189,6 +250,8 @@ function nextPage() {
 }
 
 function prevPage() {
+    if (isMobileView) return; // No usar paginación en vista móvil
+    
     if (currentPage > 0) {
         currentPage--;
         updateNoticiasDisplay();
@@ -196,44 +259,49 @@ function prevPage() {
     }
 }
 
-// Funciones mejoradas para manejo de touch/swipe
+
+// FUNCIONES DE TOUCH/SWIPE - SOLO PARA DESKTOP
 function handleTouchStart(e) {
-    // Solo procesar si hay un toque
+    if (isMobileView) return; // No activar swipe en vista móvil
+    
     if (e.touches.length !== 1) return;
     
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isDragging = false; // Comenzar como false hasta confirmar el gesto
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isDragging = false;
+    isScrolling = false;
+    hasMoved = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
+    
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+    }
 }
 
 function handleTouchMove(e) {
-    // Solo procesar si hay un toque
+    if (isMobileView) return; // No activar swipe en vista móvil
+
     if (e.touches.length !== 1) return;
     
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
+    const touch = e.touches[0];
+    const currentX = touch.clientX;
+    const currentY = touch.clientY;
     
     const diffX = currentX - startX;
     const diffY = currentY - startY;
     
-    // Determinar la dirección del gesto
-    const isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
-    const isVerticalScroll = Math.abs(diffY) > Math.abs(diffX);
-    
-    // Si es claramente un scroll vertical, permitir el comportamiento por defecto
-    if (isVerticalScroll && Math.abs(diffY) > 10) {
-        isDragging = false;
-        return; // No prevenir el evento, permitir scroll
+    if (isScrolling) {
+        return;
     }
     
-    // Si es un swipe horizontal y hemos movido lo suficiente, activar el dragging
-    if (isHorizontalSwipe && Math.abs(diffX) > 10) {
-        isDragging = true;
-        e.preventDefault(); // Solo prevenir cuando estamos haciendo swipe horizontal
+    if (isDragging) {
+        e.preventDefault();
+        e.stopPropagation();
         
+        hasMoved = true;
         currentTranslateX = diffX;
         
         const contenedorNoticias = document.querySelector(".all-noticias");
@@ -241,52 +309,84 @@ function handleTouchMove(e) {
         const dragPercentage = (diffX / window.innerWidth) * 100;
         
         contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+        return;
+    }
+    
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
+    
+    if (absX > 8 || absY > 8) {
+        if (absX > absY) {
+            isDragging = true;
+            hasMoved = true;
+            e.preventDefault();
+            e.stopPropagation();
+            
+            currentTranslateX = diffX;
+            
+            const contenedorNoticias = document.querySelector(".all-noticias");
+            const baseTranslateX = -currentPage * 100;
+            const dragPercentage = (diffX / window.innerWidth) * 100;
+            
+            contenedorNoticias.style.transform = `translateX(${baseTranslateX + dragPercentage}%)`;
+        } else {
+            isScrolling = true;
+        }
     }
 }
 
 function handleTouchEnd(e) {
+    if (isMobileView) return; // No activar swipe en vista móvil
+
+    isScrolling = false;
+    
+    const contenedorNoticias = document.querySelector(".all-noticias");
+    contenedorNoticias.style.transition = 'transform 0.3s ease';
+    
     if (!isDragging) {
-        // Si no estábamos arrastrando, restaurar la transición y salir
-        const contenedorNoticias = document.querySelector(".all-noticias");
-        contenedorNoticias.style.transition = 'transform 0.3s ease';
         return;
     }
     
     isDragging = false;
     
-    const contenedorNoticias = document.querySelector(".all-noticias");
-    contenedorNoticias.style.transition = 'transform 0.3s ease';
+    if (hasMoved) {
+        window.justFinishedDragging = true;
+        setTimeout(() => {
+            window.justFinishedDragging = false;
+        }, 50);
+    }
     
-    const threshold = 50; // Mínimo de píxeles para cambiar de página
+    const threshold = 30;
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
     
     if (Math.abs(currentTranslateX) > threshold) {
         if (currentTranslateX > 0 && currentPage > 0) {
-            // Deslizar hacia la derecha (página anterior)
+
             prevPage();
         } else if (currentTranslateX < 0 && currentPage < totalPages - 1) {
-            // Deslizar hacia la izquierda (página siguiente)
+
             nextPage();
         } else {
-            // Volver a la posición original si estamos en los límites
             updateNoticiasDisplay();
         }
     } else {
-        // Volver a la posición original
         updateNoticiasDisplay();
     }
     
     currentTranslateX = 0;
+    hasMoved = false;
 }
 
 // Funciones para manejo de mouse (desktop) - simplificadas
 function handleMouseDown(e) {
-    // Solo activar en desktop
+    if (isMobileView) return; // No activar en vista móvil
+
     if ('ontouchstart' in window) return;
     
     startX = e.clientX;
     startY = e.clientY;
     isDragging = true;
+    hasMoved = false;
     
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'none';
@@ -296,10 +396,15 @@ function handleMouseDown(e) {
 }
 
 function handleMouseMove(e) {
+    if (isMobileView) return; // No activar en vista móvil
     if (!isDragging || 'ontouchstart' in window) return;
     
     const currentX = e.clientX;
     const diffX = currentX - startX;
+    
+    if (Math.abs(diffX) > 5) {
+        hasMoved = true;
+    }
     
     currentTranslateX = diffX;
     
@@ -311,6 +416,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseUp(e) {
+    if (isMobileView) return; // No activar en vista móvil
     if (!isDragging || 'ontouchstart' in window) return;
     
     isDragging = false;
@@ -318,6 +424,13 @@ function handleMouseUp(e) {
     const contenedorNoticias = document.querySelector(".all-noticias");
     contenedorNoticias.style.transition = 'transform 0.3s ease';
     contenedorNoticias.style.cursor = 'grab';
+    
+    if (hasMoved) {
+        window.justFinishedDragging = true;
+        setTimeout(() => {
+            window.justFinishedDragging = false;
+        }, 100);
+    }
     
     const threshold = 50;
     const totalPages = Math.ceil(noticiasData.length / noticiasPerPage);
@@ -335,36 +448,88 @@ function handleMouseUp(e) {
     }
     
     currentTranslateX = 0;
+    hasMoved = false;
 }
 
 function initializeSwipeEvents() {
     const contenedorNoticias = document.querySelector(".all-noticias");
     
     if (contenedorNoticias) {
-        // Touch events para móviles - usar passive: false solo cuando sea necesario
-        contenedorNoticias.addEventListener('touchstart', handleTouchStart, { passive: true });
-        contenedorNoticias.addEventListener('touchmove', handleTouchMove, { passive: false });
-        contenedorNoticias.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+        // Remover event listeners existentes
+        contenedorNoticias.removeEventListener('touchstart', handleTouchStart);
+        contenedorNoticias.removeEventListener('touchmove', handleTouchMove);
+        contenedorNoticias.removeEventListener('touchend', handleTouchEnd);
         
-        // Mouse events para desktop - solo si no es touch
-        if (!('ontouchstart' in window)) {
-            contenedorNoticias.addEventListener('mousedown', handleMouseDown);
-            contenedorNoticias.addEventListener('mousemove', handleMouseMove);
-            contenedorNoticias.addEventListener('mouseup', handleMouseUp);
-            contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+        // En vista móvil, permitir scroll horizontal nativo
+        if (isMobileView) {
+            // Limpiar estilos de swipe y permitir scroll horizontal
+            contenedorNoticias.style.cursor = 'default';
+            contenedorNoticias.style.webkitUserSelect = 'auto';
+            contenedorNoticias.style.userSelect = 'auto';
+            contenedorNoticias.style.webkitTouchCallout = 'default';
+            contenedorNoticias.style.webkitTapHighlightColor = 'rgba(0,0,0,0.4)';
             
-            contenedorNoticias.style.cursor = 'grab';
+            // No agregar eventos de swipe personalizado, usar scroll nativo
+            
+        } else {
+            // Solo agregar eventos de swipe si estamos en vista desktop
+            contenedorNoticias.addEventListener('touchstart', handleTouchStart, { 
+                passive: true 
+            });
+            contenedorNoticias.addEventListener('touchmove', handleTouchMove, { 
+                passive: false 
+            });
+            contenedorNoticias.addEventListener('touchend', handleTouchEnd, { 
+                passive: true 
+            });
+            
+            // Mouse events para desktop
+            if (!('ontouchstart' in window)) {
+                contenedorNoticias.addEventListener('mousedown', handleMouseDown);
+                contenedorNoticias.addEventListener('mousemove', handleMouseMove);
+                contenedorNoticias.addEventListener('mouseup', handleMouseUp);
+                contenedorNoticias.addEventListener('mouseleave', handleMouseUp);
+                
+                contenedorNoticias.style.cursor = 'grab';
+            }
+            
+            // Configuración específica para iOS (solo en desktop)
+            contenedorNoticias.style.webkitUserSelect = 'none';
+            contenedorNoticias.style.userSelect = 'none';
+            contenedorNoticias.style.webkitTouchCallout = 'none';
+            contenedorNoticias.style.webkitTapHighlightColor = 'transparent';
         }
-        
-        contenedorNoticias.style.userSelect = 'none';
+    }
+}
+
+// Función para manejar cambios de tamaño de pantalla
+function handleResize() {
+    const wasMobileView = isMobileView;
+    isMobileView = checkMobileView();
+    
+    // Si cambió el tipo de vista, re-renderizar
+    if (wasMobileView !== isMobileView) {
+        currentPage = 0; // Resetear página
+        renderNoticias();
+        initializeSwipeEvents();
+    } else {
+        setTimeout(() => {
+            updateNoticiasDisplay();
+        }, 100);
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     renderNoticias();
     
-    // Esperar un poco para que se renderice el DOM completamente
     setTimeout(() => {
         initializeSwipeEvents();
-    }, 100);
+    }, 200);
+    
+    // Escuchar cambios de orientación y tamaño
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', () => {
+        setTimeout(handleResize, 300);
+    });
 });

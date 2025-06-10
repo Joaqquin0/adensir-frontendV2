@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticia - ADENSIR</title>
     <link rel="icon" href="img/isotipo.png" type="image/x-icon">
-
+    
+    <link rel="stylesheet" href="CSS/style-noticias-seccion.css?v=1.0">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/style-hacemos.css">
-    <script src="JS/noticias.js"></script>
+    <script src="JS/noticias.js?v=1.0"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style-noticias.css">
@@ -77,11 +78,12 @@
         <div  class="descripcion-noticia">
             <div class="fecha-autor">
                 <p id="autor-noticia"></p>
-                <p class="fecha-noticia" id="fecha-noticia"></p>
+                <!--<p class="fecha-noticia" id="fecha-noticia"></p> -->
             </div>
 
-            <p id="titulo-noticia"></p>
-            <p id="subtitulo-noticia"></p>
+            <!--<p id="titulo-noticia"></p>
+            <p id="subtitulo-noticia"></p> -->
+            
             <p id="parrafo-noticia"> </p>
             
             <img class="imagen2-noticia" id="imagen2-noticia" src="" alt="">
@@ -92,9 +94,10 @@
 
     </div>
 
+    <!-- Contenido de la noticia 
     <div class="contenido-noticia">
 
-            <!-- Contenedor para el título de la noticia -->
+            
             <div  class="descripcion-noticia">
                 <h1 id="descripcion-noticia"></h1>
                 <p class="fecha-noticia" id="fecha-noticia"></p>
@@ -106,6 +109,20 @@
         
         <img class="imagen-noticia" src="img/donacion-ropa.png" alt="">
 
+    </div>
+    -->
+
+    <div class="container-noticias">
+        <p class="titulo-noticia">Lo último en nuestra <strong>misíon solidaria</strong></p>
+        <div class="noticias">
+
+            <div class="all-noticias">
+                <!-- Las noticias se renderizan aquí dinámicamente -->
+            </div>
+        
+            <!-- Botón para cargar más noticias -->
+            <div class="pagination-indicators"></div>
+        </div>
     </div>
 
     <footer>

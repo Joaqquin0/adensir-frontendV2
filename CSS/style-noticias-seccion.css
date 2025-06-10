@@ -1,22 +1,53 @@
 /* Estilos adicionales para la sección de noticias - agregar al CSS existente */
 
+.barra-azul {
+    width: 60%;
+    height: 8px;
+    border-radius: 20px;
+    /* El color se define dinámicamente desde JavaScript */
+}
+
 /* Contenedor principal de noticias */
+.container-noticias{
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 5px;  
+    box-sizing: border-box;
+    font-family: "Pally-regular", sans-serif;
+    font-size: 20px;
+
+    margin-bottom: 60px;
+}
+.titulo-noticia{
+    font-size: 40px;
+    text-align: center;
+}
+
 .noticias {
     width: 97.5%;
     padding: 40px 20px;
     overflow: hidden; /* Importante para evitar scroll horizontal */
     position: relative;
-    background-color: antiquewhite;
+    /*background-color: antiquewhite*/;
+
 }
 
 /* Contenedor de todas las noticias */
 .all-noticias {
-    background-color: aqua;
+    /*background-color: aqua;*/
     display: flex;
     width: 100%;
     transition: transform 0.3s ease;
     will-change: transform; /* Optimización para animaciones */
-}
+    /* Nuevas propiedades para iOS */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+
 
 /* Página de noticias */
 .noticias-page {
@@ -41,7 +72,14 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     overflow: hidden;
     cursor: pointer;
+    line-height: 1.2;
     transition: transform 0.2s ease;
+    /* Mejoras para iOS */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+
 }
 
 .each-noticias:hover {
@@ -53,6 +91,12 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
+
+    /* Prevenir selección en iOS */
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+
 }
 
 /* Indicadores de paginación */
@@ -70,7 +114,22 @@
     background-color: #ddd;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+    /* Mejorar área de toque en móviles */
+    position: relative;
 }
+
+.pagination-indicator::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    /* Área de toque invisible más grande */
+
+}
+
 
 .pagination-indicator.active {
     background-color: #007bff;
@@ -78,142 +137,157 @@
 
 /* RESPONSIVE STYLES */
 @media (max-width: 1860px) {
-
     .all-noticias {
         width: 100%;
     }
-
 }
 
-/* Tablets y pantallas medianas */
-@media (max-width: 1024px) {
-    .noticias-page {
-        padding: 0 5px;
-    }
-    
-    .each-noticias {
-        max-width: 280px;
-        margin: 0 8px;
-    }
+
+
+/* Estilos para cada noticia en vista móvil */
+@media (max-width: 1100px) {
+    .container-noticias{
+    width: 90%;
+
+
+    margin-bottom: 60px;
 }
-
-/* Móviles grandes */
-@media (max-width: 768px) {
-    .noticias {
-        padding: 30px 10px;
+    .all-noticias.mobile-view .each-noticias {
+        flex: 0 0 280px; /* Ancho fijo, no crece ni se encoge */
+        min-width: 240px; /* Ancho mínimo */
+        max-width: 240px; /* Ancho máximo */
+        height: auto;
+        margin-bottom: 0;
     }
     
-    .noticias-page {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 0;
-    }
-    
-    .each-noticias {
-        max-width: 70%;
-        margin: 0;
-        width: 100%;
-    }
-    
-    .imagen-previa {
-        height: 180px;
-    }
-}
-
-/* Móviles pequeños */
-@media (max-width: 480px) {
-    .noticias {
-        padding: 15px 5px;
-    }
-    .noticias-page {
-        align-items: center;
-
-    }
-    .each-noticias {
-        max-width: 75%;
-    }
-    
-    .imagen-previa {
-        height: 160px;
-    }
-    
+    /* Ocultar indicadores de paginación en móvil */
     .pagination-indicators {
+        display: none !important;
+    }
+    
+    /* Asegurar que el contenedor principal permita scroll horizontal */
+    .container-noticias {
+        overflow-x: visible;
+    }
+    
+    .noticias {
+        overflow-x: visible;
+    }
+    
+    /* Scrollbar horizontal personalizada */
+    .all-noticias.mobile-view::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 3px;
+    }
+    
+    .all-noticias.mobile-view::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+    
+    /* Indicador visual de que hay más contenido */
+    .all-noticias.mobile-view::after {
+        content: '';
+        flex: 0 0 20px;
+        min-width: 20px;
+    }
+}
+
+/* Estilos para desktop manteniendo funcionalidad de swipe */
+@media (min-width: 1101px) {
+    .all-noticias.desktop-view {
+        cursor: grab;
+
+    }
+    
+    .all-noticias.desktop-view:active {
+        cursor: grabbing;
+    }
+    
+    /* Mostrar indicadores de paginación en desktop */
+    .pagination-indicators {
+        display: flex !important;
+        justify-content: center;
+        gap: 10px;
         margin-top: 20px;
-        gap: 8px;
+
     }
     
     .pagination-indicator {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .pagination-indicator.active {
+        background-color: #007bff;
+    }
+    
+    .pagination-indicator:hover {
+        background-color: #0056b3;
     }
 }
 
-/* Pantallas muy pequeñas como iPhone 5/SE */
-@media (max-width: 375px) {
-    .noticias {
-        padding: 15px 3px;
+/* Estilos adicionales para mejorar la experiencia de scroll horizontal en móvil */
+@media (max-width: 1100px) {
+    /* Asegurar que las imágenes se adapten bien en las cards */
+    .all-noticias.mobile-view .each-noticias .imagen-previa {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
     }
     
-    .noticias-page {
-        gap: 15px;
+    /* Mejorar el espaciado del texto en las cards */
+    .all-noticias.mobile-view .each-noticias p {
+        margin: 8px 0;
+        font-size: 14px;
+        line-height: 1.4;
     }
     
-    .each-noticias {
-        max-width: 85%;
+    /* Estilo para la barra de color */
+    .all-noticias.mobile-view .each-noticias .barra-azul {
+        height: 3px;
+        margin: 8px 0;
+        border-radius: 1.5px;
     }
     
-    .imagen-previa {
-        height: 140px;
+    /* Padding adicional para el scroll horizontal */
+    .all-noticias.mobile-view {
+        padding-left: 15px;
+        padding-right: 15px;
     }
+    
+    /* Sombra sutil para las cards */
+    .all-noticias.mobile-view .each-noticias {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        background: white;
+        transition: transform 0.2s ease;
+    }
+    
+    /* Efecto hover para las cards en móvil */
+    .all-noticias.mobile-view .each-noticias:active {
+        transform: scale(0.98);
 
-}
-
-/* Prevenir el zoom en iOS cuando se hace doble tap */
-.all-noticias * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
-}
-
-/* Asegurar que el body permita scroll vertical */
-body {
-    overflow-x: hidden; /* Evitar scroll horizontal */
-    overflow-y: auto; /* Permitir scroll vertical */
-}
-
-/* Optimizaciones para touch en móviles */
-@media (max-width: 768px) {
-    .all-noticias {
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
-    }
-    
-    /* Hacer que las noticias sean más fáciles de tocar */
-    .each-noticias {
-        min-height: 300px;
-        touch-action: manipulation; /* Optimizar para touch */
     }
 }
 
-/* Corregir problemas específicos de iPhone 6 y dispositivos similares */
-@media (max-width: 414px) and (max-height: 736px) {
-    .noticias {
-        min-height: auto;
-        height: auto;
+@media (max-width: 400px) {
+    .container-noticias {
+        width: 87%;
     }
-    
-    .all-noticias {
-        height: auto;
-        min-height: 400px;
-    }
-    
-    .noticias-page {
-        min-height: 400px;
-        align-items: flex-start;
-        padding-top: 20px;
-    }
+
 }
