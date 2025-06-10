@@ -133,7 +133,7 @@
     margin: 0 10px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    /*box-shadow: 0 4px 6px rgba(0,0,0,0.1);*/
     overflow: hidden;
     cursor: pointer;
     line-height: 1.2;
