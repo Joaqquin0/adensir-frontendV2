@@ -1,24 +1,16 @@
 const noticiasData = [
-    { fecha: "Diciembre 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/pelota.png",colorBarra: "#007bff" },
-    { fecha: "25 de Enero 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 2, imagen_previa:"img/pelota.png",colorBarra: "#E73246" },
-    { fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" },
-    { fecha: "25 de Marzo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Abril 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Mayo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-        { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 },
-    { fecha: "25 de Junio 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
+    { fecha: "28 de Febrero 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/foto-mini-noticia1.webp",colorBarra: "#09A6DF" },
+    { fecha: "30 de abril de 2025", descripcion: '"Inauguración del nuevo centro comunitario."', id: 2, imagen_previa:"img/foto-mini-noticia2.jpg",colorBarra: "#E73246" }
+    //{ fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" },
+    //{ fecha: "25 de Marzo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
 ];
 
 const contenidoNoticiaData= [
-    { id_noticia: 1, autor:"Preparado por: Kenedy Matete",
-        parrafo: "<strong>CREACIÓN OFICIAL DE ADENSIR</strong> <br><br>"+
+    { id_noticia: 1,
+        
+        titulo: "ADENSIR, LA ONG <br>CREADA POR<br> C.U. ZONA NORTE,<br> ARRANCA CON ILUSIÓN",
+        autor:"Preparado por: Kenedy Matete",
+        parrafo: "<span class ='texto-bold'>CREACIÓN OFICIAL DE ADENSIR</span> <br><br>"+
         "Después de haber estado donando equipaciones, balones y todo tipo de material a academias necesitadas" +
         "pero de manera aleatoria en la ciudad de Nairobi, C.U. Zona Norte se lanza desde finales de 2024 a <strong>crear de</strong> "+
         "<strong>manera oficial la ONG ADENSIR</strong> (Asociación del DEporte para Niños y niñas SIn Recursos, enfocada en el "+
@@ -38,7 +30,7 @@ const contenidoNoticiaData= [
         
         ,
         parrafo2:"Cinco niños recién integrados en el programa deportivo ADENSIR, después de recibir un tentempié de bienvenida mostrando su estado de ánimo y agradecimiento por ello." +
-        "<br><br><strong>POTENCIACIÓN DEL PROGRAMA DEPORTIVO </strong><br><br>" +
+        "<br><br><span class ='texto-bold'>POTENCIACIÓN DEL PROGRAMA DEPORTIVO </span><br><br>" +
         
         "ADENSIR apuesta de inicio por <strong>crear una estructura eficiente</strong> para que este proyecto deportivo-educativo "+
         "acoja al mayor número de participantes menores de edad, centrándonos en los siguientes objetivos: <br><br>" +
@@ -53,13 +45,47 @@ const contenidoNoticiaData= [
         "de alumnos que solicitan entrar en nuestro programa deportivo, el cual pasa de estar acogiendo 350 "+
         "participantes a acoger hasta <strong>1.500 niños y niñas</strong>, todo un reto para nosotros.",
 
+        parrafo3: "Foto del gueto donde podemos ver las condiciones de las distintas casas, construídas con maderas, chapa y barro. <br><br>" +
 
+        "Para dar cabida a todos ellos <strong>buscamos otras 2 instalaciones</strong> bien ubicadas estratégicamente y las "+
+        "alquilamos por un año completo. También <strong>donamos buena cantidad de material necesario</strong> para el " +
+        "desarrollo de las diferentes actividades deportivas (más de 20 balones de fútbol, redes para las porterias de " +
+        "f7, unas 60 equipaciones para equipos que no tenían ropa, y unos 40 pares de botas para aquellos que " +
+        "jugaban descalzos o con chanclas). Todas estas donaciones son transportadas en maletas personales y " +
+        "varios viajes, con las dificultades que ello supone. <br><br>"+
 
-        imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
-        imagen2: "img/entrenador-con-alumnos.jpg"
+        "ADENSIR es quien financia todo desde el principio con C.U.Zona Norte como sponsor único y oficial, aunque " +
+        "<strong>nuestro principal reto en Madrid, será desde ya encontrar familias y empresas que colaboren con el " +
+        "proyecto para poder mantener el ritmo de financiación y repercusión</strong> para seguir aportando valor a " +
+        "tantos y tantos niños y niñas en situaciones de alto riesgo de exclusión social.<br><br>" +
+
+        "ENTRE NOSOTROS NO EXISTEN FRONTERAS NI RAZAS, SÓLO VEMOS CHICOS Y CHICAS QUE QUIEREN " + 
+        "DISFRUTAR HACIENDO DEPORTE Y QUE NO TIENEN CONOCIMIENTO SOBRE CÓMO SALIR ADELANTE…¿POR " +
+        "QUÉ NO DEBERÍAMOS AYUDARLES UNA VEZ QUE SOMOS CONSCIENTES DE QUE ESTA SITUACIÓN ES REAL Y " +
+        "DE QUE PERFECTAMENTE PODRÍAMOS HABER SIDO NOSOTROS MISMOS LOS QUE OCUPARAN ESE LUGAR?", 
+        
+
+        imagen: "img/foto-portada-noticia1.jpg",
+        imagen2: "img/entrenador-con-alumnos.jpg",
+        imagen3: "img/BGS_3291-1832.jpg",
     },
     
-    { id_noticia: 2, contenido: "CONTENIDO_2." },
+    { id_noticia: 2,
+        titulo: " ADAPTACIÓN DEL <br>PROGRAMA DEPORTIVO <br> Y FINANCIACIÓN <br> DE BECAS ESCOLARES",
+        autor:"Preparado por: Kenedy Matete",
+        parrafo: "<span class ='texto-bold'> FINANCIACIÓN DE BECAS ESCOLARES </span> <br><br>"+
+        " Desde el mes de Febrero de 2025, ADENSIR decide financiar con becas escolares anuales a más de 20 niños en "+
+        "situaciones muy extremas (algunos huérfanos, o sin acceso a una alimentación adecuada ni a educación "+
+        "reglada), financiando los gastos que derivan de ello en el colegio donde el programa deportivo se desarrolla.<br><br>"+
+        "Para ello, representantes del programa, Erick Juma y Pedro (Peke) de Zona Norte, realizaron visitas "+
+        "domiciliarias para evaluar las condiciones de vida de los niños y asegurarse de la situación de necesidad.<br><br>"+
+        "El coste de cada beca anual es de 80€ y con ello conseguimos que estos niños cambien su vida por completo "+
+        "por lo que consideramos que era una acción muy apropiada de iniciar ya que buscamos cambiar vidas a "+
+        "través del deporte y sobre todo a través de la educación.<br><br>",
+
+        imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
+        
+    },
     { id_noticia: 3, contenido: "CONTENIDO_3." },
     { id_noticia: 4, titulo: "Titulo 4.", subtitulo: "Subtitulo 4.", parrafo: 'el infaltable Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <br> <br> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
 ]
@@ -101,7 +127,7 @@ class Noticia{
     }
 
     mostrarDetalle() {
-        window.open(`noticia.html?id=${this.id}`, "_blank");
+        window.location.href = `noticia.html?id=${this.id}`;
     }
 }
 
