@@ -66,7 +66,8 @@
         </div>
         
         <div class="texto-foto-noticia">
-            <h1 class="info-img-noticias" >PROGRAMA KIBERA<br> C.U ZONA NORTA </h1>
+            <p1 class="fecha-noticia" id="fecha-noticia"></p1>
+            <h1 class="info-img-noticias" id="titulo-noticia"> </h1>
         </div>
 
     </div>
@@ -86,11 +87,29 @@
             
             <p id="parrafo-noticia"> </p>
             
-            <img class="imagen2-noticia" id="imagen2-noticia" src="" alt="">
+            <div class="imagen2-noticia-container">
+                <img class="imagen2-noticia" id="imagen2-noticia" src="" alt="">
+            </div>
+
             <p id="parrafo2-noticia"> </p>
             
-            <img id="imagen1-noticia" src="" alt="">
+            <div class="imagen3-noticia-container">
+                <img id="imagen3-noticia" src="" alt="">
+            </div>
+            
+            <p id="parrafo3-noticia"> </p>
+
+
         </div>
+
+        <div class="social-icons-noticia">
+            <a href="https://wa.me/34665411521" target="_blank" class="icon-noticia"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://youtube.com" target="_blank" class="icon-noticia"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/ongzonanorte_/?hl=es" target="_blank" class="icon-noticia"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <div class="barra-lateral-noticia">
 
     </div>
 
@@ -113,7 +132,7 @@
     -->
 
     <div class="container-noticias">
-        <p class="titulo-noticia">Lo último en nuestra <strong>misíon solidaria</strong></p>
+        <p class="titulo-noticia-descripcion"><strong>MAS NOTICIAS</strong></p>
         <div class="noticias">
 
             <div class="all-noticias">
@@ -190,25 +209,31 @@
             if (noticia && contenido) {
                 const descripcionElement = document.getElementById("descripcion-noticia");
                 const fechaElement = document.getElementById("fecha-noticia");
-                const tituloElement = document.getElementById("titulo-noticia");
                 const susbtituloElement = document.getElementById("subtitulo-noticia");
-
+                
+                const tituloElement = document.getElementById("titulo-noticia");
                 const parrafoElement = document.getElementById("parrafo-noticia");
                 const autorElement = document.getElementById("autor-noticia");
                 const parrafo2Element= document.getElementById("parrafo2-noticia");
+                const parrafo3Element = document.getElementById("parrafo3-noticia");
 
                 const imagenElement = document.getElementById("imagen1-noticia");
                 const imagenElement2 = document.getElementById("imagen2-noticia");
+                const imagenElement3 = document.getElementById("imagen3-noticia");
                 
                 if (descripcionElement) descripcionElement.textContent = noticia.descripcion;
                 if (fechaElement) fechaElement.textContent = noticia.fecha;
-                if (tituloElement) tituloElement.textContent = contenido.titulo;
+
+                if (tituloElement) tituloElement.innerHTML = contenido.titulo;
                 if (susbtituloElement) susbtituloElement.textContent = contenido.subtitulo;
                 if (parrafoElement) parrafoElement.innerHTML = contenido.parrafo;
                 if (autorElement) autorElement.textContent = contenido.autor;
                 if (parrafo2Element) parrafo2Element.innerHTML = contenido.parrafo2;
+                if (parrafo3Element) parrafo3Element.innerHTML = contenido.parrafo3;
                 if (imagenElement) imagenElement.src = contenido.imagen;
                 if (imagenElement2) imagenElement2.src = contenido.imagen2;
+                if (imagenElement3) imagenElement3.src = contenido.imagen3;
+
             } else {
                 const contenidoElement = document.getElementById("contenido-noticia");
                 if (contenidoElement) {

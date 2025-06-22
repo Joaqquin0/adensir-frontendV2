@@ -103,6 +103,7 @@ html, body {
   height: 105px; /* Ajusta la altura del header */
   background-color: white;
   z-index: 50; /* Asegúrate de que el z-index sea más bajo que el del loading-screen */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 
 }
 .cointanier-logo{
@@ -276,7 +277,7 @@ html, body {
 .container {
   margin: 0 auto; /* Centra el div horizontalmente */
   display: flex;
-  margin-top: 6.2%;
+  margin-top: 106px;
   position: relative;
   background-color: ghostwhite;
 
