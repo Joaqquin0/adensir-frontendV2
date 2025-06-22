@@ -66,8 +66,10 @@
         </div>
         
         <div class="texto-foto-noticia">
-            <p1 class="fecha-noticia" id="fecha-noticia"></p1>
-            <h1 class="info-img-noticias" id="titulo-noticia"> </h1>
+            <div class="texto-titulo-noticia-container">
+                <p1 class="fecha-noticia" id="fecha-noticia"></p1>
+                <h1 class="info-img-noticias" id="titulo-noticia"> </h1>
+            </div>
         </div>
 
     </div>
@@ -94,7 +96,7 @@
             <p id="parrafo2-noticia"> </p>
             
             <div class="imagen3-noticia-container">
-                <img id="imagen3-noticia" src="" alt="">
+                <img class="imagen3-noticia" id="imagen3-noticia" src="" alt="">
             </div>
             
             <p id="parrafo3-noticia"> </p>
@@ -132,9 +134,12 @@
     -->
 
     <div class="container-noticias">
-        <p class="titulo-noticia-descripcion"><strong>MAS NOTICIAS</strong></p>
-        <div class="noticias">
+        <div class="titulo-noticia-container">
+            <p class="titulo-noticia-descripcion"><strong>MAS NOTICIAS</strong></p>
 
+        </div>
+
+        <div class="noticias">
             <div class="all-noticias">
                 <!-- Las noticias se renderizan aquí dinámicamente -->
             </div>
@@ -242,6 +247,34 @@
                 }
             }
         });
+
+        function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+
+// Cerrar sidebar al hacer clic fuera de él
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const menuIcon = document.querySelector('.menu-icon');
+    
+    // Verificar si el sidebar está abierto
+    if (sidebar.classList.contains('active')) {
+        // Si el clic no fue en el sidebar ni en el icono del menú, cerrar el sidebar
+        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+            sidebar.classList.remove('active');
+        }
+    }
+});
+
+// Cerrar sidebar al presionar la tecla Escape
+document.addEventListener('keydown', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    
+    if (event.key === 'Escape' && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+    }
+});
     </script>
 </body>
 </html>

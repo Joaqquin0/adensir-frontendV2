@@ -1245,6 +1245,8 @@ footer{
   }
   .header-container {
     height: 20%; /* Ajusta la altura del contenedor */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
   }
   .container {
     margin-top: 13%; /* Ajusta el margen superior */
@@ -1333,6 +1335,7 @@ footer{
   display: flex;
 }
 .header-container{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   height: 70px;
 }
 .sidebar, .contact-item-header1 {

@@ -1,7 +1,7 @@
 const noticiasData = [
-    { fecha: "28 de Febrero 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/foto-mini-noticia1.webp",colorBarra: "#09A6DF" },
-    { fecha: "30 de abril de 2025", descripcion: '"Inauguración del nuevo centro comunitario."', id: 2, imagen_previa:"img/foto-mini-noticia2.jpg",colorBarra: "#E73246" }
-    //{ fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" },
+    { fecha: "28 de Febrero 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/foto-mini-noticia1.jpeg",colorBarra: "#09A6DF" },
+    { fecha: "30 de abril de 2025", descripcion: '"Inauguración del nuevo centro comunitario."', id: 2, imagen_previa:"img/foto-mini-noticia2.jpg",colorBarra: "#E73246" },
+    //{ fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" }
     //{ fecha: "25 de Marzo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
 ];
 
@@ -83,7 +83,51 @@ const contenidoNoticiaData= [
         "por lo que consideramos que era una acción muy apropiada de iniciar ya que buscamos cambiar vidas a "+
         "través del deporte y sobre todo a través de la educación.<br><br>",
 
+        
+        parrafo2: "<br>Uno de los niños sin posibilidad a acceder a educación reglada despidiéndose de su amigo que sin embargo va " +
+        "camino al colegio cargando su mochila. Posteriormente este niño cambia su estilo de vida por la beca recibida " +
+        "por parte de ADENSIR." +
+
+        "<br><br><span class ='texto-bold'>ADAPTACIÓN PROVISIONAL DEL PROGRAMA DEPORTIVO</span><br><br>" +
+
+        "Debido a la gran suma de niños que se quisieron adherir a nuestro programa por el incremento en " +
+        "financiación y recursos que conllevó el apadrinamiento del proyecto por parte de ADENSIR, los primeros " +
+        "meses intentamos adaptar los espacios y servicios al máximo de niños y niñas para no tener que rechazar " +
+        "nuevos interesados en situaciones de necesidad aunque el reto es tremendo por la falta de recursos, " +
+        "espacios, conocimiento etc en la estructura ya formada.<br><br>"+
+
+        "Nuestro objetivo es cultivar el talento joven, inculcar disciplina y ofrecer a los niños un espacio seguro para " +
+        "crecer y desarrollarse a través del deporte.<br><br>" +
+
+        "El programa se compone de 100 equipos de entre 6 y 17 años, pero descubrimos que la organización que " +
+        "llevan a la hora de entrenar y jugar es un absoluto caos donde no hay establecidos horarios fijos ni un " +
+        "calendario, por lo que muchos de los dias se encuentran con más de 200 niños al mismo tiempo que deberían " +
+        "de realizar su actividad, algo en lo que desde ya empezamos a trabajar."+
+
+        "Debido a que muchos de esos equipos de niños benjamines y alevines no tenían ningún entrenador que se "+
+        "ocupara de ellos, integramos en nuestro programa una liga de 20 equipos senior para darles continuidad a su "+
+        "actividad de manera gratuíta, pero sobre todo para que se encarguen de entrenar y mantener en un entorno "+
+        "seguro a todos estos niños que no tenían ningún responsable a su cargo. Cada equipo de senior se "+
+        "responsabilizará de uno de los equipos de menores que estaban solos. Con ello logramos 2 objetivos "+
+        "importantes en nuestro programa.<br><br>" ,
+
+        parrafo3: "<br>Dia sábado donde convocamos a los nuevos inscritos a nuestro programa deportivo, una absoluta locura "+
+        " entre la comunidad keniana de Kibera" +
+
+        "<br><br><span class ='texto-bold'>NUESTROS RETOS </span><br><br>" +
+
+        "Nuestro principal reto y donde seguimos invirtiendo recursos es en buscar nuevos donantes y socios que " +
+        "permitan apoyar a más niños necesitados.  <br>" +
+        "Por supuesto también intentamos fortalecer la colaboración con líderes locales y organizaciones para " +
+        "movilizar más recursos y apoyo para el programa. <br>" +
+        "Y por último comenzaremos a trabajar duro para generar un formato de calendarios de entrenamientos y " +
+        "partidos para que el programa sea sostenible y organizado, sino no habrá valido de nada y el desorden nos " +
+        "vencerá.<br><br>",
+
+
         imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
+        imagen2: "img/noticias-2-imagen.jpg",
+        imagen3: "img/noticias-2.1-imagen.jpg",
         
     },
     { id_noticia: 3, contenido: "CONTENIDO_3." },
