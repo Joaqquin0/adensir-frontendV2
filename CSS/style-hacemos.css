@@ -194,6 +194,7 @@ footer{
   text-align: center;
   padding: 4%;
   font-family: "Pally-medium", sans-serif;
+  margin-top: -1%;
 }
 .footer-total{
   width: 110rem;
@@ -220,7 +221,7 @@ footer{
   gap: 5%; /* Espacio entre los botones */
   justify-content: center; /* Centra los elementos horizontalmente */
   border-radius: 20px;
-  height: 4vw;
+  height: 75px;
   align-items: center; /* Centra verticalmente los elementos */
 }
 .nosotros-button, .mision-footer-button, .padrinos-button{
@@ -228,7 +229,7 @@ footer{
 }
 .footer-donar{
   cursor: pointer; 
-  height: 4vw;
+  height: 75px;
   font-size: 60px; /* Ajusta el tamaño del texto de los botones */
   background-color: #FBBB17; 
   padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
@@ -257,11 +258,11 @@ footer{
   display: flex;
   align-items: center; /* Centra verticalmente el ícono y el texto */
   gap: 20px; /* Espacio entre el ícono y el texto */
-  font-size: 1.5vw; /* Tamaño del ícono */
+  font-size: 30px; /* Tamaño del ícono */
   margin-bottom: 1%;
 }
 .contact-item i {
-  font-size: 1.5vw; /* Tamaño del ícono */
+  font-size: 30px; /* Tamaño del ícono */
   color: white;
 }
 
@@ -278,12 +279,12 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4vw;
-  height: 4vw;
+  width: 90px;
+  height: 90px;
   border-radius: 50%; /* Hace el fondo circular */
   background-color: #fff; /* Fondo blanco */
   color: #333; /* Color del icono */
-  font-size: 2vw; /* Tamaño del icono */
+  font-size: 60px; /* Tamaño del icono */
   text-decoration: none;
   transition: all 0.3s ease;
 

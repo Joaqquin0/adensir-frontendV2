@@ -29,8 +29,8 @@ const contenidoNoticiaData= [
         "<strong>disciplina, el respeto y el compañerismo</strong> se hacen más fuertes en su dia a dia."
         
         ,
-        parrafo2:"Cinco niños recién integrados en el programa deportivo ADENSIR, después de recibir un tentempié de bienvenida mostrando su estado de ánimo y agradecimiento por ello." +
-        "<br><br><span class ='texto-bold'>POTENCIACIÓN DEL PROGRAMA DEPORTIVO </span><br><br>" +
+        parrafo2:'<span class="fecha-autor">Cinco niños recién integrados en el programa deportivo ADENSIR, después de recibir un tentempié de bienvenida mostrando su estado de ánimo y agradecimiento por ello.</span>'+
+        '<br><br><span class ="texto-bold">POTENCIACIÓN DEL PROGRAMA DEPORTIVO </span><br><br>'+
         
         "ADENSIR apuesta de inicio por <strong>crear una estructura eficiente</strong> para que este proyecto deportivo-educativo "+
         "acoja al mayor número de participantes menores de edad, centrándonos en los siguientes objetivos: <br><br>" +
@@ -45,7 +45,7 @@ const contenidoNoticiaData= [
         "de alumnos que solicitan entrar en nuestro programa deportivo, el cual pasa de estar acogiendo 350 "+
         "participantes a acoger hasta <strong>1.500 niños y niñas</strong>, todo un reto para nosotros.",
 
-        parrafo3: "Foto del gueto donde podemos ver las condiciones de las distintas casas, construídas con maderas, chapa y barro. <br><br>" +
+        parrafo3: "<span class='fecha-autor'>Foto del gueto donde podemos ver las condiciones de las distintas casas, construídas con maderas, chapa y barro. </span><br><br>" +
 
         "Para dar cabida a todos ellos <strong>buscamos otras 2 instalaciones</strong> bien ubicadas estratégicamente y las "+
         "alquilamos por un año completo. También <strong>donamos buena cantidad de material necesario</strong> para el " +
@@ -66,6 +66,7 @@ const contenidoNoticiaData= [
         
 
         imagen: "img/foto-portada-noticia1.jpg",
+        imagenPhone: "img/image-noticia1-phone.jpg",
         imagen2: "img/entrenador-con-alumnos.jpg",
         imagen3: "img/BGS_3291-1832.jpg",
     },
@@ -126,6 +127,7 @@ const contenidoNoticiaData= [
 
 
         imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
+        imagenPhone: "img/image-noticia2-phone.jpg",
         imagen2: "img/noticias-2-imagen.jpg",
         imagen3: "img/noticias-2.1-imagen.jpg",
         

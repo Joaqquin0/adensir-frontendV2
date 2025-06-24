@@ -52,6 +52,16 @@
   
 }
 
+
+@media (max-width: 900px) {
+    .img-not {
+        /* Opciones de centrado: */
+        object-position: 60% center; /* Completamente centrada */
+        /* object-position: center top; /* Centrada horizontalmente, arriba verticalmente */
+        /* object-position: center 30%; /* Centrada horizontalmente, 30% desde arriba */
+        /* object-position: 50% 50%; /* Equivale a center center */
+    }
+}
 .texto-foto-noticia{
     z-index: 2;
     font-family: 'Pally-regular', sans-serif;
@@ -232,3 +242,4 @@
   background-color: #fff; /* Fondo al pasar el mouse (azul) */
   color: #333; /* Icono blanco al pasar el mouse */
 }
+

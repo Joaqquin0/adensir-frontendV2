@@ -225,7 +225,19 @@
                 const imagenElement = document.getElementById("imagen1-noticia");
                 const imagenElement2 = document.getElementById("imagen2-noticia");
                 const imagenElement3 = document.getElementById("imagen3-noticia");
-                
+
+                function updateImageForScreenSize() {
+                    if (imagenElement) {
+                        if (window.innerWidth <= 900) {
+                            // Usar imagen para móvil si existe, sino usar la normal
+                            imagenElement.src = contenido.imagenPhone || contenido.imagen;
+                        } else {
+                            // Usar imagen normal para desktop
+                            imagenElement.src = contenido.imagen;
+                        }
+                    }
+                }
+
                 if (descripcionElement) descripcionElement.textContent = noticia.descripcion;
                 if (fechaElement) fechaElement.textContent = noticia.fecha;
 
@@ -246,12 +258,19 @@
                     contenidoElement.style.color = "red";
                 }
             }
+
+            // Aplicar al cargar la página
+            updateImageForScreenSize();
+        
+            // Aplicar cuando cambie el tamaño de pantalla
+            window.addEventListener('resize', updateImageForScreenSize);
+            
         });
 
         function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('active');
-}
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
 
 // Cerrar sidebar al hacer clic fuera de él
 document.addEventListener('click', function(event) {
