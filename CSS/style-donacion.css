@@ -407,8 +407,7 @@ main {
       left: 2.5px;
       top: 0.1px;
     }
-    .custom-checkbox {
-    }
+
   }
 }
 
@@ -551,107 +550,106 @@ main {
 }
 /*--------------------------------------*/
 footer{
-    margin-top: 8%; /* Empuja el footer al fondo */
-    background-color: #272727;
-    color: white;
-    text-align: center;
-    padding: 4%;
-    font-family: "Pally-medium", sans-serif;
-    min-height: auto; /* Asegura que el contenedor abarque toda la pantalla */
-    
-    position: sticky;
-    flex-shrink: 0; /* Evita que el footer se encoja */
+  background-color: #272727;
+  color: white;
+  text-align: center;
+  padding: 4%;
+  font-family: "Pally-medium", sans-serif;
+  margin-top: -1%;
+}
+.footer-total{
+  width: 110rem;
+  margin: 0 auto; /* Centra el div horizontalmente */
+}
 
-  }
+.footer-parte1{
+  display: flex;
+  gap: 3%; /* Espacio entre los botones */
+}
+.footer-logo-container{
+  margin-left: 4%;
+}
+.footer-logo{
+  width:350.58px;
+  height: auto; /* Ajusta la altura del contenedor del logo */
+}
+.footer-buttons{
+  font-size: 16.5px; /* Ajusta el tamaño del texto de los botones */
+  display:flex;
+  width: 49.3%;
+  color: black;
+  background-color: white;
+  gap: 5%; /* Espacio entre los botones */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  border-radius: 20px;
+  height: 75px;
+  align-items: center; /* Centra verticalmente los elementos */
+}
+.nosotros-button, .mision-footer-button, .padrinos-button{
+  cursor: pointer; 
+}
+.footer-donar{
+  cursor: pointer; 
+  height: 75px;
+  font-size: 60px; /* Ajusta el tamaño del texto de los botones */
+  background-color: #FBBB17; 
+  padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
+  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
+  border-radius: 16px;
+  color: white;
   
-  .footer-parte1{
-    display: flex;
-    gap: 3%; /* Espacio entre los botones */
-  }
-  .footer-logo-container{
-    margin-left: 4%;
-  }
-  .footer-logo{
-    width:350.58px;
-    height: auto; /* Ajusta la altura del contenedor del logo */
-  }
-  .footer-buttons{
-    font-size: 0.9vw; /* Ajusta el tamaño del texto de los botones */
-    display:flex;
-    width: 49.3%;
-    color: black;
-    background-color: white;
-    gap: 5%; /* Espacio entre los botones */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    border-radius: 20px;
-    height: 4vw;
-    align-items: center; /* Centra verticalmente los elementos */
-  }
-  .nosotros-button, .mision-footer-button, .padrinos-button{
-    cursor: pointer; 
-  }
-  .footer-donar{
-    cursor: pointer; 
-    height: 4vw;
-    font-size: 3vw; /* Ajusta el tamaño del texto de los botones */
-    background-color: #FBBB17; 
-    padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
-    font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
-    border-radius: 16px;
-    color: white;
-    
-    display:flex;
-    align-items: center; /* Centra verticalmente los elementos */
-  
-    border: none;
-  
-  }
-  .footer-parte2{
-    width: 92%;
-    display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    margin-top: 5%;
-    margin-left: 4%;
-  }	
-  
-  .container-contact {
-    width: auto;
-  }
-  .contact-item {
-    display: flex;
-    align-items: center; /* Centra verticalmente el ícono y el texto */
-    gap: 20px; /* Espacio entre el ícono y el texto */
-    font-size: 1.5vw; /* Tamaño del texto */
-    margin-bottom: 1%;
-  }
-  .contact-item i {
-    font-size: 1.5vw; /* Tamaño del ícono */
-    color: white;
-  }
-  
-  .social-icons {
-    display: flex;
-    width: auto;
-    height: 100%;
-    justify-content: center;
-    gap: 15px;
-    margin-left: auto; /* Ajusta el valor según el espacio que desees */
-  
-  }
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4vw;
-    height: 4vw;
-    border-radius: 50%; /* Hace el fondo circular */
-    background-color: #fff; /* Fondo blanco */
-    color: #333; /* Color del icono */
-    font-size: 2vw; /* Tamaño del icono */
-    text-decoration: none;
-    transition: all 0.3s ease;
-  
-  }
+  display:flex;
+  align-items: center; /* Centra verticalmente los elementos */
+
+  border: none;
+
+}
+.footer-parte2{
+  width: 92%;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  margin-top: 5%;
+  margin-left: 4%;
+}	
+
+.container-contact {
+  width: auto;
+}
+.contact-item {
+  display: flex;
+  align-items: center; /* Centra verticalmente el ícono y el texto */
+  gap: 20px; /* Espacio entre el ícono y el texto */
+  font-size: 30px; /* Tamaño del ícono */
+  margin-bottom: 1%;
+}
+.contact-item i {
+  font-size: 30px; /* Tamaño del ícono */
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  width: auto;
+  height: 100%;
+  justify-content: center;
+  gap: 15px;
+  margin-left: auto; /* Ajusta el valor según el espacio que desees */
+
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; /* Hace el fondo circular */
+  background-color: #fff; /* Fondo blanco */
+  color: #333; /* Color del icono */
+  font-size: 60px; /* Tamaño del icono */
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+}
   .icon:hover {
     background-color: #333; /* Fondo al pasar el mouse (azul) */
     color: #fff; /* Icono blanco al pasar el mouse */
