@@ -1,93 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="JS/image-texts.js?v=1.0"></script>
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-<style>
+    <title>Newsletter Signup</title>
     
-.cointanier-valores{
-  width: 68%;
-  margin: 0 auto; /* Centra el div horizontalmente */
-  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
-  text-align: center;
-  font-size: 3em;
+    <!-- Estilos de Brevo -->
+    <style>
+        @font-face {
+            font-display: block;
+            font-family: Roboto;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+        }
 
-}
-.valores-titulo{
-  margin-top: 8%;
-  margin-bottom: 8%;
-  font-size: 5.5rem;
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 600;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+        }
 
-}
-.carta-mision{
-  background-color: #FBBB17;
-  font-size: 1rem;
-  color: white;
-  position: relative;
-}
-.mision-button{
-  position: absolute;
-    width: 15%;
-    height: 100%;
-    border: none;
-    cursor: pointer; 
-    background-color: transparent; 
-}
-.mision-button2{
-  position: absolute;
-    width: 15%;
-    height: 100%;
-    left: 85%;
-    border: none;
-    cursor: pointer; 
-    background-color: transparent; 
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 700;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+        }
 
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
 
-.img-carta-mision{
-  width: 100%;
-  height: auto;
-}
-.carta-mision-info, .carta-mision-texto{
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Ajusta el centro con transform */
-  text-align: center;
-  width: 80%;
-}
-.titulo-mision{ font-size: 2em;}
-.carta-mision-texto{
-  top: 80%;
-}
-.subtitulo-mision{ font-size: 1em; margin-top: 10%; }
-.parrafo-mision{ font-size: 0.7em;}
-</style>
+        /* Simulación de tu página existente */
+        .existing-content {
+            background: white;
+            padding: 40px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Newsletter signup - div horizontal */
+        .newsletter-signup {
+            background: #2c5aa0;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .newsletter-signup.show {
+            transform: translateY(0);
+        }
+
+        .newsletter-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .newsletter-text h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+
+        .newsletter-text p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            min-width: 300px;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #e55a2b;
+        }
+
+        .newsletter-form button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Error message */
+        .error-message {
+            display: none;
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Hidden elements for Brevo */
+        .hidden {
+            display: none !important;
+        }
+
+        /* reCAPTCHA container */
+        .recaptcha-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .newsletter-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .newsletter-form input[type="email"] {
+                min-width: 200px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+</head>
 <body>
-    <hr class="linea">
+    <!-- Simulación de tu contenido existente -->
+    <div class="existing-content">
+        <h1>Sección de Noticias de la ONG</h1>
+        <p>Aquí estaría tu contenido existente de noticias...</p>
+        <br><br>
+        <p>Scroll hacia abajo para ver el formulario de newsletter...</p>
+    </div>
 
-    <div  class="cointanier-valores">
-      <h1 class="valores-titulo">Nuestra <span style="color: #0AA6E0;">misión,</span> <span style="color: #FBBB17;">visión</span> Y <span style="color: #E73246;">valores</span></h1>
-      
-      <div class="carta-mision">
-          <button class="mision-button" onclick="prevMision()"></button>
-          <button class="mision-button2" onclick="nextMision()"></button>
-          <h1 class="carta-mision-titulo" id="carta-titulo"> </h1>
-              <div class="carta-mision-texto">
-                  <p id="colaboracion">
-                      
-                  </p>
-              </div>
-          <img class="img-carta-mision" id="carta" src="img/Grupo304.png" alt="">
-      </div>
+    <div class="existing-content">
+        <h2>Noticia 1</h2>
+        <p>Contenido de la noticia...</p>
+    </div>
 
-  </div>
+    <div class="existing-content">
+        <h2>Noticia 2</h2>
+        <p>Contenido de la noticia...</p>
+    </div>
 
-    <script src="JS/javascrip.js"></script>
+    <!-- Newsletter Signup Form -->
+    <div class="newsletter-signup" id="newsletterSignup">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h3>📧 ¡Mantente informado!</h3>
+                <p>Recibe nuestras últimas noticias y actualizaciones directamente en tu email</p>
+            </div>
+            
+            <!-- Formulario de Brevo integrado -->
+            <form class="newsletter-form" id="brevo-form" method="POST" action="https://0a565ecc.sibforms.com/serve/MUIFAMsgcMh1i4iw7X8MwCAhix6XvXIpRrqx9ihcZ95a5RS0Q4X9OF7IkgB1UvjjbASBkXfIdKQM76dQ3thzGvOCCVxGq-kEGC20O9AGdk8thJ6ScVlbAlqS0ZpfI_SpfIZD4-OcSRuo7f6KJCh8OarVQ6kfEOfJohrd7DDS6krm7Usy0Vo9_Rud9triE1Mhk6gDDMhXjjTGXiF7" data-type="subscription">
+                <input 
+                    type="email" 
+                    id="EMAIL" 
+                    name="EMAIL"
+                    placeholder="tu.email@ejemplo.com" 
+                    autocomplete="off"
+                    required
+                >
+                
+                <!-- reCAPTCHA -->
+                <div class="recaptcha-container">
+                    <div class="g-recaptcha" 
+                         id="sib-captcha" 
+                         data-sitekey="6LfVookrAAAAALFRAJH_3EoE6aEyGtNQ1VMCJpME" 
+                         data-callback="handleCaptchaResponse">
+                    </div>
+                </div>
+                
+                <!-- Campos ocultos requeridos por Brevo -->
+                <input type="text" name="email_address_check" value="" class="hidden">
+                <input type="hidden" name="locale" value="es">
+                
+                <button type="submit" id="submit-btn">Suscribirme</button>
+            </form>
 
+            <button class="close-btn" onclick="closeNewsletter()">✕</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            ¡Gracias! Te has suscrito exitosamente a nuestro newsletter.
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            Hubo un error al procesar tu suscripción. Por favor intenta nuevamente.
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        window.REQUIRED_CODE_ERROR_MESSAGE = 'Por favor elige un código de país';
+        window.LOCALE = 'es';
+        window.EMAIL_INVALID_MESSAGE = "La información proporcionada no es válida. Por favor revisa el formato y vuelve a intentar.";
+        window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
+        window.GENERIC_INVALID_MESSAGE = "La información proporcionada no es válida. Por favor revisa el formato y vuelve a intentar.";
+        var AUTOHIDE = Boolean(0);
+
+        // Función para manejar respuesta del captcha
+        function handleCaptchaResponse() {
+            var event = new Event('captchaChange');
+            document.getElementById('sib-captcha').dispatchEvent(event);
+        }
+
+        // Mostrar el formulario después de un tiempo o al hacer scroll
+        setTimeout(() => {
+            document.getElementById('newsletterSignup').classList.add('show');
+        }, 2000);
+
+        // También mostrar cuando el usuario hace scroll hacia abajo
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                document.getElementById('newsletterSignup').classList.add('show');
+            }
+        });
+
+        // Manejar el envío del formulario
+        document.getElementById('brevo-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('EMAIL').value;
+            const submitButton = document.getElementById('submit-btn');
+            const originalButtonText = submitButton.textContent;
+            
+            // Validar email
+            if (!email || !isValidEmail(email)) {
+                showError('Por favor ingresa un email válido');
+                return;
+            }
+
+            // Verificar captcha
+            const captchaResponse = grecaptcha.getResponse();
+            if (!captchaResponse) {
+                showError('Por favor completa el captcha');
+                return;
+            }
+            
+            // Mostrar estado de carga
+            submitButton.textContent = 'Suscribiendo...';
+            submitButton.disabled = true;
+            
+            try {
+                // Enviar a Brevo usando fetch
+                await subscribeToBrevo(this);
+                
+                // Mostrar mensaje de éxito
+                showSuccess();
+                
+                // Ocultar después de 3 segundos
+                setTimeout(() => {
+                    closeNewsletter();
+                }, 3000);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Hubo un error. Por favor intenta nuevamente.');
+            } finally {
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Función para validar email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Función para suscribir a Brevo
+        async function subscribeToBrevo(form) {
+            const formData = new FormData(form);
+            
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Importante para evitar problemas de CORS
+            });
+            
+            // Como usamos no-cors, no podemos leer la respuesta
+            // Pero si no hay error, asumimos que fue exitoso
+            return true;
+        }
+
+        // Función para mostrar mensaje de éxito
+        function showSuccess() {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.querySelector('.newsletter-form').style.display = 'none';
+            document.querySelector('.newsletter-text').style.display = 'none';
+        }
+
+        // Función para mostrar mensaje de error
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        // Función para cerrar el newsletter
+        function closeNewsletter() {
+            document.getElementById('newsletterSignup').classList.remove('show');
+        }
+
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeNewsletter();
+            }
+        });
+
+        // Resetear captcha si es necesario
+        function resetCaptcha() {
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
+        }
+    </script>
+
+    <!-- Scripts de Brevo -->
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
 </body>
 </html>
