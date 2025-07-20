@@ -8,7 +8,7 @@
     <link rel="icon" href="img/isotipo.png" type="image/x-icon">
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
-    connect-src 'self' https://api.stripe.com https://maps.googleapis.com https://adensir2.vercel.app ;   
+    connect-src 'self' https://api.stripe.com https://maps.googleapis.com https://adensir2.vercel.app http://localhost:3000;   
     frame-src 'self' https://*.js.stripe.com https://js.stripe.com https://hooks.stripe.com;   
     script-src 'self' 'unsafe-inline' https://*.js.stripe.com https://js.stripe.com https://maps.googleapis.com;
     style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
@@ -23,18 +23,6 @@
     <script src="JS/script2.js" type="module"></script>
     <script src="JS/script.js" type="module"></script>
 
-     <!-- Google Translate -->
-     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'es,en,fr,de,it,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 

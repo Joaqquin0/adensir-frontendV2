@@ -5,7 +5,7 @@ async function loadProducts(tipo) {
   const $fragment1 = document.createDocumentFragment();
   const $fragment2 = document.createDocumentFragment();
   try {
-    const response = await fetch("https://adensir2.vercel.app/api/products");
+    const response = await fetch("http://localhost:3000/api/products");
     const products = await response.json();
     // Filtrar productos según el tipo
     const filteredProducts = products.filter(product => {
@@ -83,7 +83,7 @@ document.addEventListener("click", async (e) => {
     try {
       const clientId = crypto.randomUUID(); // Genera un ID único para el cliente
       // Obtén el token desde la API
-      const tokenResponse = await fetch("https://adensir2.vercel.app/api/get-token", {
+      const tokenResponse = await fetch("http://localhost:3000/api/get-token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ document.addEventListener("click", async (e) => {
         return;
       }
       // Crea una sesión de checkout en Stripe
-      const checkoutResponse = await fetch("https://adensir2.vercel.app/api/create-checkout-session", {
+      const checkoutResponse = await fetch("http://localhost:3000/api/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const clientId = crypto.randomUUID();  // Genera un ID único para el cliente
 
-    const tokenResponse = await fetch("https://adensir2.vercel.app/api/get-token", {
+    const tokenResponse = await fetch("http://localhost:3000/api/get-token", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Llamar al backend para crear el precio
         try {
-            const response = await fetch("https://adensir2.vercel.app/api/new-price", {
+            const response = await fetch("http://localhost:3000/api/new-price", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Función para iniciar la sesión de checkout
 const iniciarCheckout = async (priceId) => {
     try {
-        const response = await fetch("https://adensir2.vercel.app/api/create-checkout-session", {
+        const response = await fetch("http://localhost:3000/api/create-checkout-session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
