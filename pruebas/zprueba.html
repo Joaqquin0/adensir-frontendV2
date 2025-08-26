@@ -170,12 +170,7 @@
             display: none !important;
         }
 
-        /* reCAPTCHA container */
-        .recaptcha-container {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -225,7 +220,7 @@
             </div>
             
             <!-- Formulario de Brevo integrado -->
-            <form class="newsletter-form" id="brevo-form" method="POST" action="https://0a565ecc.sibforms.com/serve/MUIFAMsgcMh1i4iw7X8MwCAhix6XvXIpRrqx9ihcZ95a5RS0Q4X9OF7IkgB1UvjjbASBkXfIdKQM76dQ3thzGvOCCVxGq-kEGC20O9AGdk8thJ6ScVlbAlqS0ZpfI_SpfIZD4-OcSRuo7f6KJCh8OarVQ6kfEOfJohrd7DDS6krm7Usy0Vo9_Rud9triE1Mhk6gDDMhXjjTGXiF7" data-type="subscription">
+            <form class="newsletter-form" id="brevo-form" method="POST" action="https://0a565ecc.sibforms.com/serve/MUIFAPuv199oFwp5Qm9QjcgozVKe1MX75N1GuFE6CkK9ER0PNRVhfQgZnevyK05qH3pZiAHRb0e3oHLXwpUTh6XF_rtIBfJkAKIXF_-95t_sih2KquXZyxK8_rxlR_bXR5XhWEgE-8lgN8-VBAvlFkTKlmweWAwU0olwlovvWlCO6UpDOKUuIkn3tpHfU97SxyZVt6WjP3iucgb9" data-type="subscription">
                 <input 
                     type="email" 
                     id="EMAIL" 
@@ -235,18 +230,9 @@
                     required
                 >
                 
-                <!-- reCAPTCHA -->
-                <div class="recaptcha-container">
-                    <div class="g-recaptcha" 
-                         id="sib-captcha" 
-                         data-sitekey="6LfVookrAAAAALFRAJH_3EoE6aEyGtNQ1VMCJpME" 
-                         data-callback="handleCaptchaResponse">
-                    </div>
-                </div>
-                
                 <!-- Campos ocultos requeridos por Brevo -->
                 <input type="text" name="email_address_check" value="" class="hidden">
-                <input type="hidden" name="locale" value="es">
+                <input type="hidden" name="locale" value="en">
                 
                 <button type="submit" id="submit-btn">Suscribirme</button>
             </form>
@@ -266,17 +252,11 @@
     <script>
         // Variables globales
         window.REQUIRED_CODE_ERROR_MESSAGE = 'Por favor elige un código de país';
-        window.LOCALE = 'es';
+        window.LOCALE = 'en';
         window.EMAIL_INVALID_MESSAGE = "La información proporcionada no es válida. Por favor revisa el formato y vuelve a intentar.";
         window.REQUIRED_ERROR_MESSAGE = "Este campo no puede estar vacío.";
         window.GENERIC_INVALID_MESSAGE = "La información proporcionada no es válida. Por favor revisa el formato y vuelve a intentar.";
         var AUTOHIDE = Boolean(0);
-
-        // Función para manejar respuesta del captcha
-        function handleCaptchaResponse() {
-            var event = new Event('captchaChange');
-            document.getElementById('sib-captcha').dispatchEvent(event);
-        }
 
         // Mostrar el formulario después de un tiempo o al hacer scroll
         setTimeout(() => {
@@ -301,13 +281,6 @@
             // Validar email
             if (!email || !isValidEmail(email)) {
                 showError('Por favor ingresa un email válido');
-                return;
-            }
-
-            // Verificar captcha
-            const captchaResponse = grecaptcha.getResponse();
-            if (!captchaResponse) {
-                showError('Por favor completa el captcha');
                 return;
             }
             
@@ -384,17 +357,9 @@
                 closeNewsletter();
             }
         });
-
-        // Resetear captcha si es necesario
-        function resetCaptcha() {
-            if (typeof grecaptcha !== 'undefined') {
-                grecaptcha.reset();
-            }
-        }
     </script>
 
     <!-- Scripts de Brevo -->
     <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?hl=es"></script>
 </body>
 </html>
