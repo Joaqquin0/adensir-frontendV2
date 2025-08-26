@@ -445,6 +445,7 @@ main {
 .container-formas{
   margin: 0 auto;
   margin-top: 5%;
+  margin-bottom: 100px;
 }
 
 .formas-titulo{
