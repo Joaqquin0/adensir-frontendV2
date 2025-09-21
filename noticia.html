@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/style-hacemos.css">
     <script src="JS/noticias.js?v=1.0"></script>
-
+    <script src="app/public/header/header.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style-noticias.css">
 
@@ -109,47 +109,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-total">
-
-            <div class="footer-parte1">
-                <div class="footer-logo-container">
-                    <a href="https://adensir.com/">
-    
-                    <img class="footer-logo" src="img/imagotipo en blanco sin blanco.png" alt="logo-blanco">
-                    </a>
-                </div>
-                <div class="footer-buttons">
-                    <h1 class="nosotros-button" onclick="navigateToSection('nosotros')">¿QUIÉNES SOMOS?</h1>
-                    <h1 class="mision-footer-button" onclick="navigateToSection('cointanier-valores')">MISIÓN Y VISIÓN</h1>
-                    <H1 class="padrinos-button" onclick="navigateToSection('conteiner-padrinos')">PADRINOS</H1>
-                </div>
-                <a href="https://adensir.com/donacion" style="text-decoration: none;">
-                <button class="footer-donar" id="donarButton" >DONAR</button>
-                </a>
-            </div>
-            <div class="footer-parte2"> 
-                <div class="container-contact" id="id-contacto">
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+34 665 41 15 21</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contacto@adensir.com</span>
-                    </div>
-                </div>
-                <div class="social-icons">
-                    <a href="https://wa.me/34665411521" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://youtube.com/@adensir?si=wvORIx1ru_9Bbtk4" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/adensir_ong?igsh=a2JuMGsxNXQwaTdo" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </footer>
+    <div id="footer"></div>
 
     <!-- Scripts al final del body para asegurar que el DOM esté cargado -->
     <script>
@@ -158,7 +118,7 @@
             // Obtener el ID de la URL
             const urlParams = new URLSearchParams(window.location.search);
             const idNoticia = urlParams.get('id');
-            
+
             console.log("ID de noticia:", idNoticia);
             console.log("Datos de noticias:", noticiasData);
             console.log("Contenido de noticias:", contenidoNoticiaData);
