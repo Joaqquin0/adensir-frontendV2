@@ -6,96 +6,194 @@
     <title>Document</title>
 </head>
 <style>
-@font-face {
-  font-family: 'Pally-blod';
-  src: url('/fonts/Pally-Bold.woff2') format('woff2');
-  font-weight: 700; /* Valores válidos: normal (400), bold (700), etc. */
-  font-style: normal; /* Usa valores válidos: normal, italic */
-}
-
-@font-face {
-  font-family: 'Pally-medium';
-  src: url('/fonts/Pally-Medium.woff2') format('woff2');
-  font-weight: regular;
-  font-style: regular; 
-}
-
-@font-face {
-  font-family: 'Pally-regular';
-  src: url('/fonts/Pally-Regular.woff2') format('woff2');
-  font-weight: light;
-  font-style: light; 
-}
-body{
-    background-image: url(img/graciasporcolaborarfondo.svg);
-    background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
-    background-position: center; 
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
-.container-agradecimiento{
-    margin: 0, auto;
-    text-align: center;
-    color: white;
-    font-size: 24px;
-    height: auto;
-    line-height: 1;
-}
-.texto{
-    font-family: 'Pally-medium';
-}
-
-.button-inicio{
-    background-color: #0AA6E0;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 2vw;
-    margin-top: 20px;
-    font-family: 'Pally-medium';
-}
-.texto-cancelar-sub{
-    background-color: white;
-    color:#272727;
-    font-family: 'Pally-medium';
-    border-radius: 1vw;
-    padding: 10px;
-    padding-left: 35px;
-    padding-right: 35px;
-    font-size: 20px;
-
-}
-
-@media(max-width: 683px){
-    .container-agradecimiento{
-        width: 90%;
+    @font-face {
+    font-family: 'Pally-blod';
+    src: url('/fonts/Pally-Bold.woff2') format('woff2');
+    font-weight: 700; /* Valores válidos: normal (400), bold (700), etc. */
+    font-style: normal; /* Usa valores válidos: normal, italic */
     }
+
+    @font-face {
+    font-family: 'Pally-medium';
+    src: url('/fonts/Pally-Medium.woff2') format('woff2');
+    font-weight: regular;
+    font-style: regular; 
+    }
+
+    @font-face {
+    font-family: 'Pally-regular';
+    src: url('/fonts/Pally-Regular.woff2') format('woff2');
+    font-weight: light;
+    font-style: light; 
+    }
+    body{
+        background-image: url(img/graciasporcolaborarfondo.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-adensir{
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+    }
+
+    .logo-adensir-container{
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .container-agradecimiento{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        max-width: 600px;
+        height: 90vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .container-texto{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        line-height: 1.2;
+        font-family: 'Pally-medium';
+        text-align: center;
+        flex-grow: 1;
+        width: 100%;
+        max-width: 500px;
+
+    }
+
+    .fondo-imagen-container{
+        position: relative;
+        width: 65%;
+    }
+
+    .fondo-imagen{
+        max-width: 100%;
+        height: auto;
+    }
+
+    .texto-gracias{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(35px, 8vw, 55px);
+        font-family: 'Pally-blod';
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        color: white;
+    }
+
+    .button-inicio{
+        background-color: #0AA6E0;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-family: 'Pally-medium';
+        transition: background-color 0.3s ease;
+    }
+
+    .button-inicio:hover{
+        background-color: #0891c7;
+    }
+
     .texto-cancelar-sub{
-    padding-left: 15px;
-    padding-right: 15px;
+        color: white;
+        font-family: 'Pally-medium';
+        border-radius: 15px;
+        padding: 20px;
+        font-size: clamp(16px, 3.5vw, 20px);
+        text-shadow: 1px 1px 2px black;
+        text-align: center;
+        line-height: 1.4;
+        margin: 20px 0;
+        max-width: 100%;
+    }
 
-}
-}
+    .button-inicio-container{
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    @media(max-width: 683px){
+        .container-agradecimiento{
+            width: 95%;
+            height: 95vh;
+            padding: 15px;
+        }
+        
+        .logo-adensir{
+            max-width: 250px;
+        }
+        
+        .container-texto{
+            max-width: 100%;
+        }
+        
+        .texto-cancelar-sub{
+            padding: 15px;
+            font-size: 16px;
+        }
+        
+        .button-inicio{
+            padding: 12px 25px;
+            font-size: 16px;
+        }
+        
+        .button-inicio-container{
+            padding: 15px;
+            max-width: 100%;
+        }
+    }
+
 </style>
+
 <body>
-    <DIV class="container-agradecimiento">
-        <h1 class="texto"><spam style="    font-size: 70px;">GRACIAS</spam><br> POR TU <br>COLABORACIÓN</h1>
+    <div class="container-agradecimiento">
 
-            <p class="texto-cancelar-sub">Si quieres cancelar tu suscripción contáctanos a través del Whatsapp</p>
+        <div class="logo-adensir-container">
+            <img class="logo-adensir" src="img/Grupo 133.png" alt="Logo Adensir">
+        </div>
 
+        <div class="container-texto">
+                <div class="fondo-imagen-container">
+                    <img class="fondo-imagen" src="img/FONDO CON CARA.svg" alt="">
+                                    <h1 class="texto-gracias">GRACIAS</h1>
 
-        <a href="https://adensir.com" style="text-decoration: none;">
-        <button class="button-inicio">VOLVER A INICIO</button>
-        </a>  
-    </DIV>  
+                </div>
+
+            <p class="texto-cancelar-sub">Hemos recibido tu aporte con éxito. Revisa tu bandeja de entrada, te hemos enviado un correo de confirmación de tu donación con todos los detalles.</p>
+        </div>
+
+        <div class="button-inicio-container">
+            <a href="https://adensir.com" style="text-decoration: none;">
+                <button class="button-inicio">MENU PRINCIPAL</button>
+            </a>
+        </div>
+
+    </div>
 </body>
 </html>

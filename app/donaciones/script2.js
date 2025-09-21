@@ -10,7 +10,7 @@ async function loadProducts(tipo) {
     // Filtrar productos según el tipo
     const filteredProducts = products.filter(product => {
       const isCorrectType = tipo === "unica" ? !isSubscription(product) : isSubscription(product);
-      const excludedPrices = [100, 1000, 2000]; // Precios en centavos (1, 10 y 20 euros)
+      const excludedPrices = [100, 1000, 2000, 10000]; // Precios en centavos (1, 10 y 20 euros)
       return isCorrectType && !excludedPrices.includes(product.price);
     });
     filteredProducts.forEach((product, index) => {
@@ -118,9 +118,18 @@ document.addEventListener("click", async (e) => {
   }
 });
 
+async function loadComponent(selector, url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  document.querySelector(selector).innerHTML = html;
+}
+
 // Cargar productos al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts("suscripcion"); // Cargar productos de pago único por defecto
+  loadComponent("#footer", "/app/public/footer/footer.html");
+  loadComponent("#header", "/app/public/header/header.html");
+
 });
 
 // Agregar eventos de clic a los botones

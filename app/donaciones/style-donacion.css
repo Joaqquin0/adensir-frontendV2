@@ -4,15 +4,9 @@ html, body {
     height: 100%; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
   
 }
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
 /* Contenedor principal */
-main {
-  flex: 1 0 auto;
-}
+
 @font-face {
     font-family: 'Pally-blod';
     src: url('/fonts/Pally-Bold.woff2') format('woff2');
@@ -36,15 +30,54 @@ main {
   
 .container {
     margin: 0 auto; /* Centra el div horizontalmente */
-    margin-top: 5%;
-    margin-bottom: 4%;
-    width: 85%;
+    margin-top: 150px;
+    width: 119rem;
     position: relative; /* Asegura que los elementos hijos con position: absolute se posicionen relativamente a este contenedor */
+}
+@media(max-width: 1800px){
+  .container {
+    width: 100%;
+
+  }
+}
+@media(max-width: 1130px){
+  html body {
+    margin-top: 180px;
+
+  }
+}
+@media(max-width: 620px){
+  html body {
+    margin-top: 80px;
+  }
+}
+.container-sub {
+    width: 85%;
+    margin: 0 auto; /* Centra el div horizontalmente */
+
+}
+
+.container-arrow{
+  position: absolute;
+  transform: translateX(-150%);
+  font-size: 70px; /* Ajusta el tamaño de la flecha según sea necesario */
+  cursor: pointer;
+}
+.arrow-icon {
+  color: #272727  ; /* Ajusta el color de la flecha según sea necesario */
+}
+
+.container-imagen {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #E73246;
 }
 
 .img-donar{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
 }
 
 
@@ -53,19 +86,18 @@ main {
     width: 100%;
     font-family: 'Pally-regular', sans-serif;
     position: absolute; /* Permite posicionar el elemento en relación al contenedor */
-    font-size: 2.3vw;
+    font-size: 40px;
     top: 91%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centra el elemento horizontal y verticalmente */
     text-align: center;
+
 }
-.arrow-icon {
-  position: absolute;
-  top: -40px;
-  transform: translateX(-150%);
-  font-size: 6vw; /* Ajusta el tamaño de la flecha según sea necesario */
-  cursor: pointer;
-  color: #272727  ; /* Ajusta el color de la flecha según sea necesario */
+@media(max-width: 1358px){
+  .container-text{
+    font-size: 2.5vw;
+
+  }
 }
 
 /*-----------------------INFORMACION.---------------------*/
@@ -76,11 +108,10 @@ main {
     font-family: 'Pally-regular', sans-serif;
     text-align: center;
     margin-top: 1%;
-    font-size: 2.3vw;
-
+    font-size: 40px;
 }
 .cancelar-sub{
-  font-size: 1.5rem;
+  font-size: 20px;
 }
 @media(max-width: 1200px){
   .cancelar-sub{
@@ -193,10 +224,16 @@ main {
 }
 .pagar-titulo{
   font-family: 'Pally-medium', sans-serif;
-  font-size: 3vw;
+  font-size:75px;
   text-align: center;
   margin-bottom: 4%;
   
+}
+@media(max-width: 1358px){
+  .pagar-titulo{
+    font-size: 5vw;
+
+  }
 }
 .donaciones{
     font-family: 'Pally-regular', sans-serif;
@@ -445,16 +482,30 @@ main {
 .container-formas{
   margin: 0 auto;
   margin-top: 5%;
+  margin-bottom: 100px;
+  width: 119rem;
+}
+
+@media(max-width: 1800px){
+  .container-formas{
+    width: 100%;
+    height: auto;
+  }
 }
 
 .formas-titulo{
   font-family: 'Pally-medium', sans-serif;
-  font-size: 3vw;
+  font-size: 75px;
   text-align: center;
   margin-bottom: 6%;
 
 }
+@media(max-width: 1358px){
+  .formas-titulo{
+    font-size: 5vw;
 
+  }
+}
 .container-formas-donar-1{
   display: flex;
   justify-content: center;
@@ -463,7 +514,7 @@ main {
 
 .container-forma-donar-texto{
   font-family: 'Pally-regular', sans-serif;
-  font-size: 1.8vw;
+  font-size: 34.56px;
   text-align: left;
   width: 43%;
   line-height: 1.5;
@@ -486,11 +537,11 @@ main {
 .img-formas{
   margin-top: -4%;
   margin-left: 10%;
-  width: 14vw;
+  width: 45%;
 }
 .img-formas2{
   position: absolute;
-  width: 20vw;
+  width: 60%;
   top: 40%;
   z-index: -20;
   left: 30%;
@@ -511,7 +562,7 @@ main {
   width: 40%;
   border-radius: 1vw;
   border: none  ;
-  font-size: 2.5vw;
+  font-size: 35px;
   background-color: #0AA6E0;
   color: white;
   font-family: 'Pally-medium', sans-serif;
@@ -548,122 +599,6 @@ main {
   }
   
 }
-/*--------------------------------------*/
-footer{
-  background-color: #272727;
-  color: white;
-  text-align: center;
-  padding: 4%;
-  font-family: "Pally-medium", sans-serif;
-  margin-top: -1%;
-}
-.footer-total{
-  width: 110rem;
-  margin: 0 auto; /* Centra el div horizontalmente */
-}
-
-.footer-parte1{
-  display: flex;
-  gap: 3%; /* Espacio entre los botones */
-}
-.footer-logo-container{
-  margin-left: 4%;
-}
-.footer-logo{
-  width:350.58px;
-  height: auto; /* Ajusta la altura del contenedor del logo */
-}
-.footer-buttons{
-  font-size: 16.5px; /* Ajusta el tamaño del texto de los botones */
-  display:flex;
-  width: 49.3%;
-  color: black;
-  background-color: white;
-  gap: 5%; /* Espacio entre los botones */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  border-radius: 20px;
-  height: 75px;
-  align-items: center; /* Centra verticalmente los elementos */
-}
-.nosotros-button, .mision-footer-button, .padrinos-button{
-  cursor: pointer; 
-}
-.footer-donar{
-  cursor: pointer; 
-  height: 75px;
-  font-size: 60px; /* Ajusta el tamaño del texto de los botones */
-  background-color: #FBBB17; 
-  padding: 5px 50px; /* Añade espacio en blanco alrededor del texto  x y */
-  font-family: 'Pally-blod', sans-serif; /* Aplica la fuente Pally al texto */
-  border-radius: 16px;
-  color: white;
-  
-  display:flex;
-  align-items: center; /* Centra verticalmente los elementos */
-
-  border: none;
-
-}
-.footer-parte2{
-  width: 92%;
-  display: flex;
-  justify-content: center; /* Centra los elementos horizontalmente */
-  margin-top: 5%;
-  margin-left: 4%;
-}	
-
-.container-contact {
-  width: auto;
-}
-.contact-item {
-  display: flex;
-  align-items: center; /* Centra verticalmente el ícono y el texto */
-  gap: 20px; /* Espacio entre el ícono y el texto */
-  font-size: 30px; /* Tamaño del ícono */
-  margin-bottom: 1%;
-}
-.contact-item i {
-  font-size: 30px; /* Tamaño del ícono */
-  color: white;
-}
-
-.social-icons {
-  display: flex;
-  width: auto;
-  height: 100%;
-  justify-content: center;
-  gap: 15px;
-  margin-left: auto; /* Ajusta el valor según el espacio que desees */
-
-}
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%; /* Hace el fondo circular */
-  background-color: #fff; /* Fondo blanco */
-  color: #333; /* Color del icono */
-  font-size: 60px; /* Tamaño del icono */
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-}
-  .icon:hover {
-    background-color: #333; /* Fondo al pasar el mouse (azul) */
-    color: #fff; /* Icono blanco al pasar el mouse */
-  }
-
-
-@media (max-width:885px){
-  .container {
-    margin: 0 auto; /* Centra el div horizontalmente */
-    margin-bottom: 5%;
-    margin-top: 5%;
-
-  }
-}
 
 /*-----flecha----------*/
 @media (max-width: 1027px) {
@@ -681,91 +616,3 @@ footer{
 
   }
 }
-
-/*----footer--*/
-@media (max-width: 1404px) {
-  .footer-parte1 {
-    display:block;
-    
-  }
-  .footer-logo-container{
-    margin: 0 auto; /* Centra el div horizontalmente */
-    margin-top: 20px;
-    width: 24vw;
-  }
-  .footer-logo{
-    width: 24vw;
-    height: auto;
-  }
-  .footer-buttons {
-    border-radius: 10px;
-    height: 7vw;
-    margin-top: 3%;
-    margin-bottom: 4%;
-
-    width: 50%;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-  }
-  .footer-donar{
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-  }
-}
-@media (max-width: 1017px) {
-  .fomras-botones {
-    display: block;
-  }
-}	
-@media (max-width: 888px) {
-  .contact-item {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    justify-content: center;
-  }
-  .footer-parte2 {
-    display: block;
-  }
-  .footer-buttons {
-    border-radius: 10px;
-    height: 7vw;
-    margin-top: 3%;
-    margin-bottom: 4%;
-    font-size: 1vw;
-
-    width: 50%;
-    margin-left: 50%;
-    transform: translate(-50%, 0);
-  }
-  .footer-donar{
-    border-radius: 1vw;
-    height: 7vw;
-  }
-  .contact-item {
-    font-size: 3vw; /* Tamaño del texto */
-  }
-  .contact-item i {
-    font-size: 3vw; /* Tamaño del ícono */
-  }
-  .icon {
-    width: 7vw;
-    height: 7vw;
-    font-size: 4vw; /* Tamaño del icono */
-  }
-
-  .container{
-    margin-top: 15%; 
-  }
-  .butonsSocio{
-    margin: 5%;
-  }
-  .footer-logo-container{
-    width: 30vw;
-    margin-bottom: 4%;
-  }
-  .footer-logo{
-    width: 100%;
-    height: auto;
-  }
-}
-
