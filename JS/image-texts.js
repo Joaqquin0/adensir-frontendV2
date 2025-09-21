@@ -219,16 +219,52 @@ function navigateToSection(sectionId) {
 }
 
 async function loadComponent(selector, url) {
-  const response = await fetch(url);
-  const html = await response.text();
-  document.querySelector(selector).innerHTML = html;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const html = await response.text();
+    document.querySelector(selector).innerHTML = html;
+  } catch (error) {
+    console.error(`Error loading component ${selector} from ${url}:`, error);
+    // Fallback: try without leading slash for relative paths
+    if (url.startsWith('/')) {
+      const fallbackUrl = url.substring(1);
+      try {
+        const fallbackResponse = await fetch(fallbackUrl);
+        if (fallbackResponse.ok) {
+          const html = await fallbackResponse.text();
+          document.querySelector(selector).innerHTML = html;
+        }
+      } catch (fallbackError) {
+        console.error(`Fallback also failed for ${selector}:`, fallbackError);
+      }
+    }
+  }
 }
 
 const landingComponent = new LandingComponent();
 document.addEventListener('DOMContentLoaded', () => {
   landingComponent.init();
+  
+  // Load components with debugging
   loadComponent("#header", "/app/public/header/header.html");
   loadComponent("#footer", "/app/public/footer/footer.html");
+  
+  // Verify components loaded after a delay
+  setTimeout(() => {
+    const headerLoaded = document.querySelector("#header").innerHTML.trim() !== '';
+    const footerLoaded = document.querySelector("#footer").innerHTML.trim() !== '';
+    
+    console.log('Header loaded:', headerLoaded);
+    console.log('Footer loaded:', footerLoaded);
+    
+    if (!footerLoaded) {
+      console.warn('Footer not loaded, attempting fallback...');
+      loadComponent("#footer", "app/public/footer/footer.html");
+    }
+  }, 2000);
 });
 
 function prevMision() {
