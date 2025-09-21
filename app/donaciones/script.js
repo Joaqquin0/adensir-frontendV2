@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const clientId = crypto.randomUUID();  // Genera un ID único para el cliente
 
-    const tokenResponse = await fetch("http://localhost:3000/api/get-token", {
+    const tokenResponse = await fetch("https://adensir2.vercel.app/api/get-token", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -33,11 +33,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
+        //        const productId = tipoDonacion === 'unica' ? "prod_Rbv0ypbBXRpIvo" : "prod_Rbv0Z5cGmo2h9l"; // id de produccion
         const productId = tipoDonacion === 'unica' ? "prod_Rbv0ypbBXRpIvo" : "prod_Rbv0Z5cGmo2h9l"; // Según el tipo de donación
-
+                            // id de pruebas     (unica)  prod_SwHA6bJvzg6N7E      prod_SgZyxAFK1hek7t
         // Llamar al backend para crear el precio
         try {
-            const response = await fetch("http://localhost:3000/api/new-price", {
+            const response = await fetch("https://adensir2.vercel.app/api/new-price", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -105,13 +106,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Función para iniciar la sesión de checkout
 const iniciarCheckout = async (priceId) => {
     try {
-        const response = await fetch("http://localhost:3000/api/create-checkout-session", {
+        const response = await fetch("https://adensir2.vercel.app/api/create-checkout-session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${window.token}`, // Usa el token guardado
             },
-            body: JSON.stringify({ priceId }),
+            body: JSON.stringify({ 
+                priceId
+            }),
         });
 
         if (!response.ok) {

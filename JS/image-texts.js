@@ -163,23 +163,45 @@ class LandingComponent {
 }
 
 function scrollToSection() {
-  document.getElementById('nosotros').scrollIntoView({ behavior: 'smooth' });
+  // Verificar si estamos en index.html
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/public_html/') {
+    document.getElementById('nosotros').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // Si no estamos en index, navegar primero
+    window.location.href = '/index.html#nosotros';
+  }
 }
 
 function scrollToSections(value) {
-  document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/public_html/') {
+    document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = `/index.html#${value}`;
+  }
 }
 
 function scrollToSectionMision() {
-  document.getElementById('cointanier-valores').scrollIntoView({ behavior: 'smooth' });
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/public_html/') {
+    document.getElementById('cointanier-valores').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = '/index.html#cointanier-valores';
+  }
 }
 
 function scrollToSectionDonacion() {
-  document.getElementById('colaboracion').scrollIntoView({ behavior: 'smooth' });
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/public_html/') {
+    document.getElementById('colaboracion').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = '/index.html#colaboracion';
+  }
 }
 
 function scrollToSectionPadrinos() {
-  document.getElementById('conteiner-padrinos').scrollIntoView({ behavior: 'smooth' });
+  if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/public_html/') {
+    document.getElementById('conteiner-padrinos').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.location.href = '/index.html#conteiner-padrinos';
+  }
 }
 
 function navigateToSection(sectionId) {
@@ -196,9 +218,17 @@ function navigateToSection(sectionId) {
   });
 }
 
+async function loadComponent(selector, url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  document.querySelector(selector).innerHTML = html;
+}
+
 const landingComponent = new LandingComponent();
 document.addEventListener('DOMContentLoaded', () => {
   landingComponent.init();
+  loadComponent("#header", "/app/public/header/header.html");
+  loadComponent("#footer", "/app/public/footer/footer.html");
 });
 
 function prevMision() {
@@ -219,5 +249,20 @@ document.addEventListener('click', function(event) {
   const menuIcon = document.querySelector('.menu-icon');
   if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
     sidebar.classList.remove('active');
+  }
+});
+
+// Agregar función para manejar el scroll después de cargar la página
+window.addEventListener('load', () => {
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    const section = document.getElementById(hash);
+    if (section) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      // Limpiar el hash de la URL
+      history.replaceState(null, null, window.location.pathname);
+    }
   }
 });

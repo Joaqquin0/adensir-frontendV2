@@ -5,12 +5,12 @@ async function loadProducts(tipo) {
   const $fragment1 = document.createDocumentFragment();
   const $fragment2 = document.createDocumentFragment();
   try {
-    const response = await fetch("http://localhost:3000/api/products");
+    const response = await fetch("https://adensir2.vercel.app/api/products");
     const products = await response.json();
     // Filtrar productos según el tipo
     const filteredProducts = products.filter(product => {
       const isCorrectType = tipo === "unica" ? !isSubscription(product) : isSubscription(product);
-      const excludedPrices = [100, 1000, 2000]; // Precios en centavos (1, 10 y 20 euros)
+      const excludedPrices = [100, 1000, 2000, 10000]; // Precios en centavos (1, 10 y 20 euros)
       return isCorrectType && !excludedPrices.includes(product.price);
     });
     filteredProducts.forEach((product, index) => {
@@ -83,7 +83,7 @@ document.addEventListener("click", async (e) => {
     try {
       const clientId = crypto.randomUUID(); // Genera un ID único para el cliente
       // Obtén el token desde la API
-      const tokenResponse = await fetch("http://localhost:3000/api/get-token", {
+      const tokenResponse = await fetch("https://adensir2.vercel.app/api/get-token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ document.addEventListener("click", async (e) => {
         return;
       }
       // Crea una sesión de checkout en Stripe
-      const checkoutResponse = await fetch("http://localhost:3000/api/create-checkout-session", {
+      const checkoutResponse = await fetch("https://adensir2.vercel.app/api/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,9 +118,18 @@ document.addEventListener("click", async (e) => {
   }
 });
 
+async function loadComponent(selector, url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  document.querySelector(selector).innerHTML = html;
+}
+
 // Cargar productos al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts("suscripcion"); // Cargar productos de pago único por defecto
+  loadComponent("#footer", "/app/public/footer/footer.html");
+  loadComponent("#header", "/app/public/header/header.html");
+
 });
 
 // Agregar eventos de clic a los botones

@@ -591,9 +591,16 @@ function handleResize() {
     }
 }
 
+async function loadComponent(selector, url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  document.querySelector(selector).innerHTML = html;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     renderNoticias();
-    
+    loadComponent("#header", "/app/public/header/header.html");
+
     setTimeout(() => {
         initializeSwipeEvents();
     }, 200);

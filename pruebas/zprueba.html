@@ -1,93 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="JS/image-texts.js?v=1.0"></script>
-    <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="UTF-8">
+  <title>Confirmación de Donación - ${process.env.ORG_NAME}</title>
 </head>
-<style>
+<body style="max-width: 720px; margin: 0 auto; font-family: Arial, sans-serif; background: #f7f7f7; color: #222;">
+  <img src="https://adensir.com/img/gracias.jpg" alt="gracias_img" style="max-width: 100%; display: block;"/>
+  
+  <div style="background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 24px 18px;">
+    <h2 style="font-size: 20px; margin-bottom: 12px;">Hola ${customer_name},</h2>
+    <p style="font-size: 15px; margin-bottom: 8px;">Gracias por tu generosa donación. Tu apoyo hace una diferencia real en nuestra misión.</p>
+    <p style="font-size: 15px; margin-bottom: 8px;"><strong>Monto:</strong> $${(amount/100).toFixed(2)} ${currency.toUpperCase()}</p>
     
-.cointanier-valores{
-  width: 68%;
-  margin: 0 auto; /* Centra el div horizontalmente */
-  font-family: 'Pally-medium', sans-serif; /* Aplica la fuente Pally al texto */
-  text-align: center;
-  font-size: 3em;
-
-}
-.valores-titulo{
-  margin-top: 8%;
-  margin-bottom: 8%;
-  font-size: 5.5rem;
-
-}
-.carta-mision{
-  background-color: #FBBB17;
-  font-size: 1rem;
-  color: white;
-  position: relative;
-}
-.mision-button{
-  position: absolute;
-    width: 15%;
-    height: 100%;
-    border: none;
-    cursor: pointer; 
-    background-color: transparent; 
-}
-.mision-button2{
-  position: absolute;
-    width: 15%;
-    height: 100%;
-    left: 85%;
-    border: none;
-    cursor: pointer; 
-    background-color: transparent; 
-
-}
-
-.img-carta-mision{
-  width: 100%;
-  height: auto;
-}
-.carta-mision-info, .carta-mision-texto{
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Ajusta el centro con transform */
-  text-align: center;
-  width: 80%;
-}
-.titulo-mision{ font-size: 2em;}
-.carta-mision-texto{
-  top: 80%;
-}
-.subtitulo-mision{ font-size: 1em; margin-top: 10%; }
-.parrafo-mision{ font-size: 0.7em;}
-</style>
-<body>
-    <hr class="linea">
-
-    <div  class="cointanier-valores">
-      <h1 class="valores-titulo">Nuestra <span style="color: #0AA6E0;">misión,</span> <span style="color: #FBBB17;">visión</span> Y <span style="color: #E73246;">valores</span></h1>
-      
-      <div class="carta-mision">
-          <button class="mision-button" onclick="prevMision()"></button>
-          <button class="mision-button2" onclick="nextMision()"></button>
-          <h1 class="carta-mision-titulo" id="carta-titulo"> </h1>
-              <div class="carta-mision-texto">
-                  <p id="colaboracion">
-                      
-                  </p>
-              </div>
-          <img class="img-carta-mision" id="carta" src="img/Grupo304.png" alt="">
-      </div>
-
+    <div style="background: #e9ecef; padding: 14px; border-radius: 7px; margin: 16px 0;">
+      <h3 style="font-size: 15px; margin-bottom: 8px;">Detalles de tu donación:</h3>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong>Tipo:</strong> ${type === 'subscription' ? 'Donación Mensual (Suscripción)' : 'Donación Única'}</p>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong>ID de transacción:</strong> ${payment_id}</p>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong>Fecha:</strong> ${new Date().toLocaleDateString('es-ES')}</p>
+    </div>
   </div>
-
-    <script src="JS/javascrip.js"></script>
-
+  
+  <img src="https://adensir.com/img/Mesa%20de%20trabajo%201_1MEJOREMOS%20EL%20MUNDO%20A%20TRAVES%20DEL%20DEPORTE.jpg" alt="mejoremos_img" style="max-width: 100%; display: block;"/>
+  <img src="https://adensir.com/img/Mesa%20de%20trabajo%201%20copia%2020MEJOREMOS%20EL%20MUNDO%20A%20TRAVES%20DEL%20DEPORTE.jpg" alt="footer_img" style="max-width: 100%; display: block;"/>
 </body>
 </html>
