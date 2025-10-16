@@ -83,17 +83,17 @@
         <div>
             <label for="tipoDonacion">Tipo de donación:</label>
             <label class="custom-checkbox">
-                <input type="checkbox" id="unica" name="tipoDonacion" value="unica">
+                <input type="checkbox" id="unica" name="tipoDonacion" value="unica" checked>
                 <span class="checkmark unica"></span> Única
             </label>
             <label class="custom-checkbox">
-                <input type="checkbox" id="suscripcion" name="tipoDonacion" value="suscripcion" checked>
+                <input type="checkbox" id="suscripcion" name="tipoDonacion" value="suscripcion">
                 <span class="checkmark suscripcion"></span> Suscripción
             </label>
         </div>
     
         <!-- Agregar opciones solo si se selecciona suscripción -->
-        <div id="frecuenciaSuscripcion" class="frecuenciaSuscripcion">
+        <div id="frecuenciaSuscripcion" class="frecuenciaSuscripcion" style="display: none;">
             <label for="frecuencia">Frecuencia de la suscripción:</label>
             <select id="frecuencia">
                 <option value="week">Semanal</option>

@@ -87,19 +87,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     const suscripcionCheckbox = document.getElementById("suscripcion");
     const frecuenciaSelect = document.getElementById("frecuenciaSuscripcion");
 
-    unicaCheckbox.addEventListener("change", () => {
+    // Safety guards in case elements are missing
+    if (unicaCheckbox && suscripcionCheckbox && frecuenciaSelect) {
+        // Initialize state: prefer 'unica' by default
         if (unicaCheckbox.checked) {
             frecuenciaSelect.style.display = "none";
             suscripcionCheckbox.checked = false;
-        }
-    });
-
-    suscripcionCheckbox.addEventListener("change", () => {
-        if (suscripcionCheckbox.checked) {
+        } else if (suscripcionCheckbox.checked) {
             frecuenciaSelect.style.display = "block";
             unicaCheckbox.checked = false;
+        } else {
+            // If none checked (edge case), default to 'unica'
+            unicaCheckbox.checked = true;
+            suscripcionCheckbox.checked = false;
+            frecuenciaSelect.style.display = "none";
         }
-    });
+
+        unicaCheckbox.addEventListener("change", () => {
+            if (unicaCheckbox.checked) {
+                frecuenciaSelect.style.display = "none";
+                suscripcionCheckbox.checked = false;
+            }
+        });
+
+        suscripcionCheckbox.addEventListener("change", () => {
+            if (suscripcionCheckbox.checked) {
+                frecuenciaSelect.style.display = "block";
+                unicaCheckbox.checked = false;
+            }
+        });
+    } else {
+        // If elements are missing, log a warning to help debugging
+        console.warn('Donation type elements not found (unica/suscripcion/frecuenciaSuscripcion)');
+    }
 
 });
 

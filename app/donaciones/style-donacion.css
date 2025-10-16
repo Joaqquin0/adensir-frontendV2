@@ -217,6 +217,29 @@ html, body {
   color: white;
 }
 
+/* Button shadow and interaction styles */
+.show-one-time, .show-subscription, .donacion, .donar-btn, .button-contacto, .s4 {
+  /* subtle elevated look */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  transition: box-shadow 200ms ease, transform 120ms ease, opacity 150ms ease;
+}
+
+.show-one-time:hover, .show-subscription:hover, .donacion:hover, .donar-btn:hover, .button-contacto:hover, .s4:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  transform: translateY(-3px);
+}
+
+.show-one-time:active, .show-subscription:active, .donacion:active, .donar-btn:active, .button-contacto:active, .s4:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+}
+
+/* Slight visual tweak for primary CTA */
+.donar-btn {
+  /* stronger shadow for primary call-to-action */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+}
+
 /* -------------MOSTRAR DONACIONES---------------*/
 .container-pagar{
   margin: 0 auto;
