@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../../../CSS/style-noticias-seccion.css?v=1.0">
     <link rel="stylesheet" href="../../../../CSS/style.css">
     <link rel="stylesheet" href="../../../../CSS/style-hacemos.css">
+    <script src="../model/notice.js?v=1.0"></script>
     <script src="noticias.js?v=1.0"></script>
     <script src="../../../public/header/header.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -114,28 +115,33 @@
     <!-- Scripts al final del body para asegurar que el DOM esté cargado -->
     <script>
         // Esperar a que el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Cargar noticias desde JSON
+            let noticiasData = [];
+            
+            try {
+                const response = await fetch('../service/noticias.json');
+                const data = await response.json();
+                noticiasData = data.noticias;
+            } catch (error) {
+                console.error('Error cargando noticias:', error);
+            }
+
             // Obtener el ID de la URL
             const urlParams = new URLSearchParams(window.location.search);
             const idNoticia = urlParams.get('id');
 
             console.log("ID de noticia:", idNoticia);
             console.log("Datos de noticias:", noticiasData);
-            console.log("Contenido de noticias:", contenidoNoticiaData);
 
-            // Buscar la noticia y su contenido
+            // Buscar la noticia por ID
             const noticia = noticiasData.find(n => n.id == idNoticia);
-            const contenido = contenidoNoticiaData.find(c => c.id_noticia == idNoticia);
 
             console.log("Noticia encontrada:", noticia);
-            console.log("Contenido encontrado:", contenido);
 
             // Renderizar los datos
-            if (noticia && contenido) {
-                const descripcionElement = document.getElementById("descripcion-noticia");
+            if (noticia) {
                 const fechaElement = document.getElementById("fecha-noticia");
-                const susbtituloElement = document.getElementById("subtitulo-noticia");
-                
                 const tituloElement = document.getElementById("titulo-noticia");
                 const parrafoElement = document.getElementById("parrafo-noticia");
                 const autorElement = document.getElementById("autor-noticia");
@@ -150,41 +156,36 @@
                     if (imagenElement) {
                         if (window.innerWidth <= 900) {
                             // Usar imagen para móvil si existe, sino usar la normal
-                            imagenElement.src = contenido.imagenPhone || contenido.imagen;
+                            imagenElement.src = noticia.imagenPhone || noticia.imagen;
                         } else {
                             // Usar imagen normal para desktop
-                            imagenElement.src = contenido.imagen;
+                            imagenElement.src = noticia.imagen;
                         }
                     }
                 }
 
-                if (descripcionElement) descripcionElement.textContent = noticia.descripcion;
                 if (fechaElement) fechaElement.textContent = noticia.fecha;
+                if (tituloElement) tituloElement.innerHTML = noticia.titulo;
+                if (parrafoElement) parrafoElement.innerHTML = noticia.parrafo;
+                if (autorElement) autorElement.textContent = noticia.autor;
+                if (parrafo2Element) parrafo2Element.innerHTML = noticia.parrafo2;
+                if (parrafo3Element) parrafo3Element.innerHTML = noticia.parrafo3;
+                if (imagenElement) imagenElement.src = noticia.imagen;
+                if (imagenElement2) imagenElement2.src = noticia.imagen2;
+                if (imagenElement3) imagenElement3.src = noticia.imagen3;
 
-                if (tituloElement) tituloElement.innerHTML = contenido.titulo;
-                if (susbtituloElement) susbtituloElement.textContent = contenido.subtitulo;
-                if (parrafoElement) parrafoElement.innerHTML = contenido.parrafo;
-                if (autorElement) autorElement.textContent = contenido.autor;
-                if (parrafo2Element) parrafo2Element.innerHTML = contenido.parrafo2;
-                if (parrafo3Element) parrafo3Element.innerHTML = contenido.parrafo3;
-                if (imagenElement) imagenElement.src = contenido.imagen;
-                if (imagenElement2) imagenElement2.src = contenido.imagen2;
-                if (imagenElement3) imagenElement3.src = contenido.imagen3;
+                // Aplicar al cargar la página
+                updateImageForScreenSize();
+            
+                // Aplicar cuando cambie el tamaño de pantalla
+                window.addEventListener('resize', updateImageForScreenSize);
 
             } else {
-                const contenidoElement = document.getElementById("contenido-noticia");
+                const contenidoElement = document.querySelector(".contenido-noticia");
                 if (contenidoElement) {
-                    contenidoElement.textContent = "Noticia no encontrada.";
-                    contenidoElement.style.color = "red";
+                    contenidoElement.innerHTML = "<p style='color: red; text-align: center;'>Noticia no encontrada.</p>";
                 }
             }
-
-            // Aplicar al cargar la página
-            updateImageForScreenSize();
-        
-            // Aplicar cuando cambie el tamaño de pantalla
-            window.addEventListener('resize', updateImageForScreenSize);
-            
         });
 
         function toggleSidebar() {
