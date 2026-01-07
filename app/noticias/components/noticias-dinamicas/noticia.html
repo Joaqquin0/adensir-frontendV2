@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../../../CSS/style-noticias-seccion.css?v=1.0">
     <link rel="stylesheet" href="../../../../CSS/style.css">
     <link rel="stylesheet" href="../../../../CSS/style-hacemos.css">
-    <script src="../model/notice.js?v=1.0"></script>
+    <script src="../../model/notice.js?v=1.0"></script>
     <script src="noticias.js?v=1.0"></script>
     <script src="../../../public/header/header.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -120,7 +120,7 @@
             let noticiasData = [];
             
             try {
-                const response = await fetch('../service/noticias.json');
+                const response = await fetch('../../service/noticias.json');
                 const data = await response.json();
                 noticiasData = data.noticias;
             } catch (error) {

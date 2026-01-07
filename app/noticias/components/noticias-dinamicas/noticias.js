@@ -51,8 +51,8 @@ async function loadNoticias() {
         const isInRoot = currentPath.endsWith('index.html') || currentPath.endsWith('/') || !currentPath.includes('noticias-dinamicas');
         
         const jsonPath = isInRoot 
-            ? 'app/noticias/components/service/noticias.json'
-            : '../service/noticias.json';
+            ? 'app/noticias/service/noticias.json'
+            : '../../service/noticias.json';
         
         console.log('Cargando noticias desde:', jsonPath);
         
