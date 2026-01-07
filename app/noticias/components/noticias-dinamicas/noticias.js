@@ -1,6 +1,6 @@
 const noticiasData = [
-    { fecha: "28 de Febrero 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"img/foto-mini-noticia1.jpeg",colorBarra: "#09A6DF" },
-    { fecha: "30 de abril de 2025", descripcion: '"Inauguración del nuevo centro comunitario."', id: 2, imagen_previa:"img/foto-mini-noticia2.jpg",colorBarra: "#E73246" },
+    { fecha: "28 de Febrero 2025", descripcion: '"Llegamos a 1000 familias ayudadas en la región."', id: 1, imagen_previa:"../../../../img/foto-mini-noticia1.jpeg",colorBarra: "#09A6DF" },
+    { fecha: "30 de abril de 2025", descripcion: '"Inauguración del nuevo centro comunitario."', id: 2, imagen_previa:"../../../../img/foto-mini-noticia2.jpg",colorBarra: "#E73246" },
     //{ fecha: "18 de Febrero 2025", descripcion: "Cumpleaños de dios", id:3, colorBarra: "#ffc107" }
     //{ fecha: "25 de Marzo 2024", descripcion: "Inauguración del nuevo centro comunitario.", id: 4 }
 ];
@@ -65,10 +65,10 @@ const contenidoNoticiaData= [
         "DE QUE PERFECTAMENTE PODRÍAMOS HABER SIDO NOSOTROS MISMOS LOS QUE OCUPARAN ESE LUGAR?", 
         
 
-        imagen: "img/foto-portada-noticia1.jpg",
-        imagenPhone: "img/image-noticia1-phone.jpg",
-        imagen2: "img/entrenador-con-alumnos.jpg",
-        imagen3: "img/BGS_3291-1832.jpg",
+        imagen: "../../../../img/foto-portada-noticia1.jpg",
+        imagenPhone: "../../../../img/image-noticia1-phone.jpg",
+        imagen2: "../../../../img/entrenador-con-alumnos.jpg",
+        imagen3: "../../../../img/BGS_3291-1832.jpg",
     },
     
     { id_noticia: 2,
@@ -126,10 +126,10 @@ const contenidoNoticiaData= [
         "vencerá.<br><br>",
 
 
-        imagen: "img/foto-de-niño-mirando-al-escudo.jpg",
-        imagenPhone: "img/image-noticia2-phone.jpg",
-        imagen2: "img/noticias-2-imagen.jpg",
-        imagen3: "img/noticias-2.1-imagen.jpg",
+        imagen: "../../../../img/foto-de-niño-mirando-al-escudo.jpg",
+        imagenPhone: "../../../../img/image-noticia2-phone.jpg",
+        imagen2: "../../../../img/noticias-2-imagen.jpg",
+        imagen3: "../../../../img/noticias-2.1-imagen.jpg",
         
     },
     { id_noticia: 3, contenido: "CONTENIDO_3." },
@@ -173,7 +173,7 @@ class Noticia{
     }
 
     mostrarDetalle() {
-        window.location.href = `noticia.html?id=${this.id}`;
+        window.location.href = `app/noticias/components/noticias-dinamicas/noticia.html?id=${this.id}`;
     }
 }
 
