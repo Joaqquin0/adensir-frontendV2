@@ -5,58 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hazte Socio - ADENSIR - Donacion</title>
     <!-- Favicon para la pestaña -->
-    <link rel="icon" href="img/isotipo.png" type="image/x-icon">
+    <link rel="icon" href="/img/isotipo.png" type="image/png" sizes="48x48">
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
-    connect-src 'self' https://api.stripe.com https://maps.googleapis.com https://adensir2.vercel.app ;   
+    connect-src 'self' https://api.stripe.com https://maps.googleapis.com https://adensir2.vercel.app http://localhost:3000;   
     frame-src 'self' https://*.js.stripe.com https://js.stripe.com https://hooks.stripe.com;   
     script-src 'self' 'unsafe-inline' https://*.js.stripe.com https://js.stripe.com https://maps.googleapis.com;
     style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
     font-src 'self' https://cdnjs.cloudflare.com;
     img-src 'self' https://files.stripe.com;">
-    <script src="JS/image-texts.js"></script>
+    <script src="../../JS/image-texts.js"></script>
+    <script src="../public/header/header.js"></script>
 
-    <link rel="stylesheet" href="CSS/style-donacion.css">
+    <link rel="stylesheet" href="./style-donacion.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="JS/script2.js" type="module"></script>
-    <script src="JS/script.js" type="module"></script>
+    <script src="./script2.js?v=1.0" type="module"></script>
+    <script src="./script.js?v=1.0" type="module"></script>
 
-     <!-- Google Translate -->
-     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'es,en,fr,de,it,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
+    <div id="header"></div>
 
     <div class="container">
-        <a href="https://adensir.com/">
-        <i class="fas fa-chevron-left arrow-icon"></i>
-        </a>
+        <div class="container-sub">
 
-        <img class="img-donar" src="img/1(11).jpg" alt="">
+            <div class="container-arrow">
+                <a href="https://adensir.com/">
+                <i class="fas fa-chevron-left arrow-icon"></i>
+                </a>
+            </div>
 
-        <div class="container-text">
-            <h5 class="frase" >"Un gesto de 
-                <span style="color:#FBBB17">solidaridad</span> puede marcar el inicio de una 
-                <span style="color:#0AA6E0">gran transformación.</span>"
-            </h5>
+            <div class="container-imagen">
+                <img class="img-donar" src="../../img/1(11).jpg" alt="">
+            </div>
+            <div class="container-text">
+                <h5 class="frase" >"Un gesto de 
+                    <span style="color:#FBBB17">solidaridad</span> puede marcar el inicio de una 
+                    <span style="color:#0AA6E0">gran transformación.</span>"
+                </h5>
+            </div>
         </div>
-
-</div>
-
-
-<div id="google_translate_element"></div>
-
+    </div>
 
     <div id="pagar-conteiner" class="container-pagar" >
 
@@ -64,7 +55,7 @@
 
         <div class="container-buttons-donacion-tipo">
             <button id="show-one-time" class="show-one-time" >Pago Único</button>
-            <button id="show-subscription" class="show-subscription">Suscripción mensual</button>
+            <button id="show-subscription" class="show-subscription">Suscripción</button>
         </div>
 
 
@@ -92,17 +83,17 @@
         <div>
             <label for="tipoDonacion">Tipo de donación:</label>
             <label class="custom-checkbox">
-                <input type="checkbox" id="unica" name="tipoDonacion" value="unica">
+                <input type="checkbox" id="unica" name="tipoDonacion" value="unica" checked>
                 <span class="checkmark unica"></span> Única
             </label>
             <label class="custom-checkbox">
-                <input type="checkbox" id="suscripcion" name="tipoDonacion" value="suscripcion" checked>
+                <input type="checkbox" id="suscripcion" name="tipoDonacion" value="suscripcion">
                 <span class="checkmark suscripcion"></span> Suscripción
             </label>
         </div>
     
         <!-- Agregar opciones solo si se selecciona suscripción -->
-        <div id="frecuenciaSuscripcion" class="frecuenciaSuscripcion">
+        <div id="frecuenciaSuscripcion" class="frecuenciaSuscripcion" style="display: none;">
             <label for="frecuencia">Frecuencia de la suscripción:</label>
             <select id="frecuencia">
                 <option value="week">Semanal</option>
@@ -145,8 +136,8 @@
             </div>
 
             <div class="container-imagen-formas">
-                <img class="img-formas" src="img/donacion-ropa.jpg" alt="">
-                <img class="img-formas2" src="img/donacion-ropa2.png" alt="">
+                <img class="img-formas" src="../../img/donacion-ropa.jpg" alt="">
+                <img class="img-formas2" src="../../img/donacion-ropa2.png" alt="">
 
             </div>
             
@@ -160,61 +151,7 @@
             </a>
         </div>
     </div>
-
-    <div class="container-noticias">
-        <p class="titulo-noticia">Lo último en nuestra <strong>misíon solidaria</strong></p>
-        <div class="noticias">
-
-            <div class="all-noticias">
-                <!-- Las noticias se renderizan aquí dinámicamente -->
-            </div>
-        
-            <!-- Botón para cargar más noticias -->
-            <div class="pagination-indicators"></div>
-        </div>
-    </div>
     
-    <footer>
-        <div class="footer-total">
-
-            <div class="footer-parte1">
-                <div class="footer-logo-container">
-                    <a href="https://adensir.com/">
-    
-                    <img class="footer-logo" src="img/imagotipo en blanco sin blanco.png" alt="logo-blanco">
-                    </a>
-                </div>
-                <div class="footer-buttons">
-                    <h1 class="nosotros-button" onclick="navigateToSection('nosotros')">¿QUIÉNES SOMOS?</h1>
-                    <h1 class="mision-footer-button" onclick="navigateToSection('cointanier-valores')">MISIÓN Y VISIÓN</h1>
-                    <H1 class="padrinos-button" onclick="navigateToSection('conteiner-padrinos')">PADRINOS</H1>
-                </div>
-                <a href="https://adensir.com/donacion" style="text-decoration: none;">
-                <button class="footer-donar" id="donarButton" >DONAR</button>
-                </a>
-            </div>
-            <div class="footer-parte2"> 
-                <div class="container-contact" id="id-contacto">
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+34 665 41 15 21</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contacto@adensir.com</span>
-                    </div>
-                </div>
-                <div class="social-icons">
-                    <a href="https://wa.me/34665411521" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://youtube.com/@adensir?si=wvORIx1ru_9Bbtk4" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/adensir_ong?igsh=a2JuMGsxNXQwaTdo" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </footer>
-
+    <div id="footer"></div>
 </body>
 </html>

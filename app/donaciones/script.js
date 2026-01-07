@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
+        //        const productId = tipoDonacion === 'unica' ? "prod_Rbv0ypbBXRpIvo" : "prod_Rbv0Z5cGmo2h9l"; // id de produccion
         const productId = tipoDonacion === 'unica' ? "prod_Rbv0ypbBXRpIvo" : "prod_Rbv0Z5cGmo2h9l"; // Según el tipo de donación
-
+                            // id de pruebas     (unica)  prod_SwHA6bJvzg6N7E      prod_SgZyxAFK1hek7t
         // Llamar al backend para crear el precio
         try {
             const response = await fetch("https://adensir2.vercel.app/api/new-price", {
@@ -86,19 +87,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     const suscripcionCheckbox = document.getElementById("suscripcion");
     const frecuenciaSelect = document.getElementById("frecuenciaSuscripcion");
 
-    unicaCheckbox.addEventListener("change", () => {
+    // Safety guards in case elements are missing
+    if (unicaCheckbox && suscripcionCheckbox && frecuenciaSelect) {
+        // Initialize state: prefer 'unica' by default
         if (unicaCheckbox.checked) {
             frecuenciaSelect.style.display = "none";
             suscripcionCheckbox.checked = false;
-        }
-    });
-
-    suscripcionCheckbox.addEventListener("change", () => {
-        if (suscripcionCheckbox.checked) {
+        } else if (suscripcionCheckbox.checked) {
             frecuenciaSelect.style.display = "block";
             unicaCheckbox.checked = false;
+        } else {
+            // If none checked (edge case), default to 'unica'
+            unicaCheckbox.checked = true;
+            suscripcionCheckbox.checked = false;
+            frecuenciaSelect.style.display = "none";
         }
-    });
+
+        unicaCheckbox.addEventListener("change", () => {
+            if (unicaCheckbox.checked) {
+                frecuenciaSelect.style.display = "none";
+                suscripcionCheckbox.checked = false;
+            }
+        });
+
+        suscripcionCheckbox.addEventListener("change", () => {
+            if (suscripcionCheckbox.checked) {
+                frecuenciaSelect.style.display = "block";
+                unicaCheckbox.checked = false;
+            }
+        });
+    } else {
+        // If elements are missing, log a warning to help debugging
+        console.warn('Donation type elements not found (unica/suscripcion/frecuenciaSuscripcion)');
+    }
 
 });
 
@@ -111,7 +132,9 @@ const iniciarCheckout = async (priceId) => {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${window.token}`, // Usa el token guardado
             },
-            body: JSON.stringify({ priceId }),
+            body: JSON.stringify({ 
+                priceId
+            }),
         });
 
         if (!response.ok) {

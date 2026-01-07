@@ -4,72 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADENSIR</title>
-    <link rel="icon" href="img/isotipo.png" type="image/x-icon">
+    <link rel="icon" href="/img/isotipo.png" type="image/png" sizes="48x48">
     <link rel="stylesheet" href="CSS/style.css?v=1.0">
-        <link rel="stylesheet" href="CSS/style-noticias-seccion.css?v=1.0">
-        
+    <link rel="stylesheet" href="CSS/style-noticias-seccion.css?v=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="JS/image-texts.js?v=1.0"></script>
     <script src="JS/animation.js?v=1.0"></script>
     <script src="JS/noticias.js?v=1.0"></script>
+    <script src="app/public/header/header.js"></script>
+
 </head>
 <body>
     <div id="loading-screen">
         <div class="spinner"></div>
     </div>
 
-    <div class="header-container">
-        <div class="todos-elementos-header">
-            <div class="menuicon-logo">
-            <div class="menu-icon" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div div class="cointanier-logo">
-                <a href="https://adensir.com/">
-                    <img class="logo" src="img/Grupo 133.png" alt="logo" >
-                </a>
-            </div>
-            </div>
-
-            <div class="buttons-container1">
-            
-            <button class="butons1" onclick="scrollToSection()">¿Quiénes somos?</button>
-            <button class="butons2" onclick="scrollToSectionMision()">Misión y Vision</button>
-            <button class="butons3" onclick="scrollToSectionDonacion()">Donar</button>
-            <button class="butons4" onclick="scrollToSections('id-porque')">Fortalezas</button>
-            <button class="butons5" onclick="scrollToSections('id-contacto')">Contacto</button>        
-        
-        
-            </div>  
-
-            <div class="sidebar" id="sidebar">
-            <div class="buttons-container">
-                <button class="butons11" onclick="scrollToSection()">¿Quiénes somos?</button>
-                <button class="butons22" onclick="scrollToSectionMision()">Misión y Vision</button>
-                <button class="butons33" onclick="scrollToSectionDonacion()">Donar</button>
-                <button class="butons44" onclick="scrollToSections('id-porque')">Fortalezas</button>        
-                <button class="butons55" onclick="scrollToSections('id-contacto')">Contacto</button>        
-
-            </div>
-
-            </div>
-        </div>
-        <script>
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.toggle('active');
-            }
-        </script>
-    </div>
+    <div id="header"></div>
 
     <div class="container">
         <button class="butonsSocio" onclick="scrollToSectionDonacion()">HAZTE SOCIO</button>
-        <!--este es un comando para hacer uin pusjj -->
-                <!--este es un comando para hacer uin pusjj -->
-
-                    <!--este es un comando para hacer uin pusjj -->
-
-                            <!--este es un comando para hacer uin pusjj -->
 
         <div class="images" >
             <img class="img" src="img/niños-jugando-futbol-de-zn.png" alt="">
@@ -184,7 +139,7 @@
                     programa deportivo que financiamos en Kibera (Nairobi).
                 </p>
             </div>
-            <a href="https://adensir.com/donacion" style="text-decoration: none;">
+            <a href="https://adensir.com/app/donaciones/donacion" style="text-decoration: none;">
             <button class="button-colaboracion">
                 DONAR
             </button>
@@ -272,47 +227,8 @@
         <img class="img-video" src="img/fondo-video.png" alt="">
     </div>
 
-    <footer>
-        <div class="footer-total">
-
-            <div class="footer-parte1">
-                <div class="footer-logo-container">
-                    <a href="https://adensir.com/">
     
-                    <img class="footer-logo" src="img/imagotipo en blanco sin blanco.png" alt="logo-blanco">
-                    </a>
-                </div>
-                <div class="footer-buttons">
-                    <h1 class="nosotros-button" onclick="scrollToSection()">¿QUIÉNES SOMOS?</h1>
-                    <h1 class="mision-footer-button" onclick="scrollToSectionMision()">MISIÓN Y VISIÓN</h1>
-                    <H1 class="padrinos-button" onclick="scrollToSectionPadrinos()">PADRINOS</H1>
-                </div>
-                <a href="https://adensir.com/donacion" style="text-decoration: none;">
-                <button class="footer-donar" id="donarButton" >DONAR</button>
-                </a>
-            </div>
-            <div class="footer-parte2"> 
-                <div class="container-contact" id="id-contacto">
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+34 665 41 15 21</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contacto@adensir.com</span>
-                    </div>
-                </div>
-                <div class="social-icons">
-                    <a href="https://wa.me/34665411521" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://youtube.com/@adensir?si=wvORIx1ru_9Bbtk4" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/adensir_ong?igsh=a2JuMGsxNXQwaTdo" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-
-    </footer>
+    <div id="footer"></div>
 
     <script>
         window.addEventListener('load', () => {
