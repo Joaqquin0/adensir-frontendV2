@@ -116,11 +116,9 @@
 .contenido-noticia {
     width: 70rem;
     margin: 40px auto;
-    padding: 20px;
     text-align: left;
     font-size: 27px;
     /*line-height: 1.7;*/
-
 }
 
 @media(max-width: 1725px) {
@@ -170,12 +168,21 @@
     border-radius: 10px;
 }
 .imagen3-noticia-container, .imagen2-noticia-container  {
-    width: 99%;
+    width: 70%;
     text-align: center;
+    margin: 0 auto;
+}
+
+@media(max-width: 730px) {
+
+    .imagen3-noticia-container, .imagen2-noticia-container  {
+    width: 100%;
+
+    }
 }
 
 .imagen3-noticia, .imagen2-noticia {
-    width: 70%;
+    width: 100%;
     border-radius: 10px;
 }
 
