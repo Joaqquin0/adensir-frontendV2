@@ -2,7 +2,7 @@
   "noticias": [
     {
       "id": 1,
-      "fecha": "28 de Febrero 2025",
+      "fecha": "30 de Marzo 2025",
       "descripcion": "Llegamos a 1000 familias ayudadas en la región.",
       "colorBarra": "#09A6DF",
       "imagenPrevia": "../../../../img/foto-mini-noticia1.jpeg",
@@ -18,7 +18,7 @@
     },
     {
       "id": 2,
-      "fecha": "30 de Abril de 2025",
+      "fecha": "30 de Junio de 2025",
       "descripcion": "Inauguración del nuevo centro comunitario.",
       "colorBarra": "#E73246",
       "imagenPrevia": "../../../../img/foto-mini-noticia2.jpg",
