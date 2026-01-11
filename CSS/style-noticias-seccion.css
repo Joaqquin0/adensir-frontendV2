@@ -52,6 +52,7 @@
     will-change: transform;
     padding: 0 10px;
     gap: 20px;
+
 }
 
 /* Estilo para resoluciones mayores a 1384px (con paginación) */
