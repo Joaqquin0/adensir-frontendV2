@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Safety guards in case elements are missing
     if (unicaCheckbox && suscripcionCheckbox && frecuenciaSelect) {
-        // Initialize state: prefer 'unica' by default
+        // Initialize state: prefer 'suscripcion' by default
         if (unicaCheckbox.checked) {
             frecuenciaSelect.style.display = "none";
             suscripcionCheckbox.checked = false;
@@ -97,10 +97,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             frecuenciaSelect.style.display = "block";
             unicaCheckbox.checked = false;
         } else {
-            // If none checked (edge case), default to 'unica'
-            unicaCheckbox.checked = true;
-            suscripcionCheckbox.checked = false;
-            frecuenciaSelect.style.display = "none";
+            // If none checked (edge case), default to 'suscripcion'
+            suscripcionCheckbox.checked = true;
+            unicaCheckbox.checked = false;
+            frecuenciaSelect.style.display = "block";
         }
 
         unicaCheckbox.addEventListener("change", () => {
